@@ -60,15 +60,12 @@ jobs:
       -   name: install dependencies sanity
           working-directory: ./maroon-stingray
           run: npm ci --legacy-peer-deps
-      -   name: BUILD
+      -   name: BUILD # produces static files using the 'output = export' option in the config
           working-directory: ./frontend
           run: npm run build
       -   name: TEST
           working-directory: ./frontend
           run: npm run test
-      -   name: EXPORT
-          working-directory: ./frontend
-          run: npm run export
       -   name: Upload artifact
           uses: actions/upload-pages-artifact@v1
           with:
