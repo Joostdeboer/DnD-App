@@ -70,12 +70,12 @@ jobs:
           run: npm run test
       -   name: List files in the repository
           run: |
-            ls ${{ github.workspace }}
+            ls
       -   name: Goto directory
           run: cd frontend
       -   name: List files in the repository
           run: |
-            ls ${{ github.workspace }}
+            ls
       -   name: Goto directory
           run: cd ..
       -   name: Upload artifact
