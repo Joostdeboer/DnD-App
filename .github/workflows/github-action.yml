@@ -68,8 +68,16 @@ jobs:
       -   name: TEST
           working-directory: ./frontend
           run: npm run test
-      -   name: Goto frontend folder
-          run: cd ./frontend
+      -   name: List files in the repository
+          run: |
+            ls ${{ github.workspace }}
+      -   name: Goto directory
+          run: cd frontend
+      -   name: List files in the repository
+          run: |
+            ls ${{ github.workspace }}
+      -   name: Goto directory
+          run: cd ..
       -   name: Upload artifact
           uses: actions/upload-pages-artifact@v1
           with:
