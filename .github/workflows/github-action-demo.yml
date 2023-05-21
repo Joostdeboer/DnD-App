@@ -11,7 +11,7 @@ jobs:
       -   name: Check out repository code
           uses: actions/checkout@v3
       -   run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      -   run: echo "🖥️ The workflows is now ready to test your code on the runner."
+      -   run: echo "🖥️ The workflow is now ready to test your code on the runner."
       -   name: List files in the repository
           run: |
             ls ${{ github.workspace }}
@@ -20,7 +20,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -   uses: actions/checkout@v3
-      -   working-directory: ./frontend
-      -   run: npm install --legacy-peer-deps
-      -   run: npm run build
-      -   run: npm run test
+      -   name: install dependencies frontend
+          working-directory: ./frontend
+          run: npm install
+      -   name: install dependencies sanity
+          working-directory: ./maroon-stingray
+          run: npm install --legacy-peer-deps
+      -   name: run build
+          working-directory: ./frontend
+          run: npm run build
+      -   name: run test
+          working-directory: ./frontend
+          run: npm run test
