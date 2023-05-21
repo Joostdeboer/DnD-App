@@ -68,9 +68,10 @@ jobs:
       -   name: TEST
           working-directory: ./frontend
           run: npm run test
+      -   name: Goto frontend folder
+          run: cd ./frontend
       -   name: Upload artifact
           uses: actions/upload-pages-artifact@v1
-          working-directory: ./frontend
           with:
             path: ./out
   Deploy:
