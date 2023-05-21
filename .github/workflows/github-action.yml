@@ -72,7 +72,7 @@ jobs:
           run: |
             ls
       -   name: Goto directory
-          run: cd frontend
+          run: cd ./frontend
       -   name: List files in the repository
           run: |
             ls
