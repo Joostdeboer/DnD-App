@@ -68,13 +68,6 @@ jobs:
       -   name: TEST
           working-directory: ./frontend
           run: npm run test
-      -   name: List files current folder
-          run: |
-            ls
-      -   name: List files in frontend folder
-          working-directory: ./frontend
-          run: |
-            ls
       -   name: Upload artifact
           uses: actions/upload-pages-artifact@v1
           with:
