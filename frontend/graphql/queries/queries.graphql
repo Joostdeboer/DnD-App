@@ -1,0 +1,14 @@
+query godByName ($name: String!)
+{
+    allGod (
+        where: {
+            name: {
+                eq: $name
+            }
+        }
+    ) {
+        name,
+        title,
+        domains
+    }
+}

@@ -1,11 +1,74 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "react/react-in-jsx-scope": "off"
-  },
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "jest": true
-  }
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/typescript",
+        "plugin:jsx-a11y/recommended"
+    ],
+    "plugins": ["@typescript-eslint", "react", "react-hooks", "unicorn", "import", "jsx-a11y"],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "rules": {
+                "react/react-in-jsx-scope": "off",
+                "react-hooks/rules-of-hooks": "error",
+                "no-useless-rename": "error",
+                "object-shorthand": ["error", "always"],
+                "unicorn/filename-case": [
+                    "warn",
+                    {
+                        "cases": {
+                            "camelCase": true,
+                            "pascalCase": true,
+                            "kebabCase": true
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "rules": {
+                "@typescript-eslint/array-type": "error",
+                "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+                "@typescript-eslint/prefer-optional-chain": "error",
+                "import/export": "error",
+                "import/no-duplicates": "error",
+                "import/no-named-as-default": "off",
+                "import/no-unused-modules": "error",
+                "react-hooks/exhaustive-deps": "warn",
+                "react/forbid-component-props": [
+                    "error",
+                    {
+                        "forbid": ["style"]
+                    }
+                ],
+                "react/jsx-pascal-case": "error",
+                "react/react-in-jsx-scope": "off",
+                "unicorn/prefer-array-flat-map": "warn",
+                "unicorn/prefer-array-find": "warn",
+                "unicorn/prefer-switch": [
+                    "warn",
+                    {
+                        "minimumCases": 4
+                    }
+                ],
+                "unicorn/require-array-join-separator": "error",
+                "unicorn/prefer-ternary": ["error", "only-single-line"],
+                "unicorn/no-new-array": "error",
+                "unicorn/prefer-logical-operator-over-ternary": "error",
+                "unicorn/no-object-as-default-parameter": "error",
+                "react/jsx-curly-brace-presence": "error"
+            }
+        }
+    ],
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true
+    }
 }

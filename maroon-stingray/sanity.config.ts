@@ -3,12 +3,12 @@ import { deskTool, StructureBuilder } from 'sanity/desk';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemas';
 import deskStructure from './deskStructure';
+import { SANITY_PROJECT_ID } from './constants';
 
 export default defineConfig({
     name: 'production',
     title: 'production',
-
-    projectId: 'g21vpug0',
+    projectId: SANITY_PROJECT_ID,
     dataset: 'production',
 
     plugins: [

@@ -1,0 +1,10 @@
+overwrite: true
+schema: "https://g21vpug0.api.sanity.io/v1/graphql/production/default"
+documents: "graphql/**/*.graphql"
+generates:
+  graphql/generated/:
+    preset: "client"
+    plugins: []
+  graphql/graphql.schema.json:
+    plugins:
+      - "introspection"
