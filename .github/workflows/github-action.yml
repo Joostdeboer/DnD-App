@@ -1,3 +1,8 @@
+# https://harrywang.medium.com/introducing-tailpages-tailwind-github-pages-89903c52d3ec
+# need to set these otherwise tailwind does not know where to fetch the stylesheets from
+baseurl: "/DnD-App"
+url: "https://joostdeboer.github.io"
+
 name: GitHub Actions
 run-name: ${{ github.event.head_commit.message }}
 on:
