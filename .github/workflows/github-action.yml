@@ -65,6 +65,9 @@ jobs:
       -   name: BUILD # produces static files using the 'output = export' option in the config
           working-directory: ./frontend
           run: npm run build
+      -   name: TYPE-CHECK
+          working-directory: ./frontend
+          run: npm run type-check
       -   name: TEST
           working-directory: ./frontend
           run: npm run test
