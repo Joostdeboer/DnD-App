@@ -10,7 +10,9 @@
 
 # next.js
 /.next/
-/out/
+/out/**/*
+# https://stackoverflow.com/questions/61450307/js-and-css-not-loading-when-hosting-next-application-on-github-pages
+!*/.nojekyll
 
 # production
 /build
