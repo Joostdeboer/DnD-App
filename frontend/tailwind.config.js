@@ -1,12 +1,13 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { join } = require('path');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './app/**/*.{js,ts,jsx,tsx,mdx}',
-        './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-        './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-        './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+        join(__dirname, '{src,pages,components,app}/**/*!(*.stories|*.spec).{js,jsx,ts,tsx,mdx,html}'),
     ],
     theme: {
         extend: {
