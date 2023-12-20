@@ -9,6 +9,7 @@
     "start": "sanity start",
     "build": "sanity build",
     "deploy": "sanity deploy",
+    "run": "sanity build && sanity start",
     "deploy-graphql": "sanity graphql deploy"
   },
   "keywords": [
@@ -17,6 +18,7 @@
   "dependencies": {
     "@sanity/icons": "^2.3.1",
     "@sanity/vision": "^3.11.1",
+    "groqd-playground": "^0.0.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
