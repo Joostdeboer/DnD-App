@@ -7,9 +7,13 @@ export default async function Home() {
 
     return (
         <div className="bg-red-500">
-            <div>Hello World</div>
+            <div className="bg-primary-900">Hello World</div>
             {gods.map((god) => {
-                return <div key={god.name}>God name: {god.name}</div>;
+                return (
+                    <div key={god.name}>
+                        God name: {god.name}, the {god.title}
+                    </div>
+                );
             })}
         </div>
     );
