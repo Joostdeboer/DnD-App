@@ -59,10 +59,12 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: colors.red,
-                secondary: colors.blue,
-                success: colors.green,
-                neutral: colors.gray,
+                brand: {
+                    primary: colors.red,
+                    secondary: colors.blue,
+                    success: colors.green,
+                    neutral: colors.gray,
+                },
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -70,5 +72,6 @@ module.exports = {
             },
         },
     },
+    darkMode: 'class',
     plugins: [],
 };
