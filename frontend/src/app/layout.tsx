@@ -24,11 +24,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     'bg-brand-neutral-100 dark:bg-brand-neutral-900 flex flex-col items-center',
                 ])}
             >
-                <div className="max-w-[1440px] w-full">
-                    <Header />
-                    <div className="flex flex-row items-start">{children}</div>
-                    <Footer />
-                </div>
+                <Header />
+                <div className="flex flex-row items-start max-w-[1440px] w-full">{children}</div>
+                <Footer />
             </body>
         </html>
     );
