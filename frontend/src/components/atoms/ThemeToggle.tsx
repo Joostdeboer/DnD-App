@@ -6,19 +6,20 @@ import { classNames } from '@/src/utils/functions/classnames';
 
 export function ThemeToggle() {
     let useDarkTheme: string | null = null;
-    if (typeof window !== undefined && !!localStorage) {
+    if (typeof window !== 'undefined') {
         useDarkTheme = localStorage.getItem('useDarkTheme');
     }
+    const [enabled, setEnabled] = useState(false);
 
     useEffect(() => {
         if (useDarkTheme && JSON.parse(useDarkTheme) === true) {
             document.documentElement.classList.add('dark');
+            setEnabled(true);
         } else {
             document.documentElement.classList.remove('dark');
+            setEnabled(false);
         }
     }, [useDarkTheme]);
-
-    const [enabled, setEnabled] = useState(useDarkTheme ? JSON.parse(useDarkTheme) === true : false);
 
     function onChange(value: boolean) {
         setEnabled(value);
