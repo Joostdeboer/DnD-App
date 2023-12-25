@@ -3,7 +3,7 @@ import Link from 'next/link';
 export function Footer() {
     // TODO: fix max-w-[1440px] to apply on the footer, and add content
     return (
-        <footer className="flex flex-row gap-4 bg-brand-primary-700 w-full">
+        <footer className="flex flex-row gap-4 bg-brand-primary-500 w-full">
             <div className="flex flex-col gap-2">
                 <div>Image here</div>
                 <div>Copyright?</div>

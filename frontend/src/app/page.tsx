@@ -6,7 +6,7 @@ export default async function Home() {
     const gods = await runQuery(godsQuery);
 
     return (
-        <div className="bg-red-500">
+        <div>
             {gods.map((god) => {
                 return (
                     <div key={god.name}>
