@@ -1,3 +1,7 @@
+import { TextSizes } from '@/src/types/generic';
+import { classNames } from '@/src/utils/functions/classnames';
+import { headerSizes } from '@/src/utils/constants/text';
+
 export function BrandLogo() {
     return (
         <svg
@@ -133,5 +137,14 @@ export function BrandLogo() {
                 strokeWidth="0"
             />
         </svg>
+    );
+}
+
+export function BrandLogoText({ size, useDarkMode = true }: { size?: TextSizes; useDarkMode?: boolean }) {
+    return (
+        <div className={classNames([useDarkMode ? 'dark:text-white' : undefined, 'flex flex-col text-black'])}>
+            <span className={headerSizes[size ?? 'lg'].title}>Luroan</span>
+            <span className={classNames([headerSizes[size ?? 'lg'].subTitle, '-mt-3'])}>Codex</span>
+        </div>
     );
 }

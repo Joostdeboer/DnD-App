@@ -12,7 +12,10 @@ export function ThemeToggle() {
     const [enabled, setEnabled] = useState(false);
 
     useEffect(() => {
-        if (useDarkTheme && JSON.parse(useDarkTheme) === true) {
+        if (
+            (useDarkTheme && JSON.parse(useDarkTheme) === true) ||
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+        ) {
             document.documentElement.classList.add('dark');
             setEnabled(true);
         } else {
@@ -34,6 +37,7 @@ export function ThemeToggle() {
             //     enabled ? 'bg-brand-secondary-500' : 'bg-brand-neutral-500',
             //     'relative inline-flex h-6 w-11 items-center rounded-full',
             // ])}
+            className="absolute right-4"
         >
             <span className="sr-only">Enable notifications</span>
             <span className="text-brand-secondary-500">{enabled ? <DarkModeTwoTone /> : <LightModeTwoTone />}</span>

@@ -15,3 +15,7 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+#headerLink:hover {
+  background: radial-gradient(#bf3c39, #AF0B08);
+}

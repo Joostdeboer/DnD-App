@@ -70,8 +70,12 @@ module.exports = {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
                 'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
+            boxShadow: {
+                'extended-red': `0 50vh 0 50vh ${colors.red['500']}`,
+            },
         },
     },
+    important: true,
     darkMode: 'class',
     plugins: [],
 };

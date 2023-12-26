@@ -1,5 +1,6 @@
 import { runQuery } from '../configs/sanityConfig';
 import { godsQuery } from '../groqd/queries';
+import { Text } from '@/src/components/atoms/Text';
 
 export default async function Home() {
     // important to note: https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#step-6-migrating-data-fetching-methods
@@ -9,9 +10,9 @@ export default async function Home() {
         <div>
             {gods.map((god) => {
                 return (
-                    <div key={god.name}>
+                    <Text key={god.name}>
                         God name: {god.name}, the {god.title}
-                    </div>
+                    </Text>
                 );
             })}
         </div>
