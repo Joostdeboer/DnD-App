@@ -25,12 +25,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 className={classNames([
                     inter.className,
                     'bg-brand-neutral-100 dark:bg-brand-neutral-900',
-                    'flex flex-col items-center justify-center w-full',
+                    'flex flex-col items-center w-full min-h-screen',
                 ])}
             >
                 <Header />
                 <ClampedWidth>
-                    <div className="flex flex-row items-start min-h-96">{children}</div>
+                    <main className="flex flex-row items-start min-h-96 px-2 md:px-4">{children}</main>
                 </ClampedWidth>
                 <Footer />
             </body>

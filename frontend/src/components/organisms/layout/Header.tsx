@@ -5,7 +5,7 @@ import { HeaderLink } from '@/src/components/atoms/HeaderLink';
 import { ClampedWidth } from '@/src/components/atoms/ClampedWidth';
 
 export function Header() {
-    // TODO: fix max-w-[1440px] to apply on the header links
+    // TODO: make mobile header with hamburger menu
     return (
         <header className="h-fit flex flex-col w-full items-center">
             <ClampedWidth>
@@ -15,13 +15,16 @@ export function Header() {
                     </Link>
                     <ThemeToggle />
                 </div>
-                <div className="w-full flex flex-row justify-around h-12 bg-brand-primary-500 items-center rounded-lg">
+                <div className="w-full flex flex-row justify-around h-12 bg-brand-primary-500 items-center rounded-lg border-2 border-brand-primary-600 divide-x divide-brand-primary-600">
                     <HeaderLink
                         name="Luroa"
                         href="/luroa"
                         menuItems={[
                             { name: 'About', href: '/luroa/about' },
-                            { name: 'Test', href: '/luroa/about' },
+                            {
+                                name: 'Test',
+                                href: '/luroa/about',
+                            },
                         ]}
                     />
                     <HeaderLink name="Writing" href="/writing" />

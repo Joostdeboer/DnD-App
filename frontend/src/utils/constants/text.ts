@@ -3,23 +3,23 @@ import { TextSizes } from '@/src/types/generic';
 export const headerSizes: Record<TextSizes, { title: string; subTitle: string }> = {
     xs: {
         title: 'text-4xl',
-        subTitle: 'text-3xl pl-6',
+        subTitle: 'text-3xl',
     },
     sm: {
         title: 'text-4xl',
-        subTitle: 'text-3xl pl-6',
+        subTitle: 'text-3xl',
     },
     md: {
         title: 'text-4xl',
-        subTitle: 'text-3xl pl-6',
+        subTitle: 'text-3xl',
     },
     lg: {
         title: 'text-4xl',
-        subTitle: 'text-3xl pl-6',
+        subTitle: 'text-3xl',
     },
     xl: {
         title: 'text-7xl',
-        subTitle: 'text-6xl pl-10 tracking-wide',
+        subTitle: 'text-6xl',
     },
 };
 

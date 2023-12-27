@@ -140,11 +140,36 @@ export function BrandLogo() {
     );
 }
 
-export function BrandLogoText({ size, useDarkMode = true }: { size?: TextSizes; useDarkMode?: boolean }) {
+export function BrandLogoText({ size = 'lg', useDarkMode = true }: { size?: TextSizes; useDarkMode?: boolean }) {
     return (
-        <div className={classNames([useDarkMode ? 'dark:text-white' : undefined, 'flex flex-col text-black'])}>
-            <span className={headerSizes[size ?? 'lg'].title}>Luroan</span>
-            <span className={classNames([headerSizes[size ?? 'lg'].subTitle, '-mt-3'])}>Codex</span>
+        <div
+            className={classNames([
+                'grid text-black w-fit grid-cols-6 grid-rows-2 text-center',
+                useDarkMode ? 'dark:text-white' : undefined,
+                headerSizes[size].title,
+            ])}
+        >
+            <div className="row-start-1 contents">
+                <span>L</span>
+                <span>u</span>
+                <span>r</span>
+                <span>o</span>
+                <span>a</span>
+                <span>n</span>
+            </div>
+            <div
+                className={classNames([
+                    useDarkMode ? 'dark:text-white' : undefined,
+                    headerSizes[size].subTitle,
+                    'row-start-2 contents text-black',
+                ])}
+            >
+                <span className="col-start-2">C</span>
+                <span>o</span>
+                <span>d</span>
+                <span>e</span>
+                <span>x</span>
+            </div>
         </div>
     );
 }

@@ -14,7 +14,7 @@ export function ThemeToggle() {
     useEffect(() => {
         if (
             (useDarkTheme && JSON.parse(useDarkTheme) === true) ||
-            window.matchMedia('(prefers-color-scheme: dark)').matches
+            (!useDarkTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
         ) {
             document.documentElement.classList.add('dark');
             setEnabled(true);

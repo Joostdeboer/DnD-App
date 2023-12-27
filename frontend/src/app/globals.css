@@ -17,5 +17,5 @@
 }
 
 #headerLink:hover {
-  background: radial-gradient(#bf3c39, #AF0B08);
+  background: radial-gradient(closest-side, #bf3c39, #AF0B08);
 }
