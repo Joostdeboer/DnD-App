@@ -19,17 +19,70 @@ export function Header() {
                     <HeaderLink
                         name="Luroa"
                         href="/luroa"
+                        nameClasses="font-bold"
+                        // TODO: put these items in a constant to read from for the header and footer (desktop and mobile)
                         menuItems={[
                             { name: 'About', href: '/luroa/about' },
                             {
                                 name: 'Test',
                                 href: '/luroa/about',
+                                menuItems: [
+                                    {
+                                        name: 'Nested 1',
+                                        href: '/luroa/about',
+                                    },
+                                    {
+                                        name: 'Nested 2',
+                                        href: '/luroa/about',
+                                        menuItems: [
+                                            {
+                                                name: 'Nested Nested 1',
+                                                href: '/luroa/about',
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        name: 'Nested 3',
+                                        href: '/luroa/about',
+                                        menuItems: [
+                                            {
+                                                name: 'Nested Nested 2',
+                                                href: '/luroa/about',
+                                                menuItems: [
+                                                    {
+                                                        name: 'Nested Nested Nested 1',
+                                                        href: '/luroa/about',
+                                                    },
+                                                ],
+                                            },
+                                        ],
+                                    },
+                                    {
+                                        name: 'Nested 4',
+                                        href: '/luroa/about',
+                                    },
+                                    {
+                                        name: 'Nested 5',
+                                        href: '/luroa/about',
+                                    },
+                                ],
+                            },
+                            { name: 'Test 2', href: '/luroa/about' },
+                            {
+                                name: 'Test 3',
+                                href: '/luroa/about',
+                                menuItems: [
+                                    {
+                                        name: 'Inner Test 2',
+                                        href: '/luroa/about',
+                                    },
+                                ],
                             },
                         ]}
                     />
-                    <HeaderLink name="Writing" href="/writing" />
-                    <HeaderLink name="Gameplay" href="/gameplay" />
-                    <HeaderLink name="Tools" href="/tools" />
+                    <HeaderLink name="Writing" href="/writing" nameClasses="font-bold" />
+                    <HeaderLink name="Gameplay" href="/gameplay" nameClasses="font-bold" />
+                    <HeaderLink name="Tools" href="/tools" nameClasses="font-bold" />
                 </div>
             </ClampedWidth>
         </header>

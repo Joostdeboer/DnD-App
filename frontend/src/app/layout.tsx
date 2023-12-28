@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { Header } from '@/src/components/organisms/layout/Header';
 import { Footer } from '@/src/components/organisms/layout/Footer';
 import { classNames } from '@/src/utils/functions/classnames';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { ClampedWidth } from '@/src/components/atoms/ClampedWidth';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -12,10 +12,16 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
     title: 'The Luroan Codex',
     description: 'A website containing information about Luroa',
-    viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0',
     icons: {
         icon: 'DnD-App/public/icon.ico',
     },
+};
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -30,7 +36,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             >
                 <Header />
                 <ClampedWidth>
-                    <main className="flex flex-row items-start min-h-96 px-2 md:px-4">{children}</main>
+                    <main className="flex flex-row items-start min-h-96 px-2 md:px-4 py-4">{children}</main>
                 </ClampedWidth>
                 <Footer />
             </body>

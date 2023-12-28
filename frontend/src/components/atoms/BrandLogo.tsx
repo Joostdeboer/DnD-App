@@ -144,7 +144,7 @@ export function BrandLogoText({ size = 'lg', useDarkMode = true }: { size?: Text
     return (
         <div
             className={classNames([
-                'grid text-black w-fit grid-cols-6 grid-rows-2 text-center',
+                'grid text-black w-fit grid-cols-6 grid-rows-2 text-center font-bold',
                 useDarkMode ? 'dark:text-white' : undefined,
                 headerSizes[size].title,
             ])}
@@ -159,9 +159,9 @@ export function BrandLogoText({ size = 'lg', useDarkMode = true }: { size?: Text
             </div>
             <div
                 className={classNames([
+                    'row-start-2 contents text-black *:-mt-1',
                     useDarkMode ? 'dark:text-white' : undefined,
                     headerSizes[size].subTitle,
-                    'row-start-2 contents text-black',
                 ])}
             >
                 <span className="col-start-2">C</span>

@@ -5,7 +5,7 @@ import { Copyright } from '@/src/components/atoms/Copyright';
 
 export function Footer() {
     return (
-        <ClampedWidth className="mt-auto">
+        <ClampedWidth className="mt-auto border-t border-brand-primary-600">
             <footer className="flex flex-row gap-16 bg-brand-primary-500 w-full pt-4 pb-10 grow px-2 md:px-4 divide-x divide-brand-primary-600">
                 <div className="flex flex-col gap-2">
                     <BrandLogoText useDarkMode={false} />
