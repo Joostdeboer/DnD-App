@@ -3,8 +3,9 @@
 import { Switch } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import { DarkModeTwoTone, LightModeTwoTone } from '@mui/icons-material';
+import { ToggleIcon } from '@/src/components/atoms/generic/ToggleIcon';
 
-export function ThemeToggle() {
+export function ThemeToggle({ className }: { className?: string }) {
     let useDarkTheme: string | null = null;
     if (typeof window !== 'undefined') {
         useDarkTheme = localStorage.getItem('useDarkTheme');
@@ -30,23 +31,15 @@ export function ThemeToggle() {
     }
 
     return (
-        <Switch
-            checked={enabled}
-            onChange={onChange}
-            // className={classNames([
-            //     enabled ? 'bg-brand-secondary-500' : 'bg-brand-neutral-500',
-            //     'relative inline-flex h-6 w-11 items-center rounded-full',
-            // ])}
-            className="absolute right-4"
-        >
+        <Switch checked={enabled} onChange={onChange} className={className}>
             <span className="sr-only">Enable notifications</span>
-            <span className="text-brand-secondary-500">{enabled ? <DarkModeTwoTone /> : <LightModeTwoTone />}</span>
-            {/*<span*/}
-            {/*    className={classNames([*/}
-            {/*        enabled ? 'translate-x-6' : 'translate-x-1',*/}
-            {/*        'inline-block h-4 w-4 transform rounded-full bg-white transition',*/}
-            {/*    ])}*/}
-            {/*/>*/}
+            <ToggleIcon
+                className="text-brand-secondary-500"
+                renderOnIcon={({ style }) => <DarkModeTwoTone style={style} />}
+                renderOffIcon={({ style }) => <LightModeTwoTone style={style} />}
+                on={enabled}
+                duration="300ms"
+            />
         </Switch>
     );
 }

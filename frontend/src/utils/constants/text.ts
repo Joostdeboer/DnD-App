@@ -1,5 +1,6 @@
 import { TextSizes } from '@/src/types/generic';
 
+// TODO fix these values
 export const headerSizes: Record<TextSizes, { title: string; subTitle: string }> = {
     xs: {
         title: 'text-4xl',

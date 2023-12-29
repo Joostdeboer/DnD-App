@@ -29,10 +29,10 @@ export function HeaderLink({ name, menuItems, isNested, className, nameClasses }
                 <>
                     <Popover.Button
                         className={classNames([
-                            'w-full h-full focus:outline-none hover:bg-brand-primary-400',
+                            'w-full h-full focus:outline-none hover:bg-brand-primary-400 transition-colors ease-in-out duration-200',
                             isNested
                                 ? 'p-2 flex flex-row group-first/subparent:rounded-t-lg group-last/subparent:rounded-b-lg'
-                                : 'group-first/parent:rounded-l-md group-last/parent:rounded-r-md transition-colors ease-in-out',
+                                : 'group-first/parent:rounded-l-md group-last/parent:rounded-r-md',
                         ])}
                     >
                         <span className={nameClasses}>{name}</span>
@@ -58,6 +58,7 @@ export function HeaderLink({ name, menuItems, isNested, className, nameClasses }
                     {menuItems?.length && (
                         <Transition
                             as={Fragment}
+                            show={open}
                             enter="transition ease-out duration-100"
                             enterFrom="opacity-0 translate-y-1"
                             enterTo="opacity-100 translate-y-0"
@@ -71,7 +72,7 @@ export function HeaderLink({ name, menuItems, isNested, className, nameClasses }
                                     isNested ? 'left-full top-0 ml-1' : 'top-12',
                                 ])}
                             >
-                                <div className="rounded-lg border border-brand-primary-600 relative flex flex-col bg-brand-primary-500">
+                                <div className="rounded-lg border border-brand-primary-600 relative flex flex-col bg-brand-primary-500 divide-y divide-brand-primary-600">
                                     {menuItems?.map((item) => {
                                         if (item.menuItems?.length) {
                                             return <HeaderLink key={item.name} {...item} isNested />;
@@ -80,7 +81,7 @@ export function HeaderLink({ name, menuItems, isNested, className, nameClasses }
                                             <Link
                                                 key={item.name}
                                                 href={item.href}
-                                                className="flex items-center first:rounded-t-lg last:rounded-b-lg hover:bg-brand-primary-400 p-2"
+                                                className="flex items-center first:rounded-t-lg last:rounded-b-lg hover:bg-brand-primary-400 p-2 transition-colors ease-in-out duration-200"
                                             >
                                                 <p>{item.name}</p>
                                             </Link>

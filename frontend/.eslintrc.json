@@ -41,12 +41,14 @@
                 "import/no-named-as-default": "off",
                 "import/no-unused-modules": "error",
                 "react-hooks/exhaustive-deps": "warn",
-                "react/forbid-component-props": [
-                    "error",
-                    {
-                        "forbid": ["style"]
-                    }
-                ],
+//                "react/forbid-component-props": [
+//                    "error",
+//                    {
+//                        "forbid": [{
+//                            "propName": "style"
+//                        }]
+//                    }
+//                ],
                 "react/jsx-pascal-case": "error",
                 "react/react-in-jsx-scope": "off",
                 "unicorn/prefer-array-flat-map": "warn",

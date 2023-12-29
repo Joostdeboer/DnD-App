@@ -5,7 +5,7 @@ import { Header } from '@/src/components/organisms/layout/Header';
 import { Footer } from '@/src/components/organisms/layout/Footer';
 import { classNames } from '@/src/utils/functions/classnames';
 import { Metadata, Viewport } from 'next';
-import { ClampedWidth } from '@/src/components/atoms/ClampedWidth';
+import { ClampedWidth } from '@/src/components/atoms/layout/ClampedWidth';
 
 const inter = Inter({ subsets: ['latin'] });
 

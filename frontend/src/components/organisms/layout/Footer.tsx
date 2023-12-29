@@ -1,29 +1,23 @@
 import Link from 'next/link';
-import { ClampedWidth } from '@/src/components/atoms/ClampedWidth';
-import { BrandLogoText } from '@/src/components/atoms/BrandLogo';
-import { Copyright } from '@/src/components/atoms/Copyright';
+import { ClampedWidth } from '@/src/components/atoms/layout/ClampedWidth';
+import { BrandLogoText } from '@/src/components/atoms/logo/BrandLogo';
+import { Copyright } from '@/src/components/atoms/logo/Copyright';
+import { HEADERLINKS } from '@/src/utils/constants/header';
 
 export function Footer() {
     return (
         <ClampedWidth className="mt-auto border-t border-brand-primary-600">
-            <footer className="flex flex-row gap-16 bg-brand-primary-500 w-full pt-4 pb-10 grow px-2 md:px-4 divide-x divide-brand-primary-600">
+            <footer className="flex flex-row gap-8 md:gap-16 bg-brand-primary-500 w-full pt-4 pb-10 grow px-2 md:px-4 divide-x divide-brand-primary-600">
                 <div className="flex flex-col gap-2">
                     <BrandLogoText useDarkMode={false} />
                     <Copyright />
                 </div>
-                <div className="flex flex-col gap-2 pl-10">
-                    <Link href="/luroa" className="hover:underline">
-                        Luroa
-                    </Link>
-                    <Link href="/writing" className="hover:underline">
-                        Writing
-                    </Link>
-                    <Link href="/gameplay" className="hover:underline">
-                        Gameplay
-                    </Link>
-                    <Link href="/tools" className="hover:underline">
-                        Tools
-                    </Link>
+                <div className="flex flex-col gap-2 pl-5 md:pl-10">
+                    {HEADERLINKS.map((link) => (
+                        <Link key={link.name} href={link.href} className="hover:underline">
+                            {link.name}
+                        </Link>
+                    ))}
                 </div>
             </footer>
         </ClampedWidth>
