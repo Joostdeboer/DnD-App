@@ -34,8 +34,8 @@ function MenuItem(link: HeaderLinkProps) {
                                 <span>{link.name}</span>
                                 <KeyboardArrowUp
                                     className={classNames([
-                                        open ? 'rotate-180 transform' : '',
-                                        'h-5 w-5 duration-100 ease-in-out',
+                                        open ? 'rotate-180' : 'rotate-0',
+                                        'h-5 w-5 transition-transform ease-in-out duration-100',
                                     ])}
                                 />
                             </>
@@ -46,18 +46,27 @@ function MenuItem(link: HeaderLinkProps) {
                         )}
                     </Disclosure.Button>
                     {link.menuItems?.length && (
-                        <Disclosure.Panel as="span">
-                            {link.menuItems.map((item) => {
-                                return (
-                                    <MenuItem
-                                        key={item.name}
-                                        {...item}
-                                        parentOnClose={link.parentOnClose}
-                                        className="pl-2"
-                                    />
-                                );
-                            })}
-                        </Disclosure.Panel>
+                        <Transition
+                            enter="transition ease-out duration-500"
+                            enterFrom="opacity-0 -translate-y-1"
+                            enterTo="opacity-100 translate-y-0"
+                            leave="transition ease-in duration-50"
+                            leaveFrom="opacity-100 translate-y-0"
+                            leaveTo="opacity-0 -translate-y-1"
+                        >
+                            <Disclosure.Panel as="span">
+                                {link.menuItems.map((item) => {
+                                    return (
+                                        <MenuItem
+                                            key={item.name}
+                                            {...item}
+                                            parentOnClose={link.parentOnClose}
+                                            className="pl-2"
+                                        />
+                                    );
+                                })}
+                            </Disclosure.Panel>
+                        </Transition>
                     )}
                 </div>
             )}
