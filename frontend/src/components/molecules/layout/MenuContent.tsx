@@ -16,12 +16,20 @@ function MenuItem(link: HeaderLinkProps) {
                         'border-t border-brand-neutral-500',
                         open ? 'pt-2' : 'py-2',
                         link.className,
+                        link.disabled ? 'cursor-not-allowed' : '',
                     ])}
                 >
                     <Disclosure.Button
-                        className={classNames(['flex w-full justify-between focus:outline-none', open ? 'pb-2' : ''])}
+                        className={classNames([
+                            'flex w-full justify-between focus:outline-none',
+                            open ? 'pb-2' : '',
+                            link.disabled ? 'line-through' : '',
+                        ])}
+                        disabled={link.disabled}
                     >
-                        {link.menuItems?.length ? (
+                        {link.disabled ? (
+                            <span className="cursor-not-allowed w-full flex items-start">{link.name}</span>
+                        ) : link.menuItems?.length ? (
                             <>
                                 <span>{link.name}</span>
                                 <KeyboardArrowUp
@@ -32,13 +40,22 @@ function MenuItem(link: HeaderLinkProps) {
                                 />
                             </>
                         ) : (
-                            <Link href={link.href}>{link.name}</Link>
+                            <Link href={link.href} onClick={link.parentOnClose}>
+                                {link.name}
+                            </Link>
                         )}
                     </Disclosure.Button>
                     {link.menuItems?.length && (
                         <Disclosure.Panel as="span">
                             {link.menuItems.map((item) => {
-                                return <MenuItem key={item.name} {...item} className="pl-2" />;
+                                return (
+                                    <MenuItem
+                                        key={item.name}
+                                        {...item}
+                                        parentOnClose={link.parentOnClose}
+                                        className="pl-2"
+                                    />
+                                );
                             })}
                         </Disclosure.Panel>
                     )}
@@ -87,7 +104,7 @@ export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen:
                         </Dialog.Title>
                         <Dialog.Description className="text-black dark:text-white font-bold border-b border-brand-neutral-500">
                             {HEADERLINKS.map((link) => (
-                                <MenuItem key={link.name} {...link} />
+                                <MenuItem key={link.name} {...link} parentOnClose={() => setIsOpen(false)} />
                             ))}
                         </Dialog.Description>
                     </Dialog.Panel>
