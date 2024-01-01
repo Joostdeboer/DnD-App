@@ -9,7 +9,7 @@ export function Menu() {
     return (
         <>
             <HamburgerButton onClick={() => setShowMenu(!showMenu)} isOpen={showMenu} />
-            {showMenu && <MenuContent isOpen={showMenu} setIsOpen={setShowMenu} />}
+            <MenuContent isOpen={showMenu} setIsOpen={setShowMenu} />
         </>
     );
 }

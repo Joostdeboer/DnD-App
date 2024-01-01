@@ -1,3 +1,5 @@
+import { Text } from '@/src/components/atoms/generic/Text';
+
 export default async function Tools() {
-    return <div>Tools</div>;
+    return <Text>TODO: Tools</Text>;
 }

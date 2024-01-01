@@ -4,64 +4,70 @@ export const HEADERLINKS = [
         href: '/luroa',
         menuItems: [
             { name: 'About', href: '/luroa/about' },
+            { name: 'History', href: '/luroa/history' },
+            { name: 'Gods', href: '/luroa/gods' },
+            { name: 'Races', href: '/luroa/races' },
             {
-                name: 'Test',
-                href: '/luroa/about',
+                name: 'Codex',
+                href: '/luroa/codex',
                 menuItems: [
-                    {
-                        name: 'Nested 1',
-                        href: '/luroa/about',
-                    },
-                    {
-                        name: 'Nested 2',
-                        href: '/luroa/about',
-                        menuItems: [
-                            {
-                                name: 'Nested Nested 1',
-                                href: '/luroa/about',
-                            },
-                        ],
-                    },
-                    {
-                        name: 'Nested 3',
-                        href: '/luroa/about',
-                        menuItems: [
-                            {
-                                name: 'Nested Nested 2',
-                                href: '/luroa/about',
-                                menuItems: [
-                                    {
-                                        name: 'Nested Nested Nested 1',
-                                        href: '/luroa/about',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                    {
-                        name: 'Nested 4',
-                        href: '/luroa/about',
-                    },
-                    {
-                        name: 'Nested 5',
-                        href: '/luroa/about',
-                    },
-                ],
-            },
-            { name: 'Test 2', href: '/luroa/about' },
-            {
-                name: 'Test 3',
-                href: '/luroa/about',
-                menuItems: [
-                    {
-                        name: 'Inner Test 2',
-                        href: '/luroa/about',
-                    },
+                    { name: 'Landmarks', href: '/luroa/codex/landmarks' },
+                    { name: 'Organizations', href: '/luroa/codex/organizations' },
+                    { name: 'Objects', href: '/luroa/codex/objects' },
+                    { name: 'Concepts', href: '/luroa/codex/concepts' },
+                    { name: 'Cities', href: '/luroa/codex/cities' },
+                    { name: 'Planes', href: '/luroa/codex/planes' },
+                    { name: 'People', href: '/luroa/codex/people' },
+                    { name: 'Creatures', href: '/luroa/codex/creatures' },
+                    { name: 'Regions', href: '/luroa/codex/regions' },
                 ],
             },
         ],
     },
-    { name: 'Writing', href: '/writing' },
-    { name: 'Gameplay', href: '/gameplay' },
-    { name: 'Tools', href: '/tools' },
+    {
+        name: 'Writing',
+        href: '/writing',
+        menuItems: [
+            { name: 'Myths', href: '/writing/myths' },
+            { name: 'Stories', href: '/writing/stories' },
+            { name: 'Poetry', href: '/writing/poetry' },
+            {
+                name: 'Media',
+                href: '/writing/media',
+                menuItems: [
+                    { name: 'Art', href: '/writing/media/art' },
+                    { name: 'Comics', href: '/writing/media/comics', disabled: true },
+                    { name: 'Songs', href: '/writing/media/songs', disabled: true },
+                    { name: 'Videos', href: '/writing/media/videos', disabled: true },
+                    { name: 'Games', href: '/writing/media/games', disabled: true },
+                ],
+            },
+        ],
+    },
+    {
+        name: 'Gameplay',
+        href: '/gameplay',
+        menuItems: [
+            { name: 'Session 0', href: '/gameplay/sessionZero' },
+            { name: 'Homebrew', href: '/gameplay/homebrew' },
+            {
+                name: 'Character creation',
+                href: '/gameplay/creation',
+                menuItems: [
+                    { name: 'Languages', href: '/gameplay/creation/languages' },
+                    { name: 'Character options', href: '/gameplay/creation/options' },
+                    { name: 'Tips', href: '/gameplay/creation/tips' },
+                ],
+            },
+            { name: 'Playlists', href: '/gameplay/playlists' },
+        ],
+    },
+    {
+        name: 'Tools',
+        href: '/tools',
+        menuItems: [
+            { name: 'Calendar', href: '/tools/calendar' },
+            { name: 'Map', href: '/tools/map' },
+        ],
+    },
 ];

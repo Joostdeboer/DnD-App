@@ -1,3 +1,5 @@
+import { Text } from '@/src/components/atoms/generic/Text';
+
 export default async function Gameplay() {
-    return <div>Gameplay</div>;
+    return <Text>TODO: Gameplay</Text>;
 }

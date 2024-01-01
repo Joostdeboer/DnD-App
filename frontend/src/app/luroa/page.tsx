@@ -1,3 +1,5 @@
+import { Text } from '@/src/components/atoms/generic/Text';
+
 export default async function Luroa() {
-    return <div>Luroa</div>;
+    return <Text>TODO: Luroa</Text>;
 }

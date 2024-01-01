@@ -1,6 +1,6 @@
 import { Dialog, Transition, Disclosure } from '@headlessui/react';
 import { HEADERLINKS } from '@/src/utils/constants/header';
-import { KeyboardArrowUp } from '@mui/icons-material';
+import { Close, KeyboardArrowUp } from '@mui/icons-material';
 import { Fragment } from 'react';
 import { classNames } from '@/src/utils/functions/classnames';
 import { HeaderLinkProps } from '@/src/components/atoms/layout/HeaderLink';
@@ -70,14 +70,20 @@ export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen:
                     as={Fragment}
                     enter="transform transition ease-in-out duration-1000"
                     enterFrom="translate-x-full"
-                    enterTo="translate-x-2/3"
+                    enterTo="translate-x-0"
                     leave="transform transition ease-in-out duration-1000"
-                    leaveFrom="translate-x-2/3"
+                    leaveFrom="translate-x-0"
                     leaveTo="translate-x-full"
                 >
                     <Dialog.Panel className="fixed top-0 right-0 flex flex-col w-2/3 h-full p-4 bg-brand-neutral-100 dark:bg-brand-neutral-900 z-20 border-l border-brand-primary-600 overflow-y-auto">
                         <Dialog.Title className="flex flex-row justify-between">
                             <BrandLogoText size="md" />
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="flex flex-col justify-start pt-1.5 text-black dark:text-white"
+                            >
+                                <Close />
+                            </button>
                         </Dialog.Title>
                         <Dialog.Description className="text-black dark:text-white font-bold border-b border-brand-neutral-500">
                             {HEADERLINKS.map((link) => (

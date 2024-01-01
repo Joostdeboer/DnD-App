@@ -1,3 +1,5 @@
+import { Text } from '@/src/components/atoms/generic/Text';
+
 export default async function About() {
-    return <div>About</div>;
+    return <Text>TODO: About</Text>;
 }

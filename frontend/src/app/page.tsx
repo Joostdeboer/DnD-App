@@ -11,7 +11,7 @@ export default async function Home() {
             {gods.map((god) => {
                 return (
                     <Text key={god.name}>
-                        God name: {god.name}, the {god.title}
+                        God name: {god.name}, the {god.title}.
                     </Text>
                 );
             })}

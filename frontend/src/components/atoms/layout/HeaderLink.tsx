@@ -9,13 +9,23 @@ import { Fragment } from 'react';
 export interface HeaderLinkProps {
     name: string;
     href: string;
+    disabled?: boolean;
     menuItems?: HeaderLinkProps[];
+    parentOnClose?: () => void;
     isNested?: boolean;
     className?: string;
     nameClasses?: string;
 }
 
-export function HeaderLink({ name, menuItems, isNested, className, nameClasses }: HeaderLinkProps) {
+export function HeaderLink({
+    name,
+    disabled = false,
+    parentOnClose,
+    menuItems,
+    isNested,
+    className,
+    nameClasses,
+}: HeaderLinkProps) {
     return (
         <Popover
             className={classNames([
@@ -25,34 +35,28 @@ export function HeaderLink({ name, menuItems, isNested, className, nameClasses }
                 isNested ? 'group/subparent' : 'group/parent',
             ])}
         >
-            {({ open }) => (
+            {({ open, close }) => (
                 <>
                     <Popover.Button
                         className={classNames([
-                            'w-full h-full focus:outline-none hover:bg-brand-primary-400 transition-colors ease-in-out duration-200',
+                            'w-full h-full focus:outline-none transition-colors ease-in-out duration-200',
                             isNested
                                 ? 'p-2 flex flex-row group-first/subparent:rounded-t-lg group-last/subparent:rounded-b-lg'
                                 : 'group-first/parent:rounded-l-md group-last/parent:rounded-r-md',
+                            disabled
+                                ? 'line-through bg-brand-primary-700 hover:bg-brand-primary-600'
+                                : 'hover:bg-brand-primary-400',
                         ])}
+                        disabled={disabled}
                     >
                         <span className={nameClasses}>{name}</span>
-                        {/* TODO: figure out why the icon does not appear if closed. Current implementation is hacky and not completely correct */}
                         {menuItems?.length ? (
-                            <>
-                                <Transition
-                                    as={Fragment}
-                                    show={open}
-                                    enter="transition-transform ease-out duration-100"
-                                    enterFrom="rotate-0"
-                                    enterTo="rotate-180"
-                                    leave="transition-transform ease-in duration-100"
-                                    leaveFrom="rotate-180"
-                                    leaveTo="rotate-0"
-                                >
-                                    <KeyboardArrowDown className={classNames(['absolute right-5'])} />
-                                </Transition>
-                                {!open ? <KeyboardArrowDown className={classNames(['absolute right-5'])} /> : undefined}
-                            </>
+                            <KeyboardArrowDown
+                                className={classNames([
+                                    open ? 'rotate-180' : 'rotate-0',
+                                    'transition-transform ease-in-out duration-100 absolute right-5',
+                                ])}
+                            />
                         ) : undefined}
                     </Popover.Button>
                     {menuItems?.length && (
@@ -74,16 +78,41 @@ export function HeaderLink({ name, menuItems, isNested, className, nameClasses }
                             >
                                 <div className="rounded-lg border border-brand-primary-600 relative flex flex-col bg-brand-primary-500 divide-y divide-brand-primary-600">
                                     {menuItems?.map((item) => {
-                                        if (item.menuItems?.length) {
-                                            return <HeaderLink key={item.name} {...item} isNested />;
+                                        if (item.disabled) {
+                                            console.log({ name: item.name });
+                                            return (
+                                                <div
+                                                    key={item.name}
+                                                    className="cursor-not-allowed flex items-center first:rounded-t-lg last:rounded-b-lg bg-brand-primary-700 hover:bg-brand-primary-600 p-2 transition-colors ease-in-out duration-200 line-through"
+                                                >
+                                                    {item.name}
+                                                </div>
+                                            );
                                         }
+
+                                        if (item.menuItems?.length) {
+                                            return (
+                                                <HeaderLink
+                                                    key={item.name}
+                                                    {...item}
+                                                    parentOnClose={() => close()}
+                                                    isNested
+                                                />
+                                            );
+                                        }
+
                                         return (
                                             <Link
                                                 key={item.name}
                                                 href={item.href}
+                                                onClick={() => {
+                                                    // we need to close both the current panel and potentially the one on top
+                                                    parentOnClose?.();
+                                                    close();
+                                                }}
                                                 className="flex items-center first:rounded-t-lg last:rounded-b-lg hover:bg-brand-primary-400 p-2 transition-colors ease-in-out duration-200"
                                             >
-                                                <p>{item.name}</p>
+                                                {item.name}
                                             </Link>
                                         );
                                     })}
