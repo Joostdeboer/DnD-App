@@ -40,7 +40,7 @@ function MenuItem(link: HeaderLinkProps) {
                                 />
                             </>
                         ) : (
-                            <Link href={link.href} onClick={link.parentOnClose}>
+                            <Link href={link.href} onClick={link.parentOnClose} className="w-full flex items-start">
                                 {link.name}
                             </Link>
                         )}
