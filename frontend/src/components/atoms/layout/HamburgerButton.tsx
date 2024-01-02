@@ -17,6 +17,7 @@ export function HamburgerButton({
                 renderOffIcon={({ style }) => <Menu style={style} />}
                 renderOnIcon={({ style }) => <Close style={style} />}
                 duration="500ms"
+                className="text-white"
             />
         </button>
     );

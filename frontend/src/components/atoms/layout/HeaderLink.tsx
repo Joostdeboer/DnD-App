@@ -41,11 +41,10 @@ export function HeaderLink({
                         className={classNames([
                             'w-full h-full focus:outline-none transition-colors ease-in-out duration-200',
                             isNested
-                                ? 'p-2 flex flex-row group-first/subparent:rounded-t-lg group-last/subparent:rounded-b-lg'
-                                : 'group-first/parent:rounded-l-md group-last/parent:rounded-r-md',
-                            disabled
-                                ? 'line-through bg-brand-primary-700 hover:bg-brand-primary-600'
-                                : 'hover:bg-brand-primary-400',
+                                ? 'p-2 flex flex-row group-first/subparent:rounded-t-lg group-last/subparent:rounded-b-lg hover:bg-brand-primary-500'
+                                : 'group-first/parent:rounded-l-md group-last/parent:rounded-r-md hover:bg-brand-primary-600',
+                            disabled ? 'line-through bg-brand-primary-700 hover:bg-brand-primary-500' : '',
+                            open ? 'bg-brand-primary-500 *:text-white' : '',
                         ])}
                         disabled={disabled}
                     >
@@ -55,6 +54,9 @@ export function HeaderLink({
                                 className={classNames([
                                     open ? 'rotate-180' : 'rotate-0',
                                     'transition-transform ease-in-out duration-100 absolute right-5',
+                                    isNested
+                                        ? 'text-black dark:text-white group-hover/subparent:text-white'
+                                        : 'text-white',
                                 ])}
                             />
                         ) : undefined}
@@ -76,14 +78,18 @@ export function HeaderLink({
                                     isNested ? 'left-full top-0 ml-1' : 'top-12',
                                 ])}
                             >
-                                <div className="rounded-lg border border-brand-primary-600 relative flex flex-col bg-brand-primary-500 divide-y divide-brand-primary-600">
+                                <div
+                                    className={classNames([
+                                        'text-black dark:text-white',
+                                        'rounded-lg border border-brand-primary-600 relative flex flex-col bg-brand-neutral-100 dark:bg-brand-neutral-900 divide-y divide-brand-primary-600',
+                                    ])}
+                                >
                                     {menuItems?.map((item) => {
                                         if (item.disabled) {
-                                            console.log({ name: item.name });
                                             return (
                                                 <div
                                                     key={item.name}
-                                                    className="cursor-not-allowed flex items-center first:rounded-t-lg last:rounded-b-lg bg-brand-primary-700 hover:bg-brand-primary-600 p-2 transition-colors ease-in-out duration-200 line-through"
+                                                    className="cursor-not-allowed flex items-center first:rounded-t-lg last:rounded-b-lg bg-brand-primary-700 hover:bg-brand-primary-600 p-2 transition-colors ease-in-out duration-200 line-through text-white"
                                                 >
                                                     {item.name}
                                                 </div>
@@ -96,6 +102,7 @@ export function HeaderLink({
                                                     key={item.name}
                                                     {...item}
                                                     parentOnClose={() => close()}
+                                                    className="hover:text-white"
                                                     isNested
                                                 />
                                             );
@@ -110,7 +117,7 @@ export function HeaderLink({
                                                     parentOnClose?.();
                                                     close();
                                                 }}
-                                                className="flex items-center first:rounded-t-lg last:rounded-b-lg hover:bg-brand-primary-400 p-2 transition-colors ease-in-out duration-200"
+                                                className="flex items-center first:rounded-t-lg last:rounded-b-lg hover:bg-brand-primary-500 p-2 transition-colors ease-in-out duration-200 hover:text-white"
                                             >
                                                 {item.name}
                                             </Link>

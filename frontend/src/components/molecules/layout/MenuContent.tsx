@@ -1,78 +1,9 @@
-import { Dialog, Transition, Disclosure } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 import { HEADERLINKS } from '@/src/utils/constants/header';
-import { Close, KeyboardArrowUp } from '@mui/icons-material';
+import { Close } from '@mui/icons-material';
 import { Fragment } from 'react';
-import { classNames } from '@/src/utils/functions/classnames';
-import { HeaderLinkProps } from '@/src/components/atoms/layout/HeaderLink';
-import Link from 'next/link';
 import { BrandLogoText } from '@/src/components/atoms/logo/BrandLogo';
-
-function MenuItem(link: HeaderLinkProps) {
-    return (
-        <Disclosure>
-            {({ open }) => (
-                <div
-                    className={classNames([
-                        'border-t border-brand-neutral-500',
-                        open ? 'pt-2' : 'py-2',
-                        link.className,
-                        link.disabled ? 'cursor-not-allowed' : '',
-                    ])}
-                >
-                    <Disclosure.Button
-                        className={classNames([
-                            'flex w-full justify-between focus:outline-none',
-                            open ? 'pb-2' : '',
-                            link.disabled ? 'line-through' : '',
-                        ])}
-                        disabled={link.disabled}
-                    >
-                        {link.disabled ? (
-                            <span className="cursor-not-allowed w-full flex items-start">{link.name}</span>
-                        ) : link.menuItems?.length ? (
-                            <>
-                                <span>{link.name}</span>
-                                <KeyboardArrowUp
-                                    className={classNames([
-                                        open ? 'rotate-180' : 'rotate-0',
-                                        'h-5 w-5 transition-transform ease-in-out duration-100',
-                                    ])}
-                                />
-                            </>
-                        ) : (
-                            <Link href={link.href} onClick={link.parentOnClose} className="w-full flex items-start">
-                                {link.name}
-                            </Link>
-                        )}
-                    </Disclosure.Button>
-                    {link.menuItems?.length && (
-                        <Transition
-                            enter="transition ease-out duration-500"
-                            enterFrom="opacity-0 -translate-y-1"
-                            enterTo="opacity-100 translate-y-0"
-                            leave="transition ease-in duration-50"
-                            leaveFrom="opacity-100 translate-y-0"
-                            leaveTo="opacity-0 -translate-y-1"
-                        >
-                            <Disclosure.Panel as="span">
-                                {link.menuItems.map((item) => {
-                                    return (
-                                        <MenuItem
-                                            key={item.name}
-                                            {...item}
-                                            parentOnClose={link.parentOnClose}
-                                            className="pl-2"
-                                        />
-                                    );
-                                })}
-                            </Disclosure.Panel>
-                        </Transition>
-                    )}
-                </div>
-            )}
-        </Disclosure>
-    );
-}
+import { MenuItem } from '../../atoms/layout/MenuItem';
 
 export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (input: boolean) => void }) {
     return (
@@ -94,10 +25,10 @@ export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen:
                 {/* content */}
                 <Transition.Child
                     as={Fragment}
-                    enter="transform transition ease-in-out duration-1000"
+                    enter="transform transition ease-in-out duration-500"
                     enterFrom="translate-x-full"
                     enterTo="translate-x-0"
-                    leave="transform transition ease-in-out duration-1000"
+                    leave="transform transition ease-in-out duration-300"
                     leaveFrom="translate-x-0"
                     leaveTo="translate-x-full"
                 >

@@ -33,7 +33,7 @@ export function Header() {
                     </div>
                     <div className="flex flex-row w-full justify-around h-12 bg-brand-primary-500 items-center rounded-lg border-2 border-brand-primary-600 divide-x divide-brand-primary-600">
                         {HEADERLINKS.map((link) => (
-                            <HeaderLink key={link.name} {...link} nameClasses="font-bold" />
+                            <HeaderLink key={link.name} {...link} nameClasses="font-bold text-white" />
                         ))}
                     </div>
                 </div>
