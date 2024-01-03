@@ -20,7 +20,7 @@ export function MenuItem(link: HeaderLinkProps) {
                         className={classNames([
                             'flex w-full justify-between focus:outline-none',
                             open ? 'pb-2' : '',
-                            link.disabled ? 'line-through' : '',
+                            link.disabled ? 'line-through text-brand-neutral-500' : '',
                         ])}
                         disabled={link.disabled}
                     >
