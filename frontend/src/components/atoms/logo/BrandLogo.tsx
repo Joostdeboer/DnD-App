@@ -140,11 +140,20 @@ export function BrandLogo() {
     );
 }
 
-export function BrandLogoText({ size = 'lg', useDarkMode = true }: { size?: TextSizes; useDarkMode?: boolean }) {
+export function BrandLogoText({
+    size = 'lg',
+    useWhite = false,
+    useDarkMode = true,
+}: {
+    size?: TextSizes;
+    useDarkMode?: boolean;
+    useWhite?: boolean;
+}) {
     return (
         <div
             className={classNames([
-                'grid text-black w-fit grid-cols-6 grid-rows-2 text-center font-bold',
+                'grid w-fit grid-cols-6 grid-rows-2 text-center font-bold',
+                useWhite ? 'text-white' : 'text-black',
                 useDarkMode ? 'dark:text-white' : undefined,
                 headerSizes[size].title,
             ])}
@@ -159,7 +168,8 @@ export function BrandLogoText({ size = 'lg', useDarkMode = true }: { size?: Text
             </div>
             <div
                 className={classNames([
-                    'row-start-2 contents text-black *:-mt-1',
+                    'row-start-2 contents *:-mt-1',
+                    useWhite ? 'text-white' : 'text-black',
                     useDarkMode ? 'dark:text-white' : undefined,
                     headerSizes[size].subTitle,
                 ])}
