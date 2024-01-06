@@ -18,7 +18,7 @@ export const TEXT_CLASSES: Record<TextColors, string> = {
     white: 'text-white',
 };
 
-export const BUTTON_STYLE = 'px-14 py-2 transition-colors ease-in-out duration-100 rounded-md';
+export const BUTTON_STYLE = 'w-fit px-14 py-2 transition-colors ease-in-out duration-100 rounded-md text-center';
 
 // TODO: maybe make this a file from which to only export the styles for buttons?
 //  Or do something similar for Links as well

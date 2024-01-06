@@ -42,7 +42,10 @@ export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen:
                                 <Close />
                             </button>
                         </Dialog.Title>
-                        <Dialog.Description className="text-black dark:text-white font-bold border-b border-brand-neutral-500">
+                        <Dialog.Description
+                            className="text-black dark:text-white font-bold border-b border-brand-neutral-500"
+                            as="div"
+                        >
                             {HEADERLINKS.map((link) => (
                                 <MenuItem key={link.name} {...link} parentOnClose={() => setIsOpen(false)} />
                             ))}
