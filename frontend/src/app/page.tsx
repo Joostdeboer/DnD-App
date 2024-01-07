@@ -1,6 +1,7 @@
 import { Text } from '@/src/components/atoms/generic/Text';
 import { DetailSection } from '@/src/components/organisms/homepage/DetailSection';
 import { Divider } from '@/src/components/atoms/generic/Divider';
+import { LinkSection } from '@/src/components/organisms/homepage/LinkSection';
 
 export default async function Home() {
     return (
@@ -8,9 +9,7 @@ export default async function Home() {
             {/*<AboutSection />*/}
             <DetailSection />
             <Divider color="primary" hasPadding={false} />
-            <div className="border border-brand-neutral-500 rounded-md p-4">
-                <Text>Website sections links</Text>
-            </div>
+            <LinkSection />
             <Divider color="primary" hasPadding={false} />
             <div className="grid grid-cols-3 gap-8">
                 <div className="col-span-2 flex flex-col flex-1 border border-brand-neutral-500 rounded-md p-4">
