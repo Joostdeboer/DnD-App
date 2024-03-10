@@ -117,6 +117,10 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+      - name: install dependencies sanity
+        if: steps.filter.outputs.sanity == 'true'
+        working-directory: ./maroon-stingray
+        run: npm ci --legacy-peer-deps
       - name: Deploy Sanity
         if: steps.filter.outputs.sanity == 'true'
         working-directory: ./maroon-stingray
