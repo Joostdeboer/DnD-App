@@ -88,12 +88,6 @@ jobs:
         if: steps.filter.outputs.frontend == 'true'
         working-directory: ./frontend
         run: npm run test
-      - name: Install Vercel CLI
-        run: npm install --global vercel@latest
-      - name: Pull Vercel settings
-        run: vercel pull --yes
-      - name: Build Vercel
-        run: vercel build
       - name: Upload artifact
         if: steps.filter.outputs.frontend == 'true'
         uses: actions/upload-pages-artifact@v1
