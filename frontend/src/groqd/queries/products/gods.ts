@@ -11,6 +11,7 @@ const God = {
     name: q.string().optional(),
     title: q.string().optional(),
     domains: q.array(q.string()),
+    description: q.string().optional(),
 };
 
 export const godsQuery = q('*')

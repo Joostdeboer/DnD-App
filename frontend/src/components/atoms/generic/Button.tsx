@@ -13,6 +13,13 @@ export const BUTTON_CLASSES: Record<Colors, string> = {
     neutral: 'hover:bg-brand-neutral-600 bg-brand-neutral-500',
 };
 
+export const LINK_CLASSES: Record<Colors, string> = {
+    primary: 'hover:underline hover:text-brand-primary-600 text-brand-primary-500',
+    secondary: 'hover:underline hover:text-brand-secondary-600 text-brand-secondary-500',
+    success: 'hover:underline hover:text-brand-success-600 text-brand-success-500',
+    neutral: 'hover:underline hover:text-brand-neutral-600 text-brand-neutral-500',
+};
+
 export const TEXT_CLASSES: Record<TextColors, string> = {
     black: 'text-black',
     white: 'text-white',

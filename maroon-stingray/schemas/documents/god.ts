@@ -36,6 +36,11 @@ export default defineType({
                 },
             ],
         },
+        {
+            name: 'description',
+            title: 'Description',
+            type: 'string',
+        },
     ],
     preview: {
         select: {
