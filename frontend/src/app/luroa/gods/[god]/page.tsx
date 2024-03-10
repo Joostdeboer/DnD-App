@@ -10,6 +10,8 @@ export default async function God({ params }: { params: { god: string } }) {
     const god = await runQuery(specificGodQuery(params.god));
     if (!god) return <div>Loading data...</div>;
 
+    console.log({ god });
+
     return (
         <div className="flex flex-col gap-2">
             <Link href="/luroa/gods" className={classNames(['w-fit', LINK_CLASSES['primary']])}>
