@@ -10,6 +10,7 @@
     "build": "sanity build",
     "deploy": "sanity deploy",
     "run": "sanity build && sanity start",
+    "cors:add": "sanity cors add",
     "deploy-graphql": "sanity graphql deploy"
   },
   "keywords": [
