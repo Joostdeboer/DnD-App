@@ -8,7 +8,7 @@ import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
 export default async function Gods() {
     // important to note: https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#step-6-migrating-data-fetching-methods
     // https://github.com/vercel/next.js/tree/canary/examples/cms-sanity
-    const gods = await runQuery(godsQuery);
+    const gods = await runQuery(godsQuery, ['gods']);
 
     return (
         <div className="flex flex-col gap-2">

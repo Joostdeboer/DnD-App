@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { classNames } from '@/src/utils/functions/classnames';
 import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
 
+export const revalidate = 1000;
+
 export default async function God({ params }: { params: { god: string } }) {
     if (!params.god) return <div>Loading...</div>;
-    const god = await runQuery(specificGodQuery(params.god));
+    const god = await runQuery(specificGodQuery(params.god), ['god'], { god: params.god });
     if (!god) return <div>Loading data...</div>;
 
     return (
