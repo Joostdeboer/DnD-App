@@ -11,7 +11,7 @@ export default async function God({ params }: { params: { god: string } }) {
         <div className="flex flex-col gap-2">
             <Text>TODO: God</Text>
             <Text>
-                {god.name}, {god.title}
+                {god.name}, {god.title}.
             </Text>
         </div>
     );
