@@ -6,6 +6,15 @@ export default defineType({
     type: 'document',
     fields: [
         {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+                source: 'name',
+                slugify: (input) => input.toLowerCase().replace(/\s+/g, '-'),
+            },
+        },
+        {
             name: 'name',
             title: 'Name',
             type: 'string',
