@@ -18,7 +18,7 @@ export default async function Gods() {
                     <Text key={god.name}>
                         God name:{' '}
                         <Link
-                            href={'/luroa/gods/' + god.name?.toLowerCase()}
+                            href={'/luroa/gods/' + god.slug?.current}
                             className={classNames(['w-fit', LINK_CLASSES['primary']])}
                         >
                             {god.name}
