@@ -1,9 +1,11 @@
 import { defineType } from 'sanity';
+import { UserIcon } from '@sanity/icons';
 
 export default defineType({
     name: 'god',
     title: 'God',
     type: 'document',
+    icon: UserIcon,
     fields: [
         {
             name: 'slug',
@@ -39,7 +41,7 @@ export default defineType({
         {
             name: 'description',
             title: 'Description',
-            type: 'string',
+            type: 'content',
         },
     ],
     preview: {

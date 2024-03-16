@@ -1,4 +1,5 @@
 import { q } from 'groqd';
+import { portableTextQuery } from '@/src/groqd/helper/functions';
 
 const God = {
     _type: q.string(),
@@ -11,7 +12,7 @@ const God = {
     name: q.string().optional(),
     title: q.string().optional(),
     domains: q.array(q.string()),
-    description: q.string().optional(),
+    description: portableTextQuery('description').nullable(),
 };
 
 export const godsQuery = q('*')

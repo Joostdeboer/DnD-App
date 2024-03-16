@@ -4,6 +4,7 @@ import { specificGodQuery } from '@/src/groqd/queries/products/gods';
 import Link from 'next/link';
 import { classNames } from '@/src/utils/functions/classnames';
 import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
+import { MappedPortableText } from '@/src/components/atoms/generic/MappedPortableText';
 
 export const revalidate = 1000;
 
@@ -20,7 +21,7 @@ export default async function God({ params }: { params: { god: string } }) {
             <Text size="xl">
                 {god.name}, {god.title}
             </Text>
-            {god.description && <Text>{god.description}</Text>}
+            {god.description && <MappedPortableText value={god.description} />}
         </div>
     );
 }
