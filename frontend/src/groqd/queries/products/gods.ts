@@ -13,6 +13,7 @@ const God = {
     title: q.string().optional(),
     domains: q.array(q.string()),
     description: portableTextQuery('description').nullable(),
+    shortDescription: q.string().optional(),
 };
 
 export const godsQuery = q('*')

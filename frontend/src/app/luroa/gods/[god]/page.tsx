@@ -22,6 +22,7 @@ export default async function God({ params }: { params: { god: string } }) {
                 {god.name}, {god.title}
             </Text>
             {god.description && <MappedPortableText value={god.description} />}
+            {god.shortDescription && <Text>{god.shortDescription}</Text>}
         </div>
     );
 }
