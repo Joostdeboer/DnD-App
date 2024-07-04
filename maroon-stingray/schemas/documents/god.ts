@@ -67,7 +67,7 @@ export default defineType({
         prepare(selection: { name?: string; title?: string }) {
             const { name, title } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: name ?? 'No name',
                 subtitle: title ?? 'No subtitle',
             };
         },

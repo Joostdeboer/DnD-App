@@ -124,7 +124,9 @@ jobs:
       - name: Deploy Sanity
         if: steps.filter.outputs.sanity == 'true'
         working-directory: ./maroon-stingray
-        run: npx sanity deploy SANITY_AUTH_TOKEN=${{ secrets.SANITY_AUTH_TOKEN }}
+        run: npx sanity deploy
+        env:
+          SANITY_AUTH_TOKEN=${{ secrets.SANITY_AUTH_TOKEN }}
 #      - name: Deploy to GitHub Pages
 #        if: steps.filter.outputs.frontend == 'true'
 #        id: deployment
