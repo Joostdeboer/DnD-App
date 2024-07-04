@@ -8,6 +8,16 @@ export default defineType({
     icon: UserIcon,
     fields: [
         {
+            name: 'defaultAttributes',
+            title: 'Default Attributes',
+            type: 'defaultAttributes',
+        },
+        {
+            name: 'information',
+            title: 'Information',
+            type: 'information',
+        },
+        {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
