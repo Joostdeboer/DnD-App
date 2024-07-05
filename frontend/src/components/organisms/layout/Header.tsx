@@ -4,7 +4,7 @@ import { BrandLogoText } from '@/src/components/atoms/logo/BrandLogo';
 import { HeaderLink } from '@/src/components/atoms/layout/HeaderLink';
 import { ClampedWidth } from '@/src/components/atoms/layout/ClampedWidth';
 import { Menu } from '@/src/components/molecules/layout/Menu';
-import { HEADERLINKS } from '@/src/utils/constants/header';
+import { HEADERLINKS } from '@/src/utils/constants/links';
 
 export function Header() {
     const Toggle = () => <ThemeToggle className="md:absolute md:right-4" />;

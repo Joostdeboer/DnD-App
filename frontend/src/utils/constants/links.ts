@@ -20,6 +20,7 @@ export const HEADERLINKS = [
                     { name: 'People', href: '/luroa/codex/people' },
                     { name: 'Creatures', href: '/luroa/codex/creatures' },
                     { name: 'Regions', href: '/luroa/codex/regions' },
+                    { name: 'Flora', href: '/luroa/codex/flora' },
                 ],
             },
         ],
@@ -69,5 +70,20 @@ export const HEADERLINKS = [
             { name: 'Calendar', href: '/tools/calendar' },
             { name: 'Map', href: '/tools/map' },
         ],
+    },
+];
+
+export const FOOTERLINKS = [
+    {
+        name: 'About',
+        href: '/about',
+    },
+    {
+        name: 'Contact',
+        href: '/contact',
+    },
+    {
+        name: 'Terms of Use',
+        href: '/terms',
     },
 ];

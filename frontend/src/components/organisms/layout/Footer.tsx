@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ClampedWidth } from '@/src/components/atoms/layout/ClampedWidth';
 import { BrandLogoText } from '@/src/components/atoms/logo/BrandLogo';
 import { Copyright } from '@/src/components/atoms/logo/Copyright';
-import { HEADERLINKS } from '@/src/utils/constants/header';
+import { FOOTERLINKS, HEADERLINKS } from '@/src/utils/constants/links';
 
 export function Footer() {
     return (
@@ -14,6 +14,13 @@ export function Footer() {
                 </div>
                 <div className="flex flex-col gap-2 pl-5 md:pl-10">
                     {HEADERLINKS.map((link) => (
+                        <Link key={link.name} href={link.href} className="hover:underline">
+                            {link.name}
+                        </Link>
+                    ))}
+                </div>
+                <div className="flex flex-col gap-2 pl-5 md:pl-10">
+                    {FOOTERLINKS.map((link) => (
                         <Link key={link.name} href={link.href} className="hover:underline">
                             {link.name}
                         </Link>

@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { HEADERLINKS } from '@/src/utils/constants/header';
+import { HEADERLINKS } from '@/src/utils/constants/links';
 import { Close } from '@mui/icons-material';
 import { Fragment } from 'react';
 import { BrandLogoText } from '@/src/components/atoms/logo/BrandLogo';

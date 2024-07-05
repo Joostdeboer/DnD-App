@@ -1,5 +1,8 @@
 import { SchemaTypeDefinition } from 'sanity';
+import documentSettings from './pages/documentSettings';
+
 import god from './documents/god';
+
 import content from './objects/body';
 import internalLink from './objects/internalLink';
 import externalLink from './objects/externalLink';
@@ -17,7 +20,11 @@ import information, {
 } from './objects/information';
 
 export const schemaTypes: SchemaTypeDefinition[] = [
+    // pages
+    documentSettings,
+    // documents
     god,
+    // objects
     content,
     internalLink,
     externalLink,

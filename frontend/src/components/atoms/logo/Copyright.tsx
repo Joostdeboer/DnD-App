@@ -7,7 +7,7 @@ export function Copyright() {
     return (
         <span className="text-xs flex flex-row gap-1 items-center justify-center">
             <CopyrightOutlined fontSize="small" />
-            <span> 2023, LuroanCodex</span>
+            <span> 2024, LuroanCodex</span>
         </span>
     );
 }
