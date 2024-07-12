@@ -1,19 +1,17 @@
 import { q } from 'groqd';
 import { portableTextQuery } from '@/src/groqd/helper/functions';
+import { defaultAttributes, information } from '@/src/groqd/helper/subqueries';
 
 const God = {
     _type: q.string(),
-    slug: q
-        .object({
-            _type: q.string(),
-            current: q.string(),
-        })
-        .optional(),
-    name: q.string().optional(),
-    title: q.string().optional(),
-    domains: q.array(q.string()),
-    description: portableTextQuery('description').nullable(),
-    shortDescription: q.string().optional(),
+    defaultAttributes: q('defaultAttributes').grab$(defaultAttributes).nullable(),
+    information: q.object(information).optional(),
+    appearance: portableTextQuery('appearance').nullable(),
+    teachings: portableTextQuery('teachings').nullable(),
+    symbology: portableTextQuery('symbology').nullable(),
+    history: portableTextQuery('history').nullable(),
+    relations: portableTextQuery('relations').nullable(),
+    religion: portableTextQuery('religion').nullable(),
 };
 
 export const godsQuery = q('*')
@@ -23,7 +21,7 @@ export const godsQuery = q('*')
 export const specificGodQuery = (name: string) =>
     q('*')
         .filterByType('god')
-        .filter(`slug.current == "${name}"`)
+        .filter(`defaultAttributes.slug.current == "${name}"`)
         .slice(0)
         .grab$({
             ...God,

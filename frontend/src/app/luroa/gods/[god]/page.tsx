@@ -18,11 +18,8 @@ export default async function God({ params }: { params: { god: string } }) {
             <Link href="/luroa/gods" className={classNames(['w-fit', LINK_CLASSES['primary']])}>
                 Back to Gods
             </Link>
-            <Text size="xl">
-                {god.name}, {god.title}
-            </Text>
-            {god.description && <MappedPortableText value={god.description} />}
-            {god.shortDescription && <Text>{god.shortDescription}</Text>}
+            <Text size="xl">{god.defaultAttributes?.name}</Text>
+            {god.appearance && <MappedPortableText value={god.appearance} />}
         </div>
     );
 }

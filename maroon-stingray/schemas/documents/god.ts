@@ -18,57 +18,44 @@ export default defineType({
             type: 'information',
         },
         {
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-                source: 'name',
-                slugify: (input) => input.toLowerCase().replace(/\s+/g, '-'),
-            },
-        },
-        {
-            name: 'name',
-            title: 'Name',
-            type: 'string',
-        },
-        {
-            name: 'title',
-            title: 'Title',
-            type: 'string',
-        },
-        {
-            name: 'domains',
-            title: 'Domains',
-            type: 'array',
-            of: [
-                {
-                    name: 'domain',
-                    title: 'Domain',
-                    type: 'string',
-                },
-            ],
-        },
-        {
-            name: 'description',
-            title: 'Description',
+            name: 'appearance',
+            title: 'Appearance',
             type: 'content',
         },
         {
-            name: 'shortDescription',
-            title: 'Short description',
-            type: 'string',
+            name: 'teachings',
+            title: 'Teachings',
+            type: 'content',
+        },
+        {
+            name: 'symbology',
+            title: 'Symbology',
+            type: 'content',
+        },
+        {
+            name: 'history',
+            title: 'History',
+            type: 'content',
+        },
+        {
+            name: 'relations',
+            title: 'Relations',
+            type: 'content',
+        },
+        {
+            name: 'religion',
+            title: 'Religion',
+            type: 'content',
         },
     ],
     preview: {
         select: {
             name: 'name',
-            title: 'title',
         },
         prepare(selection: { name?: string; title?: string }) {
-            const { name, title } = selection;
+            const { name } = selection;
             return {
                 title: name ?? 'Unknown',
-                subtitle: title ?? 'No subtitle',
             };
         },
     },

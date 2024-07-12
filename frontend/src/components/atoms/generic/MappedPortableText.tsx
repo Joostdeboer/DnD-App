@@ -72,9 +72,17 @@ const PortableTextComponents = (): Partial<PortableTextReactComponents> => ({
     },
 });
 
-export function MappedPortableText({ value }: { value: PortableTextProps['value'] | PortableTextGroqd }) {
+export function MappedPortableText({
+    value,
+    useDarkMode = true,
+    className,
+}: {
+    value: PortableTextProps['value'] | PortableTextGroqd;
+    className?: string;
+    useDarkMode?: boolean;
+}) {
     return (
-        <p>
+        <p className={classNames([useDarkMode ? 'dark:text-white' : undefined, className, 'text-black'])}>
             <PortableText value={value} components={PortableTextComponents()} />
         </p>
     );

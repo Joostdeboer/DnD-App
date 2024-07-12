@@ -15,15 +15,14 @@ export default async function Gods() {
             <Text>TODO: Gods</Text>
             {gods.map((god) => {
                 return (
-                    <Text key={god.name}>
+                    <Text key={god.defaultAttributes?.name}>
                         God name:{' '}
                         <Link
-                            href={'/luroa/gods/' + god.slug?.current}
+                            href={'/luroa/gods/' + god.defaultAttributes?.slug?.current}
                             className={classNames(['w-fit', LINK_CLASSES['primary']])}
                         >
-                            {god.name}
+                            {god.defaultAttributes?.name}
                         </Link>
-                        , the {god.title}.
                     </Text>
                 );
             })}
