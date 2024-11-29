@@ -22,3 +22,5 @@ https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Ho
 - To check the sanity files, run `npm run dev` from the `/maroon-stingray` folder.
 - To view changes of the website, go to http://localhost:3000/DnD-App. To view changes of Sanity, go to http://localhost:3333/desk.
 - To see deployments, go to https://vercel.com/joostdeboers-projects/dnd-app
+
+https://schema.club/ePGeH9xU
