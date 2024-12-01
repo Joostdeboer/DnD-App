@@ -1,5 +1,5 @@
 import { defineConfig } from 'sanity';
-import { deskTool, StructureBuilder } from 'sanity/desk';
+import { structureTool, StructureBuilder } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { groqdPlaygroundTool } from 'groqd-playground';
 import { media } from 'sanity-plugin-media';
@@ -14,7 +14,7 @@ export default defineConfig({
     projectId: SANITY_PROJECT_ID,
     dataset: 'production',
     plugins: [
-        deskTool({
+        structureTool({
             structure: (S: StructureBuilder) => deskStructure(S),
         }),
         media(),

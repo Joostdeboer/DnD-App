@@ -1,4 +1,4 @@
-import { StructureBuilder } from 'sanity/desk';
+import { StructureBuilder } from 'sanity/structure';
 import { CogIcon } from '@sanity/icons';
 
 export const documentSettings = (S: StructureBuilder) =>

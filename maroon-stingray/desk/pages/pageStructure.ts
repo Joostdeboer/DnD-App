@@ -1,4 +1,4 @@
-import { ListItemBuilder, StructureBuilder } from 'sanity/desk';
+import { ListItemBuilder, StructureBuilder } from 'sanity/structure';
 import { BookIcon } from '@sanity/icons';
 import { documentSettings } from '../documents/documentSettings';
 

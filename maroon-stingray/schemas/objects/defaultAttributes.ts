@@ -45,5 +45,24 @@ export default defineType({
             title: 'Image',
             type: 'image',
         },
+        {
+            name: 'tags',
+            title: 'Tags',
+            description: 'Tags can be used to search for items',
+            type: 'array',
+            of: [
+                {
+                    name: 'tag',
+                    title: 'Tag',
+                    type: 'string',
+                },
+            ],
+        },
+        {
+            name: 'appendix',
+            title: 'Appendix',
+            description: 'Includes subsections such as "External Links", "References", "Credits", or "See Also"',
+            type: 'content',
+        },
     ],
 });
