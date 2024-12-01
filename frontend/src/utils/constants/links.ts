@@ -55,7 +55,7 @@ export const HEADERLINKS = [
                 name: 'Character creation',
                 href: '/gameplay/creation',
                 menuItems: [
-                    { name: 'Languages', href: '/gameplay/creation/languages' },
+                    { name: 'Official Guidelines', href: '/gameplay/creation/guidelines' },
                     { name: 'Character options', href: '/gameplay/creation/options' },
                     { name: 'Tips', href: '/gameplay/creation/tips' },
                 ],
