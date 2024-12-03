@@ -1,10 +1,10 @@
 import { PortableText, PortableTextProps, PortableTextReactComponents } from '@portabletext/react';
-import { PortableTextGroqd } from '@/src/groqd/helper/functions';
 import { classNames } from '@/src/utils/functions/classnames';
 import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { Image } from '@/src/components/atoms/generic/Image';
+import { PortableTextGroqd } from '@/src/groqd/types/functions';
 
 const PortableTextComponents = (): Partial<PortableTextReactComponents> => ({
     types: {

@@ -1,6 +1,6 @@
-import { q, Selection, TypeFromSelection } from 'groqd';
+import { q, Selection } from 'groqd';
 
-const imageSelection = {
+export const imageSelection = {
     crop: q
         .object({
             top: q.number(),
@@ -33,9 +33,7 @@ const imageSelection = {
     alignment: q.string().nullable(),
 } satisfies Selection;
 
-export type Image = TypeFromSelection<typeof imageSelection>;
-
-const contentBlockSelection = {
+export const contentBlockSelection = {
     _type: q.literal('block'),
     _key: q.string(),
     children: q.array(

@@ -1,4 +1,4 @@
-import { q } from 'groqd';
+import { q, sanityImage } from 'groqd';
 import { portableTextQuery } from '@/src/groqd/helper/functions';
 
 export const information = {
@@ -108,5 +108,5 @@ export const defaultAttributes = {
     name: q.string().optional(),
     shortDescription: portableTextQuery('shortDescription').nullable(),
     altNames: q.array(q.string()).optional(),
-    image: q.sanityImage().nullable(),
+    image: sanityImage('image').nullable(),
 };

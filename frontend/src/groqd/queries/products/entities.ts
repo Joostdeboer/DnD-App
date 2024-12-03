@@ -3,18 +3,15 @@ import { portableTextQuery } from '@/src/groqd/helper/functions';
 import { defaultAttributes, information } from '@/src/groqd/helper/subqueries';
 import { getAllByTypeQuery, getTypeQuery } from '@/src/groqd/queries/products/queries';
 
-const God = {
+const Entity = {
     _type: q.string(),
     defaultAttributes: q('defaultAttributes').grab$(defaultAttributes).nullable(),
     information: q.object(information).optional(),
+    description: portableTextQuery('description').nullable(),
+    usage: portableTextQuery('usage').nullable(),
     appearance: portableTextQuery('appearance').nullable(),
-    teachings: portableTextQuery('teachings').nullable(),
-    symbology: portableTextQuery('symbology').nullable(),
-    history: portableTextQuery('history').nullable(),
-    relations: portableTextQuery('relations').nullable(),
-    religion: portableTextQuery('religion').nullable(),
 };
 
-export const godsQuery = getAllByTypeQuery({ type: 'god', input: God });
+export const entitiesQuery = getAllByTypeQuery({ type: 'entity', input: Entity });
 
-export const specificGodQuery = (name: string) => getTypeQuery({ type: 'god', name, input: God });
+export const specificEntityQuery = (name: string) => getTypeQuery({ type: 'entity', name, input: Entity });
