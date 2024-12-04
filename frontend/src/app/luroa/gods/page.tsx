@@ -4,6 +4,7 @@ import { godsQuery } from '@/src/groqd/queries/products/gods';
 import Link from 'next/link';
 import { classNames } from '@/src/utils/functions/classnames';
 import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
+import { PageLayout } from '@/src/components/templates/PageLayout';
 
 export default async function Gods() {
     // important to note: https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#step-6-migrating-data-fetching-methods
@@ -11,7 +12,7 @@ export default async function Gods() {
     const gods = await runQuery(godsQuery, ['gods']);
 
     return (
-        <div className="flex flex-col gap-2">
+        <PageLayout>
             <Text>TODO: Gods</Text>
             {gods.map((god) => {
                 return (
@@ -26,6 +27,6 @@ export default async function Gods() {
                     </Text>
                 );
             })}
-        </div>
+        </PageLayout>
     );
 }
