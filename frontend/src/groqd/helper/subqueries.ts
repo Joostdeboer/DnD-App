@@ -1,4 +1,4 @@
-import { q, sanityImage } from 'groqd';
+import { q, sanityImage, Selection } from 'groqd';
 import { portableTextQuery } from '@/src/groqd/helper/functions';
 
 export const information = {
@@ -96,7 +96,7 @@ export const information = {
             natives: q.string().optional(),
         })
         .optional(),
-};
+} satisfies Selection;
 
 export const defaultAttributes = {
     slug: q
@@ -108,5 +108,7 @@ export const defaultAttributes = {
     name: q.string().optional(),
     shortDescription: portableTextQuery('shortDescription').nullable(),
     altNames: q.array(q.string()).optional(),
-    image: sanityImage('image').nullable(),
-};
+    image: sanityImage('image', {
+        withAsset: ['base'],
+    }).nullable(),
+} satisfies Selection;
