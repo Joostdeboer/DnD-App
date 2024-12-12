@@ -50,10 +50,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string; title?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string }; title?: string }) {
+            const {
+                defaultAttributes: { name },
+            } = selection;
             return {
                 title: name ?? 'Unknown',
             };

@@ -5,6 +5,11 @@ import { specificGodQuery } from '@/src/groqd/queries/products/gods';
 import { MappedPortableText } from '@/src/components/atoms/generic/MappedPortableText';
 import { SidebarPageLayout } from '@/src/components/templates/SidebarPageLayout';
 
+/**
+ * https://nextjs.org/docs/14/pages/building-your-application/data-fetching/incremental-static-regeneration
+ * https://nextjs.org/docs/app/api-reference/functions/revalidatePath
+ * https://victoreke.com/blog/sanity-webhooks-and-on-demand-revalidation-in-nextjs
+ */
 export const revalidate = 1000;
 
 export default async function God({ params }: { params: { god: string } }) {
