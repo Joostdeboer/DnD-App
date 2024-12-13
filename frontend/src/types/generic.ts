@@ -1,9 +1,5 @@
-const TEXT_SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+const TEXT_SIZES = ['xs', 'sm', 'md', 'lg', 'xl', 'logo'] as const;
 export type TextSizes = (typeof TEXT_SIZES)[number];
-export const MappedTextSizes: Record<TextSizes, string> = {
-    xs: 'text-xs',
-    sm: 'text-sm',
-    md: 'text-base',
-    lg: 'text-lg',
-    xl: 'text-xl',
-};
+
+const HEADER_VARIANTS = ['title', 'subTitle'] as const;
+export type HeaderVariants = (typeof HEADER_VARIANTS)[number];

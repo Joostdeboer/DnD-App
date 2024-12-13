@@ -4,11 +4,17 @@ import { runQuery } from '@/src/configs/sanityConfig';
 import { specificGodQuery } from '@/src/groqd/queries/products/gods';
 import { MappedPortableText } from '@/src/components/atoms/generic/MappedPortableText';
 import { SidebarPageLayout } from '@/src/components/templates/SidebarPageLayout';
+import { Heading } from '@/src/components/atoms/generic/Heading';
 
 /**
- * https://nextjs.org/docs/14/pages/building-your-application/data-fetching/incremental-static-regeneration
- * https://nextjs.org/docs/app/api-reference/functions/revalidatePath
- * https://victoreke.com/blog/sanity-webhooks-and-on-demand-revalidation-in-nextjs
+ * TODO: figure out how to do proper revalidation
+ *  - https://nextjs.org/docs/14/pages/building-your-application/data-fetching/incremental-static-regeneration
+ *  - https://nextjs.org/docs/app/api-reference/functions/revalidatePath
+ *  - https://victoreke.com/blog/sanity-webhooks-and-on-demand-revalidation-in-nextjs
+ *  - https://www.sanity.io/learn/track/work-ready-next-js?ref=live
+ *  - https://github.com/sanity-io/next-sanity
+ *  - https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
+ *  - https://github.com/sanity-io/sanity-template-nextjs-clean/tree/main#next-steps?ref=victoreke.com
  */
 export const revalidate = 1000;
 
@@ -19,7 +25,17 @@ export default async function God({ params }: { params: { god: string } }) {
 
     return (
         <SidebarPageLayout defaultAttributes={god.defaultAttributes} information={god.information}>
-            <Text size="xl">{god.defaultAttributes?.name}</Text>
+            <Heading size="lg">{god.defaultAttributes?.name}</Heading>
+            {/*
+                TODO:
+                 make default page which includes the following
+                    - name
+                    - updatedAt
+                    - tags?
+                    - short description
+                    - {children}
+                    - appendix
+            */}
             {god.appearance && <MappedPortableText value={god.appearance} />}
 
             <Divider />

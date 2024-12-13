@@ -27,7 +27,7 @@ export function Header() {
                 <div className="hidden md:contents">
                     <div className="flex flex-row w-full relative justify-center items-center py-8">
                         <Link href="/">
-                            <BrandLogoText size="xl" />
+                            <BrandLogoText size="logo" />
                         </Link>
                         <Toggle />
                     </div>

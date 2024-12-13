@@ -3,6 +3,7 @@ import { documentSettingsQuery } from '@/src/groqd/queries/pages/queries';
 import { DefaultAttributesType, InformationType } from '@/src/groqd/types/subqueries';
 import { Image } from '@/src/components/atoms/generic/Image';
 import { Text } from '@/src/components/atoms/generic/Text';
+import { Heading } from '@/src/components/atoms/generic/Heading';
 import { classNames } from '@/src/utils/functions/classnames';
 
 function MappedSection({
@@ -57,7 +58,7 @@ export async function Sidebar({
                 ])}
             >
                 <section className="flex flex-col items-center">
-                    {defaultAttributes?.name && <Text size="xl">{defaultAttributes?.name}</Text>}
+                    {defaultAttributes?.name && <Heading size="sm">{defaultAttributes?.name}</Heading>}
                     {defaultAttributes?.altNames && (
                         <Text className="italic" size="sm">
                             {defaultAttributes?.altNames}
