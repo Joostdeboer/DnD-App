@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { classNames } from '@/src/utils/functions/classnames';
 import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
 import { Image } from '@/src/components/atoms/generic/Image';
-import { DefaultAttributesType } from '@/src/groqd/types/subqueries';
 import { ReactNode } from 'react';
+import { Product } from '@/src/types/generic';
 
 function TableHeaderCell({ children, className }: { children: ReactNode; className?: string }) {
     return <div className={classNames(['table-cell p-2', className])}>{children}</div>;
@@ -13,12 +13,9 @@ function TableBodyCell({ children, className }: { children: ReactNode; className
     return <div className={classNames(['table-cell text-sm align-middle p-2', className])}>{children}</div>;
 }
 
-export function ProductListing({
-    products,
-}: {
-    products: { _updatedAt: Date; _createdAt: Date; defaultAttributes?: DefaultAttributesType | null }[];
-}) {
+export function ProductListing({ products }: { products: Product[] }) {
     if (products.length === 0) return null;
+
     return (
         <div className="table w-full">
             <div className="table-header-group">

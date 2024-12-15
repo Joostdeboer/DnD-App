@@ -2,7 +2,7 @@ import { Heading } from '@/src/components/atoms/generic/Heading';
 import { runQuery } from '@/src/configs/sanityConfig';
 import { godsQuery } from '@/src/groqd/queries/products/gods';
 import { PageLayout } from '@/src/components/templates/PageLayout';
-import { ProductListing } from '@/src/components/organisms/products/ProductListing';
+import { ListingPage } from '@/src/components/templates/ListingPage';
 
 export const revalidate = 1000;
 
@@ -11,12 +11,10 @@ export default async function Gods() {
     // https://github.com/vercel/next.js/tree/canary/examples/cms-sanity
     const gods = await runQuery(godsQuery, ['gods']);
 
-    // TODO: sorting
-
     return (
         <PageLayout>
             <Heading>List of Gods</Heading>
-            <ProductListing products={gods} />
+            <ListingPage products={gods} />
         </PageLayout>
     );
 }
