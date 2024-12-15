@@ -9,24 +9,18 @@ export function Text({
     as = 'p',
     className,
     useDarkMode = true,
+    isMuted = false,
 }: {
     children: ReactNode;
     size?: TextSizes;
     as?: 'p' | 'span';
     className?: string;
     useDarkMode?: boolean;
+    isMuted?: boolean;
 }) {
     const As = as;
-    return (
-        <As
-            className={classNames([
-                textSizes[size],
-                useDarkMode ? 'dark:text-white' : undefined,
-                className,
-                'text-black',
-            ])}
-        >
-            {children}
-        </As>
-    );
+    let color = 'text-black';
+    if (useDarkMode) color = 'dark:text-white';
+    if (isMuted) color = 'dark:text-brand-neutral-500';
+    return <As className={classNames([textSizes[size], color, className])}>{children}</As>;
 }

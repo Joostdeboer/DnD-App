@@ -9,7 +9,6 @@ export const sizeToHeading: Record<TextSizes, 'h1' | 'h2' | 'h3' | 'h4' | 'h5'> 
     logo: 'h1',
 };
 
-// TODO fix these values
 export const headerSizes: Record<TextSizes, Record<HeaderVariants, string>> = {
     xs: {
         title: 'text-xl',

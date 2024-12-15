@@ -111,4 +111,6 @@ export const defaultAttributes = {
     image: sanityImage('image', {
         withAsset: ['base'],
     }).nullable(),
+    tags: q.array(q.string()).optional(),
+    appendix: portableTextQuery('appendix').nullable(),
 } satisfies Selection;
