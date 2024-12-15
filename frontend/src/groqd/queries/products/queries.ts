@@ -1,13 +1,22 @@
 import { q, Selection } from 'groqd';
 import { ProductTypes } from '@/src/utils/constants/variables';
 
-export const getAllByTypeQuery = ({ type, input, filter }: { type: ProductTypes; input: Selection; filter?: string }) =>
+export const getAllByTypeQuery = <T extends Selection>({
+    type,
+    input,
+    filter,
+}: {
+    type: ProductTypes;
+    input: T;
+    filter?: string;
+}) =>
     q('*')
         .filterByType(type)
         .filter(filter)
-        .grab$({ ...input });
+        .grab$({ ...input })
+        .order('defaultAttributes.name asc');
 
-export const getTypeQuery = ({
+export const getTypeQuery = <T extends Selection>({
     type,
     name,
     input,
@@ -15,7 +24,7 @@ export const getTypeQuery = ({
 }: {
     type: ProductTypes;
     name: string;
-    input: Selection;
+    input: T;
     filter?: string;
 }) =>
     q('*')

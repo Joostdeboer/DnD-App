@@ -6,6 +6,7 @@ import { Text } from '@/src/components/atoms/generic/Text';
 import { Heading } from '@/src/components/atoms/generic/Heading';
 import { classNames } from '@/src/utils/functions/classnames';
 import { SidebarSection } from '@/src/components/molecules/layout/SidebarSection';
+import { getNrOfAttributesForProduct } from '@/src/utils/functions/products';
 
 export async function Sidebar({
     defaultAttributes,
@@ -15,14 +16,7 @@ export async function Sidebar({
     information?: InformationType;
 }) {
     const sidebarTexts = await runQuery(documentSettingsQuery(), ['sidebar']);
-
-    // get the number of attributes that are added to the product page. If none exist, we need to hide the divider
-    let attributeLength = 0;
-    if (information) {
-        Object.keys(information).forEach((key) => {
-            attributeLength += Object.values(information[key as keyof typeof information] ?? {}).length;
-        });
-    }
+    const attributeLength = getNrOfAttributesForProduct(information);
 
     return (
         <div className="flex flex-col gap-2">
