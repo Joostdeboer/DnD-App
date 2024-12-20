@@ -16,14 +16,23 @@ export const PRODUCT_TYPES = [
     'writing',
 ] as const;
 export const KEYS_TO_IGNORE = ['_id', '_createdAt', '_updatedAt', '_type', 'defaultAttributes', 'information'];
-export const SORTING_VARIANTS = [
-    'name_asc',
-    'name_desc',
-    'created_asc',
-    'created_desc',
-    'updated_asc',
-    'updated_desc',
-] as const;
 
 export type ProductTypes = (typeof PRODUCT_TYPES)[number];
-export type SortingTypes = (typeof SORTING_VARIANTS)[number];
+
+export const sortingToIndexes = [
+    {
+        name: 'Name',
+        slug: 'name',
+        key: 'defaultAttributes.name',
+    },
+    {
+        name: 'Created At',
+        slug: 'createdAt',
+        key: '_createdAt',
+    },
+    {
+        name: 'Updated At',
+        slug: 'updatedAt',
+        key: '_updatedAt',
+    },
+];

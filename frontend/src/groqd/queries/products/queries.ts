@@ -1,20 +1,28 @@
 import { q, Selection } from 'groqd';
-import { ProductTypes } from '@/src/utils/constants/variables';
+import { ProductTypes, sortingToIndexes } from '@/src/utils/constants/variables';
 
 export const getAllByTypeQuery = <T extends Selection>({
     type,
     input,
     filter,
+    sorting,
 }: {
     type: ProductTypes;
     input: T;
     filter?: string;
-}) =>
-    q('*')
+    sorting?: string;
+}) => {
+    // TODO: refine this
+    let queryParam: string | undefined = '';
+    if (sorting) {
+        queryParam = sortingToIndexes.find((sort) => sort.slug === sorting)?.key;
+    }
+    return q('*')
         .filterByType(type)
         .filter(filter)
         .grab$({ ...input })
-        .order('defaultAttributes.name asc');
+        .order(`${queryParam} asc`);
+};
 
 export const getTypeQuery = <T extends Selection>({
     type,

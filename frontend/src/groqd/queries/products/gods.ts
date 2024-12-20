@@ -18,6 +18,6 @@ const God = {
     religion: portableTextQuery('religion').nullable(),
 };
 
-export const godsQuery = getAllByTypeQuery({ type: 'god', input: God });
+export const godsQuery = (sorting?: string) => getAllByTypeQuery({ type: 'god', input: God, sorting });
 
 export const specificGodQuery = (name: string) => getTypeQuery({ type: 'god', name, input: God });
