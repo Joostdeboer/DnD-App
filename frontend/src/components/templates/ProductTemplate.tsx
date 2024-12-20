@@ -17,7 +17,7 @@ export function ProductTemplate({
 }) {
     return (
         <section className="flex flex-col">
-            <section className="flex flex-col gap-2">
+            <section className="flex flex-col gap-2 items-center md:items-start">
                 <Heading size="lg">{defaultAttributes?.name}</Heading>
                 <Text size="sm" className="italic" isMuted>
                     Last updated at: {updatedAt?.toLocaleString()}
