@@ -5,36 +5,7 @@ import { Image } from '@/src/components/atoms/generic/Image';
 import { ReactNode } from 'react';
 import { Product } from '@/src/types/generic';
 import { formatDate } from '@/src/utils/functions/products';
-import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
-
-function TableHeaderCell({
-    children,
-    className,
-    sortBy,
-}: {
-    children: ReactNode;
-    className?: string;
-    sortBy?: string;
-}) {
-    return (
-        /**
-         * TODO: restyle the header using:
-         *   - an icon
-         *      - show highlighted arrow if sorting direction
-         *   - better background
-         * TODO: refine this sorting query param
-         */
-        <Link href={{ query: { sort: sortBy } }} className={classNames(['table-cell p-2 first:pl-9', className])}>
-            <div className="flex flex-row justify-between items-center">
-                {children}
-                <div className="flex flex-col">
-                    <ArrowDropUp className="-mb-1.5" />
-                    <ArrowDropDown className="-mt-1.5" />
-                </div>
-            </div>
-        </Link>
-    );
-}
+import { TableHeaderCell } from '@/src/components/molecules/products/TableHeaderCell';
 
 function TableBodyCell({ children, className }: { children: ReactNode; className?: string }) {
     return <div className={classNames(['table-cell text-sm align-middle p-2', className])}>{children}</div>;

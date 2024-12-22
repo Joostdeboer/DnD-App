@@ -6,22 +6,31 @@ export const getAllByTypeQuery = <T extends Selection>({
     input,
     filter,
     sorting,
+    direction,
 }: {
     type: ProductTypes;
     input: T;
     filter?: string;
     sorting?: string;
+    direction?: string;
 }) => {
-    // TODO: refine this
+    // TODO: refine all of the below so it feels less hack-y
     let queryParam: string | undefined = '';
     if (sorting) {
         queryParam = sortingToIndexes.find((sort) => sort.slug === sorting)?.key;
     }
-    return q('*')
+
+    const query = q('*')
         .filterByType(type)
         .filter(filter)
-        .grab$({ ...input })
-        .order(`${queryParam} asc`);
+        .grab$({ ...input });
+
+    // we need to return here, as otherwise it is not properly appended, and thus not sorted
+    if (!!queryParam && !!direction) {
+        return query.order(`${queryParam} ${direction}`);
+    }
+
+    return query;
 };
 
 export const getTypeQuery = <T extends Selection>({
