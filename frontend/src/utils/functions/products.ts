@@ -1,4 +1,5 @@
 import { InformationType } from '@/src/groqd/types/subqueries';
+import { intlFormat } from 'date-fns';
 
 /**
  * get the number of attributes that are added to the product page
@@ -12,4 +13,15 @@ export function getNrOfAttributesForProduct(information?: InformationType) {
         });
     }
     return attributeLength;
+}
+
+export function formatDate(date: Date) {
+    return intlFormat(
+        date,
+        {
+            hourCycle: 'h24',
+            dateStyle: 'long',
+        },
+        { locale: 'en-En' },
+    );
 }

@@ -4,7 +4,7 @@ import { Product } from '@/src/types/generic';
 export function ListingPage({ products }: { products: Product[] }) {
     return (
         <div className="relative">
-            <ProductListing products={products} />
+            <ProductListing products={products} link="/luroa/gods/" />
         </div>
     );
 }

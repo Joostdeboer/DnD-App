@@ -4,7 +4,8 @@ import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
 import { Image } from '@/src/components/atoms/generic/Image';
 import { ReactNode } from 'react';
 import { Product } from '@/src/types/generic';
-import { intlFormat } from 'date-fns';
+import { formatDate } from '@/src/utils/functions/products';
+import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 
 function TableHeaderCell({
     children,
@@ -16,10 +17,21 @@ function TableHeaderCell({
     sortBy?: string;
 }) {
     return (
-        // TODO: restyle the header using an icon and better background
-        // TODO: refine this sorting query param
-        <Link href={{ query: { sort: sortBy } }} className={classNames(['table-cell p-2', className])}>
-            {children}
+        /**
+         * TODO: restyle the header using:
+         *   - an icon
+         *      - show highlighted arrow if sorting direction
+         *   - better background
+         * TODO: refine this sorting query param
+         */
+        <Link href={{ query: { sort: sortBy } }} className={classNames(['table-cell p-2 first:pl-9', className])}>
+            <div className="flex flex-row justify-between items-center">
+                {children}
+                <div className="flex flex-col">
+                    <ArrowDropUp className="-mb-1.5" />
+                    <ArrowDropDown className="-mt-1.5" />
+                </div>
+            </div>
         </Link>
     );
 }
@@ -29,40 +41,23 @@ function TableBodyCell({ children, className }: { children: ReactNode; className
 }
 
 // TODO: add better hovering
-export function ProductListing({ products }: { products: Product[] }) {
+export function ProductListing({ products, link }: { products: Product[]; link: string }) {
     if (products.length === 0) return null;
-
-    // TODO: extract this
-    function formatDate(date: Date) {
-        return intlFormat(
-            date,
-            {
-                hourCycle: 'h24',
-                dateStyle: 'long',
-            },
-            { locale: 'en-En' },
-        );
-    }
 
     return (
         <div className="table w-full">
             <div className="table-header-group">
                 <div className="table-row text-left text-black dark:text-white font-bold">
-                    <TableHeaderCell sortBy="name">
-                        <div className="flex flex-row gap-2 items-center">
-                            <div className="w-5 h-5" />
-                            <span>Name</span>
-                        </div>
-                    </TableHeaderCell>
+                    <TableHeaderCell sortBy="name">Name</TableHeaderCell>
                     <TableHeaderCell sortBy="createdAt">Created At</TableHeaderCell>
                     <TableHeaderCell sortBy="updatedAt">Updated At</TableHeaderCell>
                 </div>
             </div>
             <div className="table-row-group">
-                {products.map((god) => (
+                {products.map((product) => (
                     <Link
-                        key={god.defaultAttributes?.name}
-                        href={'/luroa/gods/' + god.defaultAttributes?.slug?.current}
+                        key={product.defaultAttributes?.name}
+                        href={link + product.defaultAttributes?.slug?.current}
                         className="group table-row text-left text-black dark:text-white dark:odd:bg-brand-neutral-800 odd:bg-brand-neutral-200"
                     >
                         <TableBodyCell className="!text-base">
@@ -72,10 +67,10 @@ export function ProductListing({ products }: { products: Product[] }) {
                                     LINK_CLASSES['primary'],
                                 ])}
                             >
-                                {god.defaultAttributes?.image ? (
+                                {product.defaultAttributes?.image ? (
                                     <Image
-                                        alt={god.defaultAttributes.slug?.current ?? ''}
-                                        src={god.defaultAttributes.image.asset.url}
+                                        alt={product.defaultAttributes.slug?.current ?? ''}
+                                        src={product.defaultAttributes.image.asset.url}
                                         width={50}
                                         height={50}
                                         className="rounded-full object-cover !w-5 !h-5 border border-brand-primary-500"
@@ -83,11 +78,11 @@ export function ProductListing({ products }: { products: Product[] }) {
                                 ) : (
                                     <div className="w-5 h-5" />
                                 )}
-                                <span>{god.defaultAttributes?.name}</span>
+                                <span>{product.defaultAttributes?.name}</span>
                             </div>
                         </TableBodyCell>
-                        <TableBodyCell>{formatDate(god._createdAt)}</TableBodyCell>
-                        <TableBodyCell>{formatDate(god._updatedAt)}</TableBodyCell>
+                        <TableBodyCell>{formatDate(product._createdAt)}</TableBodyCell>
+                        <TableBodyCell>{formatDate(product._updatedAt)}</TableBodyCell>
                     </Link>
                 ))}
             </div>
