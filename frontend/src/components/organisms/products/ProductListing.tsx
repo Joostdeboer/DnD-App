@@ -11,7 +11,6 @@ function TableBodyCell({ children, className }: { children: ReactNode; className
     return <div className={classNames(['table-cell text-sm align-middle p-2', className])}>{children}</div>;
 }
 
-// TODO: add better hovering
 export function ProductListing({ products, link }: { products: Product[]; link: string }) {
     if (products.length === 0) return null;
 
@@ -29,7 +28,12 @@ export function ProductListing({ products, link }: { products: Product[]; link: 
                     <Link
                         key={product.defaultAttributes?.name}
                         href={link + product.defaultAttributes?.slug?.current}
-                        className="group table-row text-left text-black dark:text-white dark:odd:bg-brand-neutral-800 odd:bg-brand-neutral-200"
+                        className={classNames([
+                            'group table-row text-left text-black dark:text-white',
+                            'dark:odd:bg-brand-neutral-800 odd:bg-brand-neutral-200',
+                            'hover:bg-brand-secondary-200 hover:odd:bg-brand-secondary-200',
+                            'hover:dark:odd:bg-brand-secondary-800 hover:dark:bg-brand-secondary-800',
+                        ])}
                     >
                         <TableBodyCell className="!text-base">
                             <div
