@@ -1,4 +1,4 @@
-import { Text } from '@/src/components/atoms/generic/Text';
+import { Heading } from '@/src/components/atoms/generic/Heading';
 import { LinkCard } from '@/src/components/molecules/homepage/LinkCard';
 import { Divider } from '@/src/components/atoms/generic/Divider';
 
@@ -10,8 +10,7 @@ export function LinkSection() {
      */
     return (
         <div>
-            {/* TODO: make a header atom */}
-            <Text className="text-center text-5xl">About</Text>
+            <Heading className="text-center">About</Heading>
             <Divider color="neutral" />
             <div className="flex flex-col gap-y-2">
                 <LinkCard
