@@ -1,7 +1,7 @@
 import { q } from 'groqd';
 import { portableTextQuery } from '@/src/groqd/helper/functions';
 import { defaultAttributes, information } from '@/src/groqd/helper/subqueries';
-import { getAllByTypeQuery, getTypeQuery } from '@/src/groqd/queries/products/queries';
+import { AllByTypeSortingInput, getAllByTypeQuery, getTypeQuery } from '@/src/groqd/queries/products/queries';
 
 const God = {
     _id: q.string(),
@@ -18,7 +18,7 @@ const God = {
     religion: portableTextQuery('religion').nullable(),
 };
 
-export const godsQuery = (sorting?: string, direction?: string) =>
-    getAllByTypeQuery({ type: 'god', input: God, sorting, direction });
+export const godsQuery = ({ sorting, direction, sortingRecords }: AllByTypeSortingInput) =>
+    getAllByTypeQuery({ type: 'god', input: God, sorting, direction, sortingRecords });
 
 export const specificGodQuery = (name: string) => getTypeQuery({ type: 'god', name, input: God });

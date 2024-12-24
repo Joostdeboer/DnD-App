@@ -1,5 +1,17 @@
 import { q, Selection } from 'groqd';
-import { ProductTypes, sortingToIndexes } from '@/src/utils/constants/variables';
+import { ProductTypes, SortingRecord, sortingToIndexes } from '@/src/utils/constants/variables';
+
+export interface AllByTypeSortingInput {
+    sorting?: string;
+    direction?: string;
+    sortingRecords?: SortingRecord[];
+}
+
+interface AllByTypeQueryInput<T> extends AllByTypeSortingInput {
+    type: ProductTypes;
+    input: T;
+    filter?: string;
+}
 
 export const getAllByTypeQuery = <T extends Selection>({
     type,
@@ -7,17 +19,13 @@ export const getAllByTypeQuery = <T extends Selection>({
     filter,
     sorting,
     direction,
-}: {
-    type: ProductTypes;
-    input: T;
-    filter?: string;
-    sorting?: string;
-    direction?: string;
-}) => {
+    sortingRecords,
+}: AllByTypeQueryInput<T>) => {
     // TODO: refine all of the below so it feels less hack-y
     let queryParam: string | undefined = '';
     if (sorting) {
-        queryParam = sortingToIndexes.find((sort) => sort.slug === sorting)?.key;
+        const sortingList = [...(sortingRecords ?? []), ...sortingToIndexes];
+        queryParam = sortingList.find((sort) => sort.slug === sorting)?.key;
     }
 
     const query = q('*')

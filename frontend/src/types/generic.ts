@@ -1,4 +1,4 @@
-import { DefaultAttributesType } from '@/src/groqd/types/subqueries';
+import { DefaultAttributesType, InformationType } from '@/src/groqd/types/subqueries';
 
 const TEXT_SIZES = ['xs', 'sm', 'md', 'lg', 'xl', 'logo'] as const;
 export type TextSizes = (typeof TEXT_SIZES)[number];
@@ -10,4 +10,5 @@ export interface Product {
     _updatedAt: Date;
     _createdAt: Date;
     defaultAttributes?: DefaultAttributesType | null;
+    information?: InformationType | null;
 }

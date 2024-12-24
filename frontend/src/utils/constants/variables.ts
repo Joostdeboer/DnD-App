@@ -19,7 +19,13 @@ export const KEYS_TO_IGNORE = ['_id', '_createdAt', '_updatedAt', '_type', 'defa
 
 export type ProductTypes = (typeof PRODUCT_TYPES)[number];
 
-export const sortingToIndexes = [
+export interface SortingRecord {
+    name: string;
+    slug: string;
+    key: string;
+}
+
+export const sortingToIndexes: SortingRecord[] = [
     {
         name: 'Name',
         slug: 'name',
