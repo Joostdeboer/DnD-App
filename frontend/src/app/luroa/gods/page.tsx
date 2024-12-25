@@ -11,7 +11,6 @@ export default async function Gods({ searchParams }: { searchParams: Record<stri
     // important to note: https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#step-6-migrating-data-fetching-methods
     // https://github.com/vercel/next.js/tree/canary/examples/cms-sanity
 
-    // TODO: add mapping to these records to get the product? or get it as derived value from the key
     const sortingRecords: SortingRecord[] = [{ name: 'Title', key: 'information.basics.titles', slug: 'titles' }];
     const gods = await runQuery(
         godsQuery({ sorting: searchParams.sort, direction: searchParams.sortDir, sortingRecords }),

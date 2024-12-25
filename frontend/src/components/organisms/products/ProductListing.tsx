@@ -77,9 +77,17 @@ export function ProductListing({
                         {sortingRecords &&
                             sortingRecords.length > 0 &&
                             sortingRecords.map((record) => {
-                                // TODO: get this value dynamically from the key
-                                const productValue = product.information?.basics?.titles ?? '-';
-                                return <TableBodyCell key={record.key}>{productValue}</TableBodyCell>;
+                                // reduce the property from a path in the object to an interpretable value in the object
+                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                const productValue = record.key.split('.').reduce((result: any, path) => {
+                                    if (path === '' || !result || typeof result === 'string') return;
+                                    return result[path as keyof Product];
+                                }, product as string | Product);
+                                return (
+                                    <TableBodyCell key={record.key}>
+                                        {typeof productValue === 'string' ? productValue : '-'}
+                                    </TableBodyCell>
+                                );
                             })}
                         <TableBodyCell>{formatDate(product._createdAt)}</TableBodyCell>
                         <TableBodyCell>{formatDate(product._updatedAt)}</TableBodyCell>

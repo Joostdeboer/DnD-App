@@ -1,3 +1,5 @@
+import { PathsToProps, Product } from '@/src/types/generic';
+
 export const PRODUCT_TYPES = [
     'artwork',
     'city',
@@ -22,7 +24,7 @@ export type ProductTypes = (typeof PRODUCT_TYPES)[number];
 export interface SortingRecord {
     name: string;
     slug: string;
-    key: string;
+    key: PathsToProps<Product, string | Date>;
 }
 
 export const sortingToIndexes: SortingRecord[] = [
