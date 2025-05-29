@@ -6,6 +6,8 @@ export default defineType({
     title: 'Region',
     type: 'document',
     icon: ImageIcon,
+    description:
+        'A place that is a collection of locations, whether that is a country made up of cities, a stretch of lands filled with landmarks, or a wide stretch of sea. Gulfs and Bays are included here, and so are deserts or mountain ranges if you refer to their entirety as a place filled with locations',
     fields: [
         {
             name: 'defaultAttributes',
@@ -55,12 +57,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

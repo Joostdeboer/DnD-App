@@ -6,6 +6,8 @@ export default defineType({
     title: 'Plane',
     type: 'document',
     icon: EarthAmericasIcon,
+    description:
+        'A grouping of locations where people live. A realm, demiplane, subplane, etc. can be meant here, like the Plane of Fire, Shadow Realm, etc.',
     fields: [
         {
             name: 'defaultAttributes',
@@ -50,12 +52,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

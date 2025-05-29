@@ -6,6 +6,7 @@ export default defineType({
     title: 'Person',
     type: 'document',
     icon: UserIcon,
+    description: 'A person that is either a PC or NPC, located in a city, at a landmark, or part of an organization',
     fields: [
         {
             name: 'defaultAttributes',
@@ -50,12 +51,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

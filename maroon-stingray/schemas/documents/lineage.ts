@@ -6,6 +6,8 @@ export default defineType({
     title: 'Lineage',
     type: 'document',
     icon: UsersIcon,
+    description:
+        'A race or species that can be either played, or found in the world. Ranges from existing ones such as Humans, to custom ones, like the Avior, or generic alternatives like Vampires or Werewolves',
     fields: [
         {
             name: 'defaultAttributes',
@@ -50,12 +52,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

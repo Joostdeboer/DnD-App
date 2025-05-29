@@ -6,6 +6,8 @@ export default defineType({
     title: 'Landmark',
     type: 'document',
     icon: MarkerIcon,
+    description:
+        'A special location that has special properties or historical connotation, such as the Auroran Wall, Tricrater Lake, etc.',
     fields: [
         {
             name: 'defaultAttributes',
@@ -40,12 +42,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

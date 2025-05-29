@@ -6,6 +6,7 @@ export default defineType({
     title: 'Artwork',
     type: 'document',
     icon: ImageIcon,
+    description: 'Anything from a painting, drawings, videos, or other media made of the world',
     fields: [
         {
             name: 'defaultAttributes',
@@ -25,12 +26,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

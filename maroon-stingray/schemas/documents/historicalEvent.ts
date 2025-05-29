@@ -6,6 +6,8 @@ export default defineType({
     title: 'Historical Event',
     type: 'document',
     icon: CalendarIcon,
+    description:
+        'A moment in time that would be remembered in history, or be written about in historical texts. For example, a battle, victory over an enemy, eradication of a particular monster type, etc.',
     fields: [
         {
             name: 'defaultAttributes',
@@ -40,12 +42,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

@@ -6,6 +6,7 @@ export default defineType({
     title: 'Entity',
     type: 'document',
     icon: ListIcon,
+    description: 'A sword, piece of armor, magic item (cursed or not), etc.',
     fields: [
         {
             name: 'defaultAttributes',
@@ -35,12 +36,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

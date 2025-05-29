@@ -6,6 +6,8 @@ export default defineType({
     title: 'City',
     type: 'document',
     icon: HomeIcon,
+    description:
+        'A town, city, village, capital or otherwise interesting location that holds people or a gathering of creatures',
     fields: [
         {
             name: 'defaultAttributes',
@@ -50,12 +52,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

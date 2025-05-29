@@ -6,6 +6,8 @@ export default defineType({
     title: 'Writing',
     type: 'document',
     icon: BookIcon,
+    description:
+        'A custom piece of writing telling a story about the world. This may include poems, myths, short stories, or similar pieces of writing',
     fields: [
         {
             name: 'defaultAttributes',
@@ -38,12 +40,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

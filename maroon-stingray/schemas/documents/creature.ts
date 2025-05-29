@@ -6,6 +6,8 @@ export default defineType({
     title: 'Creature',
     type: 'document',
     icon: ActivityIcon,
+    description:
+        'Any monstrous or normal creature that might roam the lands. From special animals, to beasts, to monsters and aberrations',
     fields: [
         {
             name: 'defaultAttributes',
@@ -70,12 +72,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

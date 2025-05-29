@@ -6,6 +6,7 @@ export default defineType({
     title: 'Concept',
     type: 'document',
     icon: BulbOutlineIcon,
+    description: 'Anything from "How Magic Works", "Religious Beliefs" or "Dungeon Creation"',
     fields: [
         {
             name: 'defaultAttributes',
@@ -40,12 +41,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

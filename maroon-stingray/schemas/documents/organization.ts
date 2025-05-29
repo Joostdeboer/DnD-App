@@ -6,6 +6,8 @@ export default defineType({
     title: 'Organization',
     type: 'document',
     icon: HomeIcon,
+    description:
+        'Anything that groups people together under a common belief, whether that is religious, commercial partnership, or otherwise',
     fields: [
         {
             name: 'defaultAttributes',
@@ -45,12 +47,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

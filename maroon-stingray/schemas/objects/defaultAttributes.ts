@@ -26,11 +26,14 @@ export default defineType({
         {
             name: 'shortDescription',
             title: 'Short Description',
+            description: 'A short description, meant for being displayed in the search bar',
             type: 'content',
         },
         {
             name: 'altNames',
             title: 'Alt Names',
+            description:
+                'A list of alternative names that can be searched for, or which have to redirect to the main page',
             type: 'array',
             of: [
                 {
@@ -43,6 +46,7 @@ export default defineType({
         {
             name: 'image',
             title: 'Image',
+            description: "Image to be shown on the overview list, or as the main image on the item's page",
             type: 'image',
         },
         {

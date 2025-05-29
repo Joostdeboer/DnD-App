@@ -6,6 +6,7 @@ export default defineType({
     title: 'Flora',
     type: 'document',
     icon: BugIcon,
+    description: 'Any plant, tree, moss, fungi, etc. that might be found in the world',
     fields: [
         {
             name: 'defaultAttributes',
@@ -45,12 +46,12 @@ export default defineType({
     ],
     preview: {
         select: {
-            name: 'name',
+            defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { name?: string }) {
-            const { name } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },

@@ -6,6 +6,8 @@ export default defineType({
     title: 'God',
     type: 'document',
     icon: UserIcon,
+    description:
+        'Any god or demigod that would be part of the pantheon. Includes lesser, but still powerful, entities as well, such as Charybdis',
     fields: [
         {
             name: 'defaultAttributes',
@@ -52,12 +54,10 @@ export default defineType({
         select: {
             defaultAttributes: 'defaultAttributes',
         },
-        prepare(selection: { defaultAttributes?: { name?: string }; title?: string }) {
-            const {
-                defaultAttributes: { name },
-            } = selection;
+        prepare(selection: { defaultAttributes?: { name?: string } }) {
+            const { defaultAttributes } = selection;
             return {
-                title: name ?? 'Unknown',
+                title: defaultAttributes?.name ?? 'Unknown',
             };
         },
     },
