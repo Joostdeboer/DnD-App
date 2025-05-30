@@ -2,6 +2,8 @@ import { runQuery } from '@/src/configs/sanityConfig';
 import { GenericProductPage } from '@/src/components/templates/GenericProductPage';
 import { specificCityQuery } from '@/src/groqd/queries/products/cities';
 
+export const revalidate = 1000;
+
 export default async function City({ params }: { params: Promise<{ city: string }> }) {
     const { city: cityParam } = await params;
     if (!cityParam) return <div>Loading...</div>;

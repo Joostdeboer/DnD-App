@@ -5,6 +5,8 @@ import { Heading } from '@/src/components/atoms/generic/Heading';
 import { ListingPage } from '@/src/components/templates/ListingPage';
 import { citiesQuery } from '@/src/groqd/queries/products/cities';
 
+export const revalidate = 1000;
+
 export default async function Cities({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
     const { sort, sortDir } = await searchParams;
 
