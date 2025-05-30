@@ -20,9 +20,10 @@ import { getNrOfAttributesForProduct } from '@/src/utils/functions/products';
  */
 export const revalidate = 1000;
 
-export default async function God({ params }: { params: { god: string } }) {
-    if (!params.god) return <div>Loading...</div>;
-    const god = await runQuery(specificGodQuery(params.god), ['god'], { god: params.god });
+export default async function God({ params }: { params: Promise<{ god: string }> }) {
+    const { god: _god } = await params;
+    if (!_god) return <div>Loading...</div>;
+    const god = await runQuery(specificGodQuery(_god), ['god'], { god: _god });
     if (!god) return <div>Loading data...</div>;
 
     const productSectionKeys = Object.keys(god).filter((key) => !KEYS_TO_IGNORE.includes(key));

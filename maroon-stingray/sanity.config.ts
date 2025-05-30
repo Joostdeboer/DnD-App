@@ -1,7 +1,6 @@
 import { defineConfig } from 'sanity';
 import { structureTool, StructureBuilder } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
-import { groqdPlaygroundTool } from 'groqd-playground';
 import { media } from 'sanity-plugin-media';
 
 import { schemaTypes } from './schemas';
@@ -19,7 +18,6 @@ export default defineConfig({
         }),
         media(),
         visionTool(),
-        groqdPlaygroundTool(),
     ],
 
     schema: {

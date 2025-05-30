@@ -1,5 +1,5 @@
 import { HeaderLinkProps } from '@/src/components/atoms/layout/HeaderLink';
-import { Disclosure, Transition } from '@headlessui/react';
+import { Disclosure, Transition, DisclosureButton } from '@headlessui/react';
 import { classNames } from '@/src/utils/functions/classnames';
 import { KeyboardArrowUp } from '@mui/icons-material';
 import Link from 'next/link';
@@ -16,7 +16,7 @@ export function MenuItem(link: HeaderLinkProps) {
                         link.disabled ? 'cursor-not-allowed' : '',
                     ])}
                 >
-                    <Disclosure.Button
+                    <DisclosureButton
                         className={classNames([
                             'flex w-full justify-between focus:outline-none',
                             open ? 'pb-2' : '',
@@ -41,7 +41,7 @@ export function MenuItem(link: HeaderLinkProps) {
                                 {link.name}
                             </Link>
                         )}
-                    </Disclosure.Button>
+                    </DisclosureButton>
                     {link.menuItems?.length && (
                         <Transition
                             enter="transition ease-out duration-500"

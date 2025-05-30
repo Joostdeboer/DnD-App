@@ -7,15 +7,13 @@ import { SortingRecord } from '@/src/utils/constants/variables';
 
 export const revalidate = 1000;
 
-export default async function Gods({ searchParams }: { searchParams: Record<string, string | undefined> }) {
+export default async function Gods({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
     // important to note: https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#step-6-migrating-data-fetching-methods
     // https://github.com/vercel/next.js/tree/canary/examples/cms-sanity
+    const { sort, sortDir } = await searchParams;
 
     const sortingRecords: SortingRecord[] = [{ name: 'Title', key: 'information.basics.titles', slug: 'titles' }];
-    const gods = await runQuery(
-        godsQuery({ sorting: searchParams.sort, direction: searchParams.sortDir, sortingRecords }),
-        ['gods'],
-    );
+    const gods = await runQuery(godsQuery({ sorting: sort, direction: sortDir, sortingRecords }), ['gods']);
 
     return (
         <PageLayout>
