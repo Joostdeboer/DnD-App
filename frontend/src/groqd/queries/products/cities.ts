@@ -1,7 +1,7 @@
 import { q } from 'groqd';
 import { portableTextQuery } from '@/src/groqd/helper/functions';
 import { defaultAttributes, information } from '@/src/groqd/helper/subqueries';
-import { getAllByTypeQuery, getTypeQuery } from '@/src/groqd/queries/products/queries';
+import { AllByTypeSortingInput, getAllByTypeQuery, getTypeQuery } from '@/src/groqd/queries/products/queries';
 
 const City = {
     _id: q.string(),
@@ -18,6 +18,7 @@ const City = {
     organizations: portableTextQuery('organizations').nullable(),
 };
 
-export const citiesQuery = getAllByTypeQuery({ type: 'city', input: City });
+export const citiesQuery = ({ sorting, direction, sortingRecords }: AllByTypeSortingInput) =>
+    getAllByTypeQuery({ type: 'city', input: City, sorting, direction, sortingRecords });
 
 export const specificCityQuery = (name: string) => getTypeQuery({ type: 'city', name, input: City });

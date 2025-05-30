@@ -13,9 +13,13 @@ export default defineType({
             name: 'slug',
             title: 'Slug',
             type: 'slug',
+            validation: (rule) => rule.required(),
             options: {
-                source: 'name',
-                slugify: (input) => input.toLowerCase().replace(/\s+/g, '-'),
+                source: (doc) => (doc.defaultAttributes as { name?: string })?.name ?? doc._id,
+                slugify: (input) => {
+                    console.log({ input });
+                    return input.toLowerCase().replace(/\s+/g, '-');
+                },
             },
         },
         {

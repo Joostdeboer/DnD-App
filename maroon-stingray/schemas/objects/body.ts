@@ -1,5 +1,5 @@
 import internalLink from './internalLink';
-import externalLink from './internalLink';
+import externalLink from './externalLink';
 
 export default {
     name: 'content',

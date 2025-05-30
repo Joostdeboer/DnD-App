@@ -18,7 +18,7 @@ export default async function Gods({ searchParams }: { searchParams: Promise<Rec
     return (
         <PageLayout>
             <Heading>List of Gods</Heading>
-            <ListingPage products={gods} sortingRecords={sortingRecords} />
+            <ListingPage products={gods} sortingRecords={sortingRecords} href="/luroa/gods/" />
         </PageLayout>
     );
 }
