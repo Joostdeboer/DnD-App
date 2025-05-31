@@ -16,7 +16,7 @@ export default async function Cities({ searchParams }: { searchParams: Promise<R
     return (
         <PageLayout>
             <Heading>List of Cities</Heading>
-            <ListingPage products={cities} sortingRecords={sortingRecords} href="/luroa/cities/" />
+            <ListingPage products={cities} sortingRecords={sortingRecords} href="/luroa/codex/cities/" />
         </PageLayout>
     );
 }

@@ -22,6 +22,8 @@ Links:
 ---
 
 ## Feature List:
+- General
+  - [ ] Actual website hosting on e.g. `luroancodex.com`
 - Header/Footer
   - [ ] Add a search bar (only on name/slug)
   - [ ] Add suggested items to the search bar (at most 5 show up as options to click)
@@ -29,23 +31,24 @@ Links:
   - [ ] Add alternative search methods (can search for tags, alt title, other fields). Should also be able to select this on the search results page, so you can more accurately pinpoint what you wanted
   - [ ] Create a logo for the website and use that in the header and footer menus
 - Any content Page
-    - [ ] Integrate a basic listing page that can be re-used across different entries
-    - [ ] Create a basic details page that can be re-used
+    - [x] Integrate a basic listing page that can be re-used across different entries
+    - [x] Create a basic details page that can be re-used
     - [ ] Add the listing page for every possible (sub)page
     - [ ] Add the details page for every possible (sub)page
     - [ ] Scroll to Top button for long pages
     - [ ] Make clickable tag items that are displayed at the top of a content page
       - Clicking the tag makes it search for the tag
-    - [ ] Add a 404 page
+    - [x] Add a 404 page
+    - [ ] Proper page revalidation from sanity/vercel (see TODO's in `[god]/page.tsx`)
 - Home Page
   - [ ] Integrate Sanity page with home page
   - [ ] "Fact of the Day" section with randomization
   - [ ] Recently Updated section on home page
   - [ ] Add content pages for each of the "Read More" sections (content pages, see [Gameplay] below)
 - Artwork
-  - [ ] Create a specific page for displaying artwork 
+  - [ ] Create a specific page for displaying artwork, including its listing page
 - Writing
-  - [ ] Create a specific page for displaying writing as a content
+  - [ ] Create a specific page for displaying writing as a content, including their respective listing pages
 - History
   - [ ] Add a timeline showing the events based on their era. You can select the era on top, and scroll down (or left-right) to go further forward/backward in time
   - [ ] Add links to the relevant details of the event

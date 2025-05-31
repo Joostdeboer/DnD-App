@@ -11,6 +11,9 @@ import { GenericProductPage } from '@/src/components/templates/GenericProductPag
  *  - https://github.com/sanity-io/next-sanity
  *  - https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
  *  - https://github.com/sanity-io/sanity-template-nextjs-clean/tree/main#next-steps?ref=victoreke.com
+ *  - https://www.sanity.io/plugins/next-sanity
+ *  - https://nextjs.org/docs/app/deep-dive/caching
+ *  - https://nextjs.org/docs/pages/building-your-application/data-fetching
  */
 export const revalidate = 1000;
 

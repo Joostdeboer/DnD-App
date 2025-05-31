@@ -59,4 +59,5 @@ export const getTypeQuery = <T extends Selection>({
         .slice(0)
         .grab$({
             ...input,
-        });
+        })
+        .nullable();

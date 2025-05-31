@@ -14,9 +14,17 @@ export function GenericProductPage({
         defaultAttributes?: DefaultAttributesType | null;
         information?: InformationType;
         _updatedAt?: Date;
-    };
+    } | null;
 }) {
-    if (!product) return <div>Loading data...</div>;
+    if (product === null) {
+        return (
+            <Text>
+                This entry does not exist (yet?) in the database. Please try a different entry, or if you are sure it
+                should exist, send me a message!
+            </Text>
+        );
+    }
+    if (!product) return <Text>Loading data...</Text>;
 
     const productSectionKeys = Object.keys(product).filter((key) => !KEYS_TO_IGNORE.includes(key));
     const attributeLength = getNrOfAttributesForProduct(product.information);
