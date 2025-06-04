@@ -1,4 +1,4 @@
-import { DefaultAttributesType, InformationType } from '@/src/groqd/types/subqueries';
+import { DefaultAttributes, Information } from '@/src/sanity/types';
 
 const TEXT_SIZES = ['xs', 'sm', 'md', 'lg', 'xl', 'logo'] as const;
 export type TextSizes = (typeof TEXT_SIZES)[number];
@@ -9,8 +9,8 @@ export type HeaderVariants = (typeof HEADER_VARIANTS)[number];
 export interface Product {
     _updatedAt: Date;
     _createdAt: Date;
-    defaultAttributes?: DefaultAttributesType | null;
-    information?: InformationType | null;
+    defaultAttributes?: DefaultAttributes | null;
+    information?: Information | null;
 }
 
 // taken from https://stackoverflow.com/questions/73159893/typescript-string-dot-notation-of-nested-generic-type-that-belongs-to-property-o

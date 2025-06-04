@@ -17,12 +17,15 @@ export function SidebarSection({
     return (
         <section className={classNames([sectionEntries.length > 0 ? 'border-b-2 border-brand-primary-900 pb-2' : ''])}>
             <Text className="text-center pb-2">{title}</Text>
-            {sectionEntries.map(([k, v]) => (
-                <section key={k} className="grid grid-cols-2 pl-2">
-                    <Text size="sm">{titles?.[k] ?? k}</Text>
-                    <Text size="sm">{v}</Text>
-                </section>
-            ))}
+            {sectionEntries.map(([k, v]) => {
+                if (k === '_type') return;
+                return (
+                    <section key={k} className="grid grid-cols-2 pl-2">
+                        <Text size="sm">{titles?.[k] ?? k}</Text>
+                        <Text size="sm">{v}</Text>
+                    </section>
+                );
+            })}
         </section>
     );
 }

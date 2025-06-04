@@ -6,6 +6,7 @@ import { Footer } from '@/src/components/organisms/layout/Footer';
 import { classNames } from '@/src/utils/functions/classnames';
 import { Metadata, Viewport } from 'next';
 import { ClampedWidth } from '@/src/components/atoms/layout/ClampedWidth';
+import { SanityLive } from '@/src/configs/sanityConfig';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     'flex flex-col items-center w-full min-h-screen',
                 ])}
             >
+                <SanityLive />
                 <Header />
                 <ClampedWidth>
                     <main className="flex flex-row items-start min-h-96 px-2 md:px-4 py-4">{children}</main>

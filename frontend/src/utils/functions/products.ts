@@ -1,11 +1,11 @@
-import { InformationType } from '@/src/groqd/types/subqueries';
-import { intlFormat } from 'date-fns';
+import { Information } from '@/src/sanity/types';
+import { intlFormat, IntlFormatFormatOptions, IntlFormatLocaleOptions } from 'date-fns';
 
 /**
  * get the number of attributes that are added to the product page
  * @param information
  */
-export function getNrOfAttributesForProduct(information?: InformationType) {
+export function getNrOfAttributesForProduct(information?: Information) {
     let attributeLength = 0;
     if (information) {
         Object.keys(information).forEach((key) => {
@@ -15,13 +15,17 @@ export function getNrOfAttributesForProduct(information?: InformationType) {
     return attributeLength;
 }
 
-export function formatDate(date: Date) {
+export function formatDate(
+    date: Date,
+    options?: { formatOptions?: IntlFormatFormatOptions; localeOptions?: IntlFormatLocaleOptions },
+) {
     return intlFormat(
         date,
         {
             hourCycle: 'h24',
             dateStyle: 'long',
+            ...options?.formatOptions,
         },
-        { locale: 'en-En' },
+        { locale: 'en-En', ...options?.localeOptions },
     );
 }

@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
-import { DefaultAttributesType } from '@/src/groqd/types/subqueries';
 import { Heading } from '@/src/components/atoms/generic/Heading';
 import { Text } from '@/src/components/atoms/generic/Text';
 import { MappedPortableText } from '@/src/components/atoms/generic/MappedPortableText';
 import { Divider } from '@/src/components/atoms/generic/Divider';
 import { PortableTextSection } from '@/src/components/molecules/products/PortableTextSection';
+import { DefaultAttributes } from '@/src/sanity/types';
+import { formatDate } from '@/src/utils/functions/products';
 
 export function ProductTemplate({
     children,
@@ -12,16 +13,18 @@ export function ProductTemplate({
     updatedAt,
 }: {
     children?: ReactNode;
-    defaultAttributes?: DefaultAttributesType;
-    updatedAt?: Date;
+    defaultAttributes?: DefaultAttributes;
+    updatedAt?: string;
 }) {
     return (
         <section className="flex flex-col">
             <section className="flex flex-col gap-2 items-center md:items-start">
                 <Heading size="lg">{defaultAttributes?.name}</Heading>
-                <Text size="sm" className="italic" isMuted>
-                    Last updated at: {updatedAt?.toLocaleString()}
-                </Text>
+                {updatedAt && (
+                    <Text size="sm" className="italic" isMuted>
+                        Last updated at: {formatDate(new Date(updatedAt), { formatOptions: { timeStyle: 'short' } })}
+                    </Text>
+                )}
                 {defaultAttributes?.altNames && <Text>Also known by: {defaultAttributes.altNames.join(' ')}</Text>}
                 {defaultAttributes?.tags && (
                     <section className="flex flex-row gap-2 items-center">

@@ -1,7 +1,7 @@
 import { PageLayout } from '@/src/components/templates/PageLayout';
 import { ReactNode } from 'react';
 import { Sidebar } from '@/src/components/organisms/layout/Sidebar';
-import { DefaultAttributesType, InformationType } from '@/src/groqd/types/subqueries';
+import { DefaultAttributes, Information } from '@/src/sanity/types';
 
 export function SidebarPageLayout({
     children,
@@ -11,8 +11,8 @@ export function SidebarPageLayout({
 }: {
     children: ReactNode;
     className?: string;
-    information?: InformationType;
-    defaultAttributes?: DefaultAttributesType;
+    information?: Information;
+    defaultAttributes?: DefaultAttributes;
 }) {
     return (
         <PageLayout className={className}>

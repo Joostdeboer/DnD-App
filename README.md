@@ -75,6 +75,10 @@ Links:
   - [ ] Add a toggle for showing region borders
   - [ ] Add a toggle to show rough time zones
 
+## Bugs
+- [ ] header links don't disappear when clicking out of the menu
+- [ ] sorting icons don't change color when switching directions
+
 ---
 
 ## How to use

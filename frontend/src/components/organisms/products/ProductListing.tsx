@@ -3,10 +3,10 @@ import { classNames } from '@/src/utils/functions/classnames';
 import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
 import { Image } from '@/src/components/atoms/generic/Image';
 import { ReactNode } from 'react';
-import { Product } from '@/src/types/generic';
 import { formatDate } from '@/src/utils/functions/products';
 import { TableHeaderCell } from '@/src/components/molecules/products/TableHeaderCell';
 import { SortingRecord } from '@/src/utils/constants/variables';
+import { AllProductsFromTypeResult } from '@/src/sanity/types';
 
 function TableBodyCell({ children, className }: { children: ReactNode; className?: string }) {
     return <div className={classNames(['table-cell text-sm align-middle p-2', className])}>{children}</div>;
@@ -17,7 +17,7 @@ export function ProductListing({
     sortingRecords,
     link,
 }: {
-    products: Product[];
+    products: AllProductsFromTypeResult;
     link: string;
     sortingRecords?: SortingRecord[];
 }) {
@@ -63,7 +63,7 @@ export function ProductListing({
                                 {product.defaultAttributes?.image ? (
                                     <Image
                                         alt={product.defaultAttributes.slug?.current ?? ''}
-                                        src={product.defaultAttributes.image.asset.url}
+                                        image={product.defaultAttributes.image}
                                         width={50}
                                         height={50}
                                         className="rounded-full object-cover !w-5 !h-5 border border-brand-primary-500"
@@ -78,19 +78,20 @@ export function ProductListing({
                             sortingRecords.length > 0 &&
                             sortingRecords.map((record) => {
                                 // reduce the property from a path in the object to an interpretable value in the object
+                                // TODO: fix 'any'?
                                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                const productValue = record.key.split('.').reduce((result: any, path) => {
+                                const productValue = record.key.split('.').reduce((result: any, path: any) => {
                                     if (path === '' || !result || typeof result === 'string') return;
-                                    return result[path as keyof Product];
-                                }, product as string | Product);
+                                    return result[path as keyof AllProductsFromTypeResult[number]];
+                                }, product as string | AllProductsFromTypeResult[number]);
                                 return (
                                     <TableBodyCell key={record.key}>
                                         {typeof productValue === 'string' ? productValue : '-'}
                                     </TableBodyCell>
                                 );
                             })}
-                        <TableBodyCell>{formatDate(product._createdAt)}</TableBodyCell>
-                        <TableBodyCell>{formatDate(product._updatedAt)}</TableBodyCell>
+                        <TableBodyCell>{formatDate(new Date(product._createdAt))}</TableBodyCell>
+                        <TableBodyCell>{formatDate(new Date(product._updatedAt))}</TableBodyCell>
                     </Link>
                 ))}
             </div>

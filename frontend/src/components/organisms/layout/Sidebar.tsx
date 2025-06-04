@@ -1,21 +1,21 @@
-import { runQuery } from '@/src/configs/sanityConfig';
-import { documentSettingsQuery } from '@/src/groqd/queries/pages/queries';
-import { DefaultAttributesType, InformationType } from '@/src/groqd/types/subqueries';
 import { Image } from '@/src/components/atoms/generic/Image';
 import { Text } from '@/src/components/atoms/generic/Text';
 import { Heading } from '@/src/components/atoms/generic/Heading';
 import { classNames } from '@/src/utils/functions/classnames';
 import { SidebarSection } from '@/src/components/molecules/layout/SidebarSection';
 import { getNrOfAttributesForProduct } from '@/src/utils/functions/products';
+import { DefaultAttributes, Information } from '@/src/sanity/types';
+import { sanityFetch } from '@/src/configs/sanityConfig';
+import { documentSettings } from '@/src/queries/pages/queries';
 
 export async function Sidebar({
     defaultAttributes,
     information,
 }: {
-    defaultAttributes?: DefaultAttributesType;
-    information?: InformationType;
+    defaultAttributes?: DefaultAttributes;
+    information?: Information;
 }) {
-    const sidebarTexts = await runQuery(documentSettingsQuery(), ['sidebar']);
+    const { data: sidebarTexts } = await sanityFetch({ query: documentSettings }); // runQuery(documentSettingsQuery(), ['sidebar']);
     const attributeLength = getNrOfAttributesForProduct(information);
 
     return (
@@ -34,9 +34,9 @@ export async function Sidebar({
                         </Text>
                     )}
                 </section>
-                {defaultAttributes?.image?.asset.url && (
+                {defaultAttributes?.image?.asset && (
                     <Image
-                        src={defaultAttributes?.image?.asset.url}
+                        image={defaultAttributes?.image}
                         alt={defaultAttributes?.name ?? 'god'}
                         width={1000}
                         height={1000}
@@ -50,12 +50,13 @@ export async function Sidebar({
             {information &&
                 Object.keys(information).map((k) => {
                     const key = k as keyof typeof information;
+                    if (key === '_type') return;
                     return (
                         <SidebarSection
                             key={key}
                             section={information[key]}
-                            title={sidebarTexts.informationCategories?.[key]}
-                            titles={sidebarTexts.information?.[key]}
+                            title={sidebarTexts?.informationCategories?.[key]}
+                            titles={sidebarTexts?.information?.[key]}
                         />
                     );
                 })}

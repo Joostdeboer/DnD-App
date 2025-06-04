@@ -2,18 +2,18 @@ import { SidebarPageLayout } from '@/src/components/templates/SidebarPageLayout'
 import { ProductTemplate } from '@/src/components/templates/ProductTemplate';
 import { PortableTextSection } from '@/src/components/molecules/products/PortableTextSection';
 import { KEYS_TO_IGNORE } from '@/src/utils/constants/variables';
-import { PortableTextGroqd } from '@/src/groqd/types/functions';
 import { Text } from '@/src/components/atoms/generic/Text';
 import { getNrOfAttributesForProduct } from '@/src/utils/functions/products';
-import { DefaultAttributesType, InformationType } from '@/src/groqd/types/subqueries';
+import { DefaultAttributes, Information } from '@/src/sanity/types';
+import { PortableTextBlock } from '@sanity/types';
 
 export function GenericProductPage({
     product,
 }: {
     product?: {
-        defaultAttributes?: DefaultAttributesType | null;
-        information?: InformationType;
-        _updatedAt?: Date;
+        defaultAttributes?: DefaultAttributes;
+        information?: Information;
+        _updatedAt?: string;
     } | null;
 }) {
     if (product === null) {
@@ -38,7 +38,7 @@ export function GenericProductPage({
                             key={key}
                             // we know from filtering out the KEYS_TO_IGNORE that we are always left with a portable text entry
                             productSection={
-                                (product[key as keyof typeof product] as PortableTextGroqd | null) ?? undefined
+                                (product[key as keyof typeof product] as PortableTextBlock | null) ?? undefined
                             }
                             title={String(key).charAt(0).toUpperCase() + String(key).slice(1)}
                         />

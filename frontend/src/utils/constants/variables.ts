@@ -1,4 +1,8 @@
-import { PathsToProps, Product } from '@/src/types/generic';
+import { PathsToProps } from '@/src/types/generic';
+import { AllProductsFromTypeResult } from '@/src/sanity/types';
+
+export const WRITING_TYPES = ['story', 'poem', 'myth'] as const;
+export type WritingTypes = (typeof WRITING_TYPES)[number];
 
 export const PRODUCT_TYPES = [
     'artwork',
@@ -17,14 +21,14 @@ export const PRODUCT_TYPES = [
     'region',
     'writing',
 ] as const;
-export const KEYS_TO_IGNORE = ['_id', '_createdAt', '_updatedAt', '_type', 'defaultAttributes', 'information'];
-
 export type ProductTypes = (typeof PRODUCT_TYPES)[number];
+
+export const KEYS_TO_IGNORE = ['_id', '_createdAt', '_updatedAt', '_type', 'defaultAttributes', 'information', '_rev'];
 
 export interface SortingRecord {
     name: string;
     slug: string;
-    key: PathsToProps<Product, string | Date>;
+    key: PathsToProps<AllProductsFromTypeResult[number], string | Date>;
 }
 
 export const sortingToIndexes: SortingRecord[] = [

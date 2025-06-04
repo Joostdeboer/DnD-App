@@ -1,13 +1,17 @@
-import { runQuery } from '@/src/configs/sanityConfig';
+import { sanityFetch } from '@/src/configs/sanityConfig';
 import { GenericProductPage } from '@/src/components/templates/GenericProductPage';
-import { specificCityQuery } from '@/src/groqd/queries/products/cities';
 
-export const revalidate = 1000;
+import { specificTypePageQuery } from '@/src/queries/products/queries';
 
 export default async function City({ params }: { params: Promise<{ city: string }> }) {
     const { city: cityParam } = await params;
-    if (!cityParam) return <div>Loading...</div>;
-    const city = await runQuery(specificCityQuery(cityParam), ['city'], { city: cityParam });
+    const { data: city } = await sanityFetch({
+        query: specificTypePageQuery,
+        params: {
+            type: 'city',
+            name: cityParam,
+        },
+    });
 
     return <GenericProductPage product={city} />;
 }

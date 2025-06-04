@@ -1,24 +1,43 @@
 import NextImage, { ImageProps } from 'next/image';
 import { classNames } from '@/src/utils/functions/classnames';
+import { urlFor } from '@/src/configs/image';
+import { internalGroqTypeReferenceTo, SanityImageCrop, SanityImageHotspot } from '@/src/sanity/types';
 
-export function Image({ src, alt, width, height, className, ...rest }: Omit<ImageProps, 'src'> & { src: string }) {
-    const url = src ? new URL(src) : undefined;
+export interface SanityImage {
+    asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+}
 
-    // url?.searchParams.append('fm', 'webp');
-    // if (typeof height === 'number') {
-    //     url?.searchParams.append('h', height.toString());
-    // }
-    //
-    // if (typeof width === 'number') {
-    //     url?.searchParams.append('w', width.toString());
-    // }
+export function Image({
+    image,
+    alt,
+    width,
+    height,
+    className,
+    ...rest
+}: Omit<ImageProps, 'src'> & { image: SanityImage }) {
+    const formattedImage = urlFor(image).auto('format');
+    if (width) {
+        formattedImage.width(typeof width !== 'number' ? parseInt(width) : width);
+    }
+    if (height) {
+        formattedImage.height(typeof height !== 'number' ? parseInt(height) : height);
+    }
 
     return (
         <NextImage
             className={classNames(['w-auto h-auto', className])}
             width={width}
             height={height}
-            src={url?.toString() ?? ''}
+            src={formattedImage.url()}
             alt={alt}
             {...rest}
         />

@@ -11,7 +11,9 @@
     "deploy": "sanity deploy",
     "run": "sanity build && sanity start",
     "cors:add": "sanity cors add",
-    "deploy-graphql": "sanity graphql deploy"
+    "deploy-graphql": "sanity graphql deploy",
+    "typegen": "sanity schema extract --path=./../frontend/src/sanity/extract.json && sanity typegen generate",
+    "type-check": "tsc --project tsconfig.json --noEmit"
   },
   "keywords": [
     "sanity"

@@ -1,6 +1,6 @@
-import { runQuery } from '@/src/configs/sanityConfig';
-import { specificGodQuery } from '@/src/groqd/queries/products/gods';
 import { GenericProductPage } from '@/src/components/templates/GenericProductPage';
+import { sanityFetch } from '@/src/configs/sanityConfig';
+import { specificTypePageQuery } from '@/src/queries/products/queries';
 
 /**
  * TODO: figure out how to do proper revalidation
@@ -14,13 +14,21 @@ import { GenericProductPage } from '@/src/components/templates/GenericProductPag
  *  - https://www.sanity.io/plugins/next-sanity
  *  - https://nextjs.org/docs/app/deep-dive/caching
  *  - https://nextjs.org/docs/pages/building-your-application/data-fetching
+ *
+ *  https://www.sanity.io/learn/course/content-driven-web-application-foundations/fetch-sanity-content
+ *  https://www.sanity.io/learn/course/controlling-cached-content-in-next-js/debugging-caching-in-development
  */
-export const revalidate = 1000;
 
 export default async function God({ params }: { params: Promise<{ god: string }> }) {
     const { god: godParam } = await params;
     if (!godParam) return <div>Loading...</div>;
-    const god = await runQuery(specificGodQuery(godParam), ['god'], { god: godParam });
+    const { data: god } = await sanityFetch({
+        query: specificTypePageQuery,
+        params: {
+            type: 'god',
+            name: godParam,
+        },
+    });
 
     return <GenericProductPage product={god} />;
 }

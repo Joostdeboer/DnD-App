@@ -1,33 +1,19 @@
 import 'server-only';
-import { createClient, type ClientConfig, type QueryParams } from '@sanity/client';
-import { makeSafeQueryRunner } from 'groqd';
-import { SANITY_PROJECT_ID } from '@/src/utils/constants/config';
+import { createClient, type ClientConfig } from '@sanity/client';
+import { SANITY_DATASET, SANITY_PROJECT_ID } from '@/src/utils/constants/config';
+import { defineLive } from 'next-sanity';
 
 const config: ClientConfig = {
     projectId: SANITY_PROJECT_ID,
-    dataset: 'production',
+    dataset: SANITY_DATASET,
     apiVersion: 'v2021-06-07',
-    useCdn: false,
-    token: process.env.SANITY_ACCESS_TOKEN,
+    useCdn: true,
 };
 
 export const sanityClient = createClient(config);
 
-export async function sanityFetch<QueryResponse>({
-    query,
-    qParams,
-    tags,
-}: {
-    query: string;
-    qParams?: QueryParams;
-    tags: string[];
-}): Promise<QueryResponse> {
-    return sanityClient.fetch<QueryResponse>(query, qParams ?? [], {
-        cache: 'force-cache',
-        next: { tags },
-    });
-}
-
-export const runQuery = makeSafeQueryRunner((query: string, tags: string[], qParams?: QueryParams) =>
-    sanityFetch({ query, qParams, tags }),
-);
+export const { sanityFetch, SanityLive } = defineLive({
+    client: sanityClient,
+    serverToken: process.env.SANITY_API_READ_TOKEN,
+    browserToken: process.env.SANITY_API_READ_TOKEN,
+});

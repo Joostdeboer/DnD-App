@@ -4,18 +4,17 @@ import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { Image } from '@/src/components/atoms/generic/Image';
-import { PortableTextGroqd } from '@/src/groqd/types/functions';
 
 const PortableTextComponents = (): Partial<PortableTextReactComponents> => ({
     types: {
         image: (props) => {
-            if (props.value.asset.url) {
+            if (props.value.asset) {
                 return (
                     <Image
                         className="w-auto h-auto"
                         width={200}
                         height={200}
-                        src={props.value.asset.url}
+                        image={props.value}
                         alt={props.value.asset.altText}
                         priority={true}
                     />
@@ -77,7 +76,7 @@ export function MappedPortableText({
     useDarkMode = true,
     className,
 }: {
-    value: PortableTextProps['value'] | PortableTextGroqd;
+    value: PortableTextProps['value'];
     className?: string;
     useDarkMode?: boolean;
 }) {
