@@ -24,6 +24,7 @@ Links:
 ## Feature List:
 - General
   - [ ] Actual website hosting on e.g. `luroancodex.com`
+  - [ ] upgrade tailwind https://tailwindcss.com/docs/upgrade-guide
 - Header/Footer
   - [ ] Add a search bar (only on name/slug)
   - [ ] Add suggested items to the search bar (at most 5 show up as options to click)
@@ -76,8 +77,8 @@ Links:
   - [ ] Add a toggle to show rough time zones
 
 ## Bugs
-- [ ] header links don't disappear when clicking out of the menu
-- [ ] sorting icons don't change color when switching directions
+- [ ] header links don't disappear when clicking out of the menu (below it or within the "main body")
+- [ ] sorting icons don't change color when switching directions on light mode variant
 
 ---
 
