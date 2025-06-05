@@ -8,6 +8,18 @@ Links:
 - https://www.sanity.io/blog/build-your-own-blog-with-sanity-and-next-js
 - https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/How-to-publish-GitHub-Actions-artifacts-example
 - (Sanity documents) https://schema.club/ePGeH9xU
+- https://nextjs.org/docs/14/pages/building-your-application/data-fetching/incremental-static-regeneration
+- https://nextjs.org/docs/app/api-reference/functions/revalidatePath
+- https://victoreke.com/blog/sanity-webhooks-and-on-demand-revalidation-in-nextjs
+- https://www.sanity.io/learn/track/work-ready-next-js?ref=live
+- https://github.com/sanity-io/next-sanity
+- https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration
+- https://github.com/sanity-io/sanity-template-nextjs-clean/tree/main#next-steps?ref=victoreke.com
+- https://www.sanity.io/plugins/next-sanity
+- https://nextjs.org/docs/app/deep-dive/caching
+- https://nextjs.org/docs/pages/building-your-application/data-fetching
+- https://www.sanity.io/learn/course/content-driven-web-application-foundations/fetch-sanity-content
+- https://www.sanity.io/learn/course/controlling-cached-content-in-next-js/debugging-caching-in-development
 
 ## TODOs:
 
@@ -40,7 +52,7 @@ Links:
     - [ ] Make clickable tag items that are displayed at the top of a content page
       - Clicking the tag makes it search for the tag
     - [x] Add a 404 page
-    - [ ] Proper page revalidation from sanity/vercel (see TODO's in `[god]/page.tsx`)
+    - [x] Proper page revalidation from sanity/vercel (see TODO's in `[god]/page.tsx`)
 - Home Page
   - [ ] Integrate Sanity page with home page
   - [ ] "Fact of the Day" section with randomization
@@ -75,6 +87,11 @@ Links:
   - [ ] Add Markers to the interactive map to quickly go to an information point
   - [ ] Add a toggle for showing region borders
   - [ ] Add a toggle to show rough time zones
+- Sanity
+  - [ ] Add a "quote" schema to sanity, and its respective component
+  - [ ] Add a "level-of-details" schema to sanity, and its respective component
+    - a toggle that can show various levels of detail
+  - [ ] Add content input where you can put an image to either the left or the right of text
 
 ## Bugs
 - [ ] header links don't disappear when clicking out of the menu (below it or within the "main body")

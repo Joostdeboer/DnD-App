@@ -78,12 +78,13 @@ export function ProductListing({
                             sortingRecords.length > 0 &&
                             sortingRecords.map((record) => {
                                 // reduce the property from a path in the object to an interpretable value in the object
-                                // TODO: fix 'any'?
-                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                const productValue = record.key.split('.').reduce((result: any, path: any) => {
-                                    if (path === '' || !result || typeof result === 'string') return;
-                                    return result[path as keyof AllProductsFromTypeResult[number]];
-                                }, product as string | AllProductsFromTypeResult[number]);
+                                const productValue = record.key
+                                    .split('.')
+                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                    .reduce((result: any, path: string | keyof AllProductsFromTypeResult[number]) => {
+                                        if (path === '' || !result || typeof result === 'string') return;
+                                        return result[path];
+                                    }, product as string | AllProductsFromTypeResult[number]);
                                 return (
                                     <TableBodyCell key={record.key}>
                                         {typeof productValue === 'string' ? productValue : '-'}
