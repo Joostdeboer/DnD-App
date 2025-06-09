@@ -21,6 +21,6 @@ export function Text({
     const As = as;
     let color = 'text-black';
     if (useDarkMode) color = 'dark:text-white';
-    if (isMuted) color = 'dark:text-brand-neutral-500';
+    if (isMuted) color = 'text-brand-neutral-600 dark:text-brand-neutral-500';
     return <As className={classNames([textSizes[size], color, className])}>{children}</As>;
 }

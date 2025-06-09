@@ -18,7 +18,7 @@ export function GenericProductPage({
 }) {
     if (product === null) {
         return (
-            <Text>
+            <Text isMuted>
                 This entry does not exist (yet?) in the database. Please try a different entry, or if you are sure it
                 should exist, send me a message!
             </Text>

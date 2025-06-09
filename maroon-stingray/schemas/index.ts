@@ -52,7 +52,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
     plane,
     region,
     writing,
-    // objects
+    // entities
     content,
     internalLink,
     externalLink,

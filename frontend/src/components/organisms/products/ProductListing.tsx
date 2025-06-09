@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { classNames } from '@/src/utils/functions/classnames';
 import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
 import { Image } from '@/src/components/atoms/generic/Image';
+import { Text } from '@/src/components/atoms/generic/Text';
 import { ReactNode } from 'react';
 import { formatDate } from '@/src/utils/functions/products';
 import { TableHeaderCell } from '@/src/components/molecules/products/TableHeaderCell';
@@ -21,7 +22,12 @@ export function ProductListing({
     link: string;
     sortingRecords?: SortingRecord[];
 }) {
-    if (products.length === 0) return null;
+    if (products.length === 0)
+        return (
+            <Text isMuted>
+                No articles found for <i>{link}</i>
+            </Text>
+        );
 
     return (
         <div className="table w-full">

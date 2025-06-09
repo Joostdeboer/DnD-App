@@ -1,10 +1,27 @@
-import { Text } from '@/src/components/atoms/generic/Text';
+import { sanityFetch } from '@/src/configs/sanityConfig';
+import { getAllByTypeQuery } from '@/src/queries/products/queries';
+import { PageLayout } from '@/src/components/templates/PageLayout';
+import { Heading } from '@/src/components/atoms/generic/Heading';
+import { ListingPage } from '@/src/components/templates/ListingPage';
 
-export default async function Concepts() {
+export default async function Concepts({
+    searchParams,
+}: {
+    searchParams: Promise<Record<string, string | undefined>>;
+}) {
+    const { sort, sortDir } = await searchParams;
+
+    const { data: concepts } = await sanityFetch({
+        query: getAllByTypeQuery({ sorting: sort, direction: sortDir }),
+        params: {
+            type: 'concept',
+        },
+    });
+
     return (
-        <div>
-            <Text>TODO: Concepts</Text>
-            <Text>Includes things such as languages, schools of magic, etc.</Text>
-        </div>
+        <PageLayout>
+            <Heading>List of Concepts</Heading>
+            <ListingPage products={concepts} href="/luroa/concepts/" />
+        </PageLayout>
     );
 }
