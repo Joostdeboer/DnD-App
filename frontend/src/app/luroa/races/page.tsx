@@ -1,5 +1,3 @@
-import { Text } from '@/src/components/atoms/generic/Text';
-import { SortingRecord } from '@/src/utils/constants/variables';
 import { sanityFetch } from '@/src/configs/sanityConfig';
 import { getAllByTypeQuery } from '@/src/queries/products/queries';
 import { PageLayout } from '@/src/components/templates/PageLayout';
