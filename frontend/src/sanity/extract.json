@@ -944,6 +944,27 @@
           "type": "string"
         }
       },
+      "writingType": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "myth"
+            },
+            {
+              "type": "string",
+              "value": "story"
+            },
+            {
+              "type": "string",
+              "value": "poem"
+            }
+          ]
+        },
+        "optional": true
+      },
       "defaultAttributes": {
         "type": "objectAttribute",
         "value": {
@@ -973,27 +994,6 @@
         "value": {
           "type": "inline",
           "name": "content"
-        },
-        "optional": true
-      },
-      "writingType": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "union",
-          "of": [
-            {
-              "type": "string",
-              "value": "myth"
-            },
-            {
-              "type": "string",
-              "value": "story"
-            },
-            {
-              "type": "string",
-              "value": "poem"
-            }
-          ]
         },
         "optional": true
       }
