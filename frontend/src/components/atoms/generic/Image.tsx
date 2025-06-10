@@ -23,7 +23,7 @@ export function Image({
     height,
     className,
     ...rest
-}: Omit<ImageProps, 'src'> & { image: SanityImage }) {
+}: Omit<ImageProps, 'src'> & { image: SanityImage | string }) {
     const formattedImage = urlFor(image).auto('format');
     if (width) {
         formattedImage.width(typeof width !== 'number' ? parseInt(width) : width);

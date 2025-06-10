@@ -1638,6 +1638,30 @@ export type AllWritingProductsOfTypeResult = Array<
           content?: Content;
       }
 >;
+// Variable: allMedia
+// Query: *[_type == "sanity.imageAsset"]
+export type AllMediaResult = Array<{
+    _id: string;
+    _type: 'sanity.imageAsset';
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    originalFilename?: string;
+    label?: string;
+    title?: string;
+    description?: string;
+    altText?: string;
+    sha1hash?: string;
+    extension?: string;
+    mimeType?: string;
+    size?: number;
+    assetId?: string;
+    uploadId?: string;
+    path?: string;
+    url?: string;
+    metadata?: SanityImageMetadata;
+    source?: SanityAssetSourceData;
+}>;
 
 // Query TypeMap
 import '@sanity/client';
@@ -1648,5 +1672,6 @@ declare module '@sanity/client' {
         '*[_type == $type && writingType == $writingType && defaultAttributes.slug.current == $name][0]': SpecificWritingTypePageQueryResult;
         '*[_type == $type && defined(defaultAttributes.slug.current)]': AllProductsOfTypeResult;
         '*[_type == $type && writingType == $writingType && defined(defaultAttributes.slug.current) ]': AllWritingProductsOfTypeResult;
+        '*[_type == "sanity.imageAsset"]': AllMediaResult;
     }
 }
