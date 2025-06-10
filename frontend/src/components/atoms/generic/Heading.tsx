@@ -10,6 +10,7 @@ export function Heading({
     className,
     asSpan,
     useDarkMode = true,
+    id,
 }: {
     children: ReactNode;
     size?: TextSizes;
@@ -17,6 +18,7 @@ export function Heading({
     className?: string;
     asSpan?: boolean;
     useDarkMode?: boolean;
+    id?: string;
 }) {
     const As = asSpan ? 'span' : sizeToHeading[size];
     return (
@@ -27,6 +29,7 @@ export function Heading({
                 className,
                 'text-black',
             ])}
+            id={id}
         >
             {children}
         </As>

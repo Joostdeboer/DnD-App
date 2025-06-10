@@ -1,7 +1,7 @@
 import { StructureBuilder } from 'sanity/structure';
 import { ComposeIcon } from '@sanity/icons';
 
-const DOCUMENT_LIST: { categoryName: string; fileName: string; title: string }[] = [
+const DOCUMENT_LIST: { categoryName: string; fileName: string; title: string; subType?: string }[] = [
     { categoryName: 'Art', fileName: 'artwork', title: 'Artwork' },
     { categoryName: 'Cities', fileName: 'city', title: 'City' },
     { categoryName: 'Concepts', fileName: 'concept', title: 'Concept' },
@@ -12,13 +12,13 @@ const DOCUMENT_LIST: { categoryName: string; fileName: string; title: string }[]
     { categoryName: 'Historical Events', fileName: 'historicalEvent', title: 'Historical Event' },
     { categoryName: 'Landmarks', fileName: 'landmark', title: 'Landmark' },
     { categoryName: 'Lineages', fileName: 'lineage', title: 'Lineage' },
-    { categoryName: 'Myths', fileName: 'writing', title: 'Myth' },
+    { categoryName: 'Myths', fileName: 'writing', title: 'Myth', subType: 'myth' },
     { categoryName: 'Organizations', fileName: 'organization', title: 'Organization' },
     { categoryName: 'People', fileName: 'person', title: 'Person' },
     { categoryName: 'Planes', fileName: 'plane', title: 'Plane' },
-    { categoryName: 'Poems', fileName: 'writing', title: 'Poem' },
+    { categoryName: 'Poems', fileName: 'writing', title: 'Poem', subType: 'poem' },
     { categoryName: 'Regions', fileName: 'region', title: 'Region' },
-    { categoryName: 'Stories', fileName: 'writing', title: 'Story' },
+    { categoryName: 'Stories', fileName: 'writing', title: 'Story', subType: 'story' },
 ];
 
 export const documentStructure = (S: StructureBuilder) =>
@@ -32,7 +32,14 @@ export const documentStructure = (S: StructureBuilder) =>
                     DOCUMENT_LIST.map((item) =>
                         S.listItem()
                             .title(item.categoryName)
-                            .child(S.documentTypeList(item.fileName).title(item.title)),
+                            .child(
+                                item.subType
+                                    ? S.documentTypeList(item.fileName)
+                                          .filter('writingType == $subType')
+                                          .params({ subType: item.subType })
+                                          .title(item.title)
+                                    : S.documentTypeList(item.fileName).title(item.title),
+                            ),
                     ),
                 ),
         );

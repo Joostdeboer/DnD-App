@@ -6,8 +6,8 @@ import { Text } from '@/src/components/atoms/generic/Text';
 import { ReactNode } from 'react';
 import { formatDate } from '@/src/utils/functions/products';
 import { TableHeaderCell } from '@/src/components/molecules/products/TableHeaderCell';
-import { SortingRecord } from '@/src/utils/constants/variables';
-import { AllProductsFromTypeResult } from '@/src/sanity/types';
+import { SortingRecord, WritingPaths } from '@/src/utils/constants/variables';
+import { AllProductsOfTypeResult } from '@/src/sanity/types';
 
 function TableBodyCell({ children, className }: { children: ReactNode; className?: string }) {
     return <div className={classNames(['table-cell text-sm align-middle p-2', className])}>{children}</div>;
@@ -15,12 +15,14 @@ function TableBodyCell({ children, className }: { children: ReactNode; className
 
 export function ProductListing({
     products,
-    sortingRecords,
     link,
+    sortingRecords,
+    redirectSubType = false,
 }: {
-    products: AllProductsFromTypeResult;
+    products: AllProductsOfTypeResult;
     link: string;
     sortingRecords?: SortingRecord[];
+    redirectSubType?: boolean;
 }) {
     if (products.length === 0)
         return (
@@ -51,7 +53,14 @@ export function ProductListing({
                 {products.map((product) => (
                     <Link
                         key={product.defaultAttributes?.name}
-                        href={link + product.defaultAttributes?.slug?.current}
+                        href={
+                            // we need to grab the specific subpath used to display the writing paths, and insert it between the link and product slug
+                            link +
+                            (redirectSubType && product._type === 'writing' && product.writingType
+                                ? WritingPaths[product.writingType] + '/'
+                                : '') +
+                            product.defaultAttributes?.slug?.current
+                        }
                         className={classNames([
                             'group table-row text-left text-black dark:text-white',
                             'dark:odd:bg-brand-neutral-800 odd:bg-brand-neutral-200',
@@ -87,10 +96,10 @@ export function ProductListing({
                                 const productValue = record.key
                                     .split('.')
                                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                    .reduce((result: any, path: string | keyof AllProductsFromTypeResult[number]) => {
+                                    .reduce((result: any, path: string | keyof AllProductsOfTypeResult[number]) => {
                                         if (path === '' || !result || typeof result === 'string') return;
                                         return result[path];
-                                    }, product as string | AllProductsFromTypeResult[number]);
+                                    }, product as string | AllProductsOfTypeResult[number]);
                                 return (
                                     <TableBodyCell key={record.key}>
                                         {typeof productValue === 'string' ? productValue : '-'}

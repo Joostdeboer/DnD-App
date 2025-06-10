@@ -5,7 +5,7 @@ export default defineType({
     title: 'Default Attributes',
     type: 'object',
     options: {
-        collapsed: true,
+        collapsed: false,
         collapsible: true,
     },
     fields: [

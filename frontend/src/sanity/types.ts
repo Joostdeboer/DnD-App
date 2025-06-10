@@ -173,11 +173,11 @@ export type Writing = {
     _createdAt: string;
     _updatedAt: string;
     _rev: string;
+    writingType?: 'myth' | 'story' | 'poem';
     defaultAttributes?: DefaultAttributes;
     information?: Information;
     description?: Content;
     content?: Content;
-    writingType?: 'myth' | 'story' | 'poem';
 };
 
 export type Region = {
@@ -916,16 +916,301 @@ export type SpecificTypePageQueryResult =
           _createdAt: string;
           _updatedAt: string;
           _rev: string;
+          writingType?: 'myth' | 'poem' | 'story';
           defaultAttributes?: DefaultAttributes;
           information?: Information;
           description?: Content;
           content?: Content;
-          writingType?: 'myth' | 'poem' | 'story';
       }
     | null;
-// Variable: allProductsFromType
+// Variable: specificWritingTypePageQuery
+// Query: *[_type == $type && writingType == $writingType && defaultAttributes.slug.current == $name][0]
+export type SpecificWritingTypePageQueryResult =
+    | {
+          _id: string;
+          _type: 'artwork';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'city';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          society?: Content;
+          government?: Content;
+          districts?: Content;
+          history?: Content;
+          organizations?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'concept';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          history?: Content;
+          variations?: Content;
+          usage?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'creature';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          behavior?: Content;
+          abilities?: Content;
+          ecology?: Content;
+          biology?: Content;
+          combat?: Content;
+          subspecies?: Content;
+          history?: Content;
+          society?: Content;
+          usage?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'documentSettings';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          information?: Information;
+          informationCategories?: {
+              basics?: string;
+              dates?: string;
+              geography?: string;
+              commerce?: string;
+              divinity?: string;
+              history?: string;
+              relations?: string;
+              appearance?: string;
+              membership?: string;
+          };
+      }
+    | {
+          _id: string;
+          _type: 'entity';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          usage?: Content;
+          appearance?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'flora';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          variants?: Content;
+          habitat?: Content;
+          usage?: Content;
+          history?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'god';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          appearance?: Content;
+          teachings?: Content;
+          symbology?: Content;
+          history?: Content;
+          relations?: Content;
+          religion?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'historicalEvent';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          events?: Content;
+          consequences?: Content;
+          etymology?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'landmark';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          history?: Content;
+          geography?: Content;
+          myths?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'lineage';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          appearance?: Content;
+          abilities?: Content;
+          habitat?: Content;
+          cultures?: Content;
+          society?: Content;
+          history?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'media.tag';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          name?: Slug;
+      }
+    | {
+          _id: string;
+          _type: 'organization';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          goals?: Content;
+          baseOfOperations?: Content;
+          history?: Content;
+          activities?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'person';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          appearance?: Content;
+          history?: Content;
+          relationships?: Content;
+          personality?: Content;
+          abilities?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'plane';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          layers?: Content;
+          inhabitants?: Content;
+          history?: Content;
+          cosmography?: Content;
+          locations?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'region';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          geography?: Content;
+          inhabitants?: Content;
+          society?: Content;
+          trade?: Content;
+          history?: Content;
+          notableLocations?: Content;
+      }
+    | {
+          _id: string;
+          _type: 'sanity.fileAsset';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          source?: SanityAssetSourceData;
+      }
+    | {
+          _id: string;
+          _type: 'sanity.imageAsset';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+      }
+    | {
+          _id: string;
+          _type: 'writing';
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          writingType?: 'myth' | 'poem' | 'story';
+          defaultAttributes?: DefaultAttributes;
+          information?: Information;
+          description?: Content;
+          content?: Content;
+      }
+    | null;
+// Variable: allProductsOfType
 // Query: *[_type == $type && defined(defaultAttributes.slug.current)]
-export type AllProductsFromTypeResult = Array<
+export type AllProductsOfTypeResult = Array<
     | {
           _id: string;
           _type: 'artwork';
@@ -1131,15 +1416,15 @@ export type AllProductsFromTypeResult = Array<
           _createdAt: string;
           _updatedAt: string;
           _rev: string;
+          writingType?: 'myth' | 'poem' | 'story';
           defaultAttributes?: DefaultAttributes;
           information?: Information;
           description?: Content;
           content?: Content;
-          writingType?: 'myth' | 'poem' | 'story';
       }
 >;
 // Variable: allWritingProductsOfType
-// Query: *[_type == $type && defined(defaultAttributes.slug.current) && writingType == $writingType]
+// Query: *[_type == $type && writingType == $writingType && defined(defaultAttributes.slug.current) ]
 export type AllWritingProductsOfTypeResult = Array<
     | {
           _id: string;
@@ -1346,11 +1631,11 @@ export type AllWritingProductsOfTypeResult = Array<
           _createdAt: string;
           _updatedAt: string;
           _rev: string;
+          writingType?: 'myth' | 'poem' | 'story';
           defaultAttributes?: DefaultAttributes;
           information?: Information;
           description?: Content;
           content?: Content;
-          writingType?: 'myth' | 'poem' | 'story';
       }
 >;
 
@@ -1360,7 +1645,8 @@ declare module '@sanity/client' {
     interface SanityQueries {
         "*[ _type == 'documentSettings' ][0]{ information, informationCategories }": DocumentSettingsResult;
         '*[_type == $type && defaultAttributes.slug.current == $name][0]': SpecificTypePageQueryResult;
-        '*[_type == $type && defined(defaultAttributes.slug.current)]': AllProductsFromTypeResult;
-        '*[_type == $type && defined(defaultAttributes.slug.current) && writingType == $writingType]': AllWritingProductsOfTypeResult;
+        '*[_type == $type && writingType == $writingType && defaultAttributes.slug.current == $name][0]': SpecificWritingTypePageQueryResult;
+        '*[_type == $type && defined(defaultAttributes.slug.current)]': AllProductsOfTypeResult;
+        '*[_type == $type && writingType == $writingType && defined(defaultAttributes.slug.current) ]': AllWritingProductsOfTypeResult;
     }
 }

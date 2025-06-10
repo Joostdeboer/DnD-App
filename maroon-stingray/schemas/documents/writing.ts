@@ -10,6 +10,15 @@ export default defineType({
         'A custom piece of writing telling a story about the world. This may include poems, myths, short stories, or similar pieces of writing',
     fields: [
         {
+            name: 'writingType',
+            title: 'Writing Type',
+            type: 'string',
+            options: {
+                list: ['myth', 'story', 'poem'],
+            },
+            validation: (rule) => rule.required(),
+        },
+        {
             name: 'defaultAttributes',
             title: 'Default Attributes',
             type: 'defaultAttributes',
@@ -28,14 +37,6 @@ export default defineType({
             name: 'content',
             title: 'Content',
             type: 'content',
-        },
-        {
-            name: 'writingType',
-            title: 'Writing Type',
-            type: 'string',
-            options: {
-                list: ['myth', 'story', 'poem'],
-            },
         },
     ],
     preview: {

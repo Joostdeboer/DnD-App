@@ -6,11 +6,25 @@ import { Text } from '@/src/components/atoms/generic/Text';
 import HomeIcon from '@mui/icons-material/Home';
 import { classNames } from '@/src/utils/functions/classnames';
 import { LINK_CLASSES } from '@/src/components/atoms/generic/Button';
+import { useEffect, useState } from 'react';
 
 export function Breadcrumbs() {
     const pathSegments = usePathname().split('/');
 
     const Divider = () => <span className="text-brand-primary-500 cursor-default">&gt;</span>;
+
+    // because we're accessing the DOM in a client, we need to fetch and wait for it in a useEffect
+    const [_window, setWindowObject] = useState<(Window & typeof globalThis) | null>(null);
+    const [_document, setDocumentObject] = useState<Document | null>(null);
+
+    useEffect(() => {
+        const _window = window;
+        const _document = document;
+        if (_document && _window) {
+            setWindowObject(_window);
+            setDocumentObject(_document);
+        }
+    }, []);
 
     return (
         <nav className={classNames(['flex flex-row gap-2 w-fit justify-center'])}>
@@ -24,9 +38,11 @@ export function Breadcrumbs() {
                 const itemName = item[0].toUpperCase() + item.slice(1);
                 // the final element should not be clickable
                 if (index === pathSegments.length - 1) {
+                    const pageTitle =
+                        _window !== undefined ? _document?.getElementById('pageTitle')?.innerText : undefined;
                     return (
                         <Text key={item} className="!text-brand-primary-600 font-bold underline cursor-default">
-                            {itemName}
+                            {pageTitle ?? itemName}
                         </Text>
                     );
                 }

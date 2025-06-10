@@ -19,7 +19,9 @@ export function ProductTemplate({
     return (
         <section className="flex flex-col">
             <section className="flex flex-col gap-2 items-center md:items-start">
-                <Heading size="lg">{defaultAttributes?.name}</Heading>
+                <Heading size="lg" id="pageTitle">
+                    {defaultAttributes?.name}
+                </Heading>
                 {updatedAt && (
                     <Text size="sm" className="italic" isMuted>
                         Last updated at: {formatDate(new Date(updatedAt), { formatOptions: { timeStyle: 'short' } })}
