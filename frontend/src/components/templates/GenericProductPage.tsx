@@ -6,6 +6,7 @@ import { Text } from '@/src/components/atoms/generic/Text';
 import { getNrOfAttributesForProduct } from '@/src/utils/functions/products';
 import { DefaultAttributes, Information } from '@/src/sanity/types';
 import { PortableTextBlock } from '@sanity/types';
+import { NoProductContentText, NoProductText } from '@/src/components/atoms/generic/NoProductText';
 
 export function GenericProductPage({
     product,
@@ -16,14 +17,7 @@ export function GenericProductPage({
         _updatedAt?: string;
     } | null;
 }) {
-    if (product === null) {
-        return (
-            <Text isMuted>
-                This entry does not exist (yet?) in the database. Please try a different entry, or if you are sure it
-                should exist, send me a message!
-            </Text>
-        );
-    }
+    if (product === null) return <NoProductText />;
     if (!product) return <Text>Loading data...</Text>;
 
     const productSectionKeys = Object.keys(product).filter((key) => !KEYS_TO_IGNORE.includes(key));
@@ -44,10 +38,7 @@ export function GenericProductPage({
                         />
                     ))
                 ) : (
-                    <Text isMuted size="sm" className="italic">
-                        This entry does not contain any information yet. Please be patient while information is being
-                        provided.
-                    </Text>
+                    <NoProductContentText />
                 )}
             </ProductTemplate>
         </SidebarPageLayout>

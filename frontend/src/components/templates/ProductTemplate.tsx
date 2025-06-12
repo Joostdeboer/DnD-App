@@ -17,7 +17,7 @@ export function ProductTemplate({
     updatedAt?: string;
 }) {
     return (
-        <section className="flex flex-col">
+        <section className="flex flex-col w-full pb-8">
             <section className="flex flex-col gap-2 items-center md:items-start">
                 <Heading size="lg" id="pageTitle">
                     {defaultAttributes?.name}

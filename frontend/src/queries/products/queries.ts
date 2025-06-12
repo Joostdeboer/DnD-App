@@ -50,4 +50,4 @@ export const allWritingProductsOfType = defineQuery(
     `*[_type == $type && writingType == $writingType && defined(defaultAttributes.slug.current) ]`,
 );
 
-export const allMedia = defineQuery(`*[_type == "sanity.imageAsset"]`);
+export const specificMedia = defineQuery(`*[_type == "sanity.imageAsset" && _id == $id][0]`);
