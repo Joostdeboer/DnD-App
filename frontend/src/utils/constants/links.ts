@@ -32,17 +32,17 @@ export const HEADERLINKS = [
             { name: 'Myths', href: '/writing/myths' },
             { name: 'Poetry', href: '/writing/poetry' },
             { name: 'Stories', href: '/writing/stories' },
-            {
-                name: 'Media',
-                href: '/writing/media',
-                menuItems: [
-                    { name: 'Art', href: '/writing/media/art' },
-                    { name: 'Comics', href: '/writing/media/comics', disabled: true },
-                    { name: 'Songs', href: '/writing/media/songs', disabled: true },
-                    { name: 'Videos', href: '/writing/media/videos', disabled: true },
-                    { name: 'Games', href: '/writing/media/games', disabled: true },
-                ],
-            },
+        ],
+    },
+    {
+        name: 'Media',
+        href: '/media',
+        menuItems: [
+            { name: 'Art', href: '/media/art' },
+            { name: 'Comics', href: '/media/comics', disabled: true },
+            { name: 'Songs', href: '/media/songs', disabled: true },
+            { name: 'Videos', href: '/media/videos', disabled: true },
+            { name: 'Games', href: '/media/games', disabled: true },
         ],
     },
     {

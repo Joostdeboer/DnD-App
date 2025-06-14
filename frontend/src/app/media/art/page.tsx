@@ -6,8 +6,12 @@ import { Text } from '@/src/components/atoms/generic/Text';
 import { Image } from '@/src/components/atoms/generic/Image';
 import Link from 'next/link';
 
-// TODO: show a listing page like sanity's Media page, or Pinterest's "more art" listing, loading more on scrolling down.
-//  should have only artwork in there, and a way to filter the art. Not like a regular listing page
+/**
+ * TODO:
+ *  - add pagination
+ *  - add overflow to next line
+ *  - add filters?
+ */
 export default async function Art() {
     const { data: artworks } = await sanityFetch({
         query: allProductsOfType,
@@ -29,7 +33,7 @@ export default async function Art() {
                             <Link
                                 className="flex flex-col px-3 pt-3 bg-white rounded-lg"
                                 key={altName}
-                                href={`/writing/media/art/${artwork.defaultAttributes?.slug?.current}`}
+                                href={`/media/art/${artwork.defaultAttributes?.slug?.current}`}
                             >
                                 <Image image={image} alt={altName} width={200} height={200} />
                                 <Text className="py-3" useDarkMode={false}>

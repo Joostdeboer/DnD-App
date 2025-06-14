@@ -1,4 +1,4 @@
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, Transition, Description, DialogTitle, DialogPanel, TransitionChild } from '@headlessui/react';
 import { HEADERLINKS } from '@/src/utils/constants/links';
 import { Close } from '@mui/icons-material';
 import { Fragment } from 'react';
@@ -10,7 +10,7 @@ export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen:
         <Transition as={Fragment} show={isOpen}>
             <Dialog onClose={() => setIsOpen(false)} className="relative">
                 {/* backdrop */}
-                <Transition.Child
+                <TransitionChild
                     as={Fragment}
                     enter="ease-out duration-300"
                     enterFrom="opacity-0"
@@ -20,10 +20,10 @@ export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen:
                     leaveTo="opacity-0"
                 >
                     <span className="fixed inset-0 bg-black/30 z-10" aria-hidden="true" />
-                </Transition.Child>
+                </TransitionChild>
 
                 {/* content */}
-                <Transition.Child
+                <TransitionChild
                     as={Fragment}
                     enter="transform transition ease-in-out duration-500"
                     enterFrom="translate-x-full"
@@ -32,8 +32,8 @@ export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen:
                     leaveFrom="translate-x-0"
                     leaveTo="translate-x-full"
                 >
-                    <Dialog.Panel className="fixed top-0 right-0 flex flex-col w-2/3 h-full p-4 bg-brand-neutral-100 dark:bg-brand-neutral-900 z-20 border-l border-brand-primary-600 overflow-y-auto">
-                        <Dialog.Title className="flex flex-row justify-between">
+                    <DialogPanel className="fixed top-0 right-0 flex flex-col w-2/3 h-full p-4 bg-brand-neutral-100 dark:bg-brand-neutral-900 z-20 border-l border-brand-primary-600 overflow-y-auto">
+                        <DialogTitle className="flex flex-row justify-between">
                             <BrandLogoText size="md" />
                             <button
                                 onClick={() => setIsOpen(false)}
@@ -41,17 +41,17 @@ export function MenuContent({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen:
                             >
                                 <Close />
                             </button>
-                        </Dialog.Title>
-                        <Dialog.Description
+                        </DialogTitle>
+                        <Description
                             className="text-black dark:text-white font-bold border-b border-brand-neutral-500"
                             as="div"
                         >
                             {HEADERLINKS.map((link) => (
                                 <MenuItem key={link.name} {...link} parentOnClose={() => setIsOpen(false)} />
                             ))}
-                        </Dialog.Description>
-                    </Dialog.Panel>
-                </Transition.Child>
+                        </Description>
+                    </DialogPanel>
+                </TransitionChild>
             </Dialog>
         </Transition>
     );

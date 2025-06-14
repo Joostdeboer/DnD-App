@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { KeyboardArrowDown } from '@mui/icons-material';
 import { classNames } from '@/src/utils/functions/classnames';
-import { Popover, Transition } from '@headlessui/react';
+import { Popover, Transition, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { Fragment } from 'react';
 
 export interface HeaderLinkProps {
@@ -37,7 +37,7 @@ export function HeaderLink({
         >
             {({ open, close }) => (
                 <>
-                    <Popover.Button
+                    <PopoverButton
                         className={classNames([
                             'w-full h-full focus:outline-none transition-colors ease-in-out duration-200',
                             isNested
@@ -60,7 +60,7 @@ export function HeaderLink({
                                 ])}
                             />
                         ) : undefined}
-                    </Popover.Button>
+                    </PopoverButton>
                     {menuItems?.length && (
                         <Transition
                             as={Fragment}
@@ -72,7 +72,7 @@ export function HeaderLink({
                             leaveFrom="opacity-100 translate-y-0"
                             leaveTo="opacity-0 translate-y-1"
                         >
-                            <Popover.Panel
+                            <PopoverPanel
                                 className={classNames([
                                     'absolute z-10 transform w-full',
                                     isNested ? 'left-full top-0 ml-1' : 'top-12',
@@ -124,7 +124,7 @@ export function HeaderLink({
                                         );
                                     })}
                                 </div>
-                            </Popover.Panel>
+                            </PopoverPanel>
                         </Transition>
                     )}
                 </>

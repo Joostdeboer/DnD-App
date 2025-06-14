@@ -1,5 +1,5 @@
 import { HeaderLinkProps } from '@/src/components/atoms/layout/HeaderLink';
-import { Disclosure, Transition, DisclosureButton } from '@headlessui/react';
+import { Disclosure, Transition, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { classNames } from '@/src/utils/functions/classnames';
 import { KeyboardArrowUp } from '@mui/icons-material';
 import Link from 'next/link';
@@ -51,7 +51,7 @@ export function MenuItem(link: HeaderLinkProps) {
                             leaveFrom="opacity-100 translate-y-0"
                             leaveTo="opacity-0 -translate-y-1"
                         >
-                            <Disclosure.Panel as="span">
+                            <DisclosurePanel as="span">
                                 {link.menuItems.map((item) => {
                                     return (
                                         <MenuItem
@@ -62,7 +62,7 @@ export function MenuItem(link: HeaderLinkProps) {
                                         />
                                     );
                                 })}
-                            </Disclosure.Panel>
+                            </DisclosurePanel>
                         </Transition>
                     )}
                 </div>
