@@ -27,9 +27,9 @@ Links:
 - [x] Add more content to the sanity studio and see how this affects codegen (and what commands may need to be rerun).
 - [x] Add some simple icons using e.g. https://mui.com/material-ui/material-icons/.
 - [x] Add custom styles (colors + gradients) to tailwind using the "primary", "secondary", etc. styles from work.
-- [ ] Use atomic design folder structure from other project when creating components https://bradfrost.com/blog/post/atomic-web-design/.
-- [ ] Create Figma user flows, designs, etc. and implement them!
-- [ ] Add automatic building of sanity to the pipeline to make changes to prod while changes are made to sanity
+- [x] Use atomic design folder structure from other project when creating components https://bradfrost.com/blog/post/atomic-web-design/.
+- [x] Create Figma user flows, designs, etc. and implement them!
+- [x] Add automatic building of sanity to the pipeline to make changes to prod while changes are made to sanity
 
 ---
 
@@ -46,8 +46,8 @@ Links:
 - Any content Page
     - [x] Integrate a basic listing page that can be re-used across different entries
     - [x] Create a basic details page that can be re-used
-    - [ ] Add the listing page for every possible (sub)page
-    - [ ] Add the details page for every possible (sub)page
+    - [x] Add the listing page for every possible (sub)page
+    - [x] Add the details page for every possible (sub)page
     - [ ] Scroll to Top button for long pages
     - [ ] Make clickable tag items that are displayed at the top of a content page
       - Clicking the tag makes it search for the tag
@@ -59,9 +59,9 @@ Links:
   - [ ] Recently Updated section on home page
   - [ ] Add content pages for each of the "Read More" sections (content pages, see [Gameplay] below)
 - Artwork
-  - [ ] Create a specific page for displaying artwork, including its listing page
+  - [x] Create a specific page for displaying artwork, including its listing page
 - Writing
-  - [ ] Create a specific page for displaying writing as a content, including their respective listing pages
+  - [x] Create a specific page for displaying writing as a content, including their respective listing pages
 - History
   - [ ] Add a timeline showing the events based on their era. You can select the era on top, and scroll down (or left-right) to go further forward/backward in time
   - [ ] Add links to the relevant details of the event
@@ -95,7 +95,7 @@ Links:
 
 ## Bugs
 - [ ] header links don't disappear when clicking out of the menu (below it or within the "main body")
-- [ ] sorting icons don't change color when switching directions on light mode variant
+- [x] sorting icons don't change color when switching directions on light mode variant
 
 ---
 

@@ -40,10 +40,16 @@ export function TableHeaderCell({
                 {children}
                 <div className="flex flex-col">
                     <ArrowDropUp
-                        className={classNames(['-mb-1.5', sortBy === sort && sortDir === 'desc' ? 'text-black' : ''])}
+                        className={classNames([
+                            '-mb-1.5',
+                            sortBy === sort && sortDir === 'desc' ? 'dark:text-black text-white' : '',
+                        ])}
                     />
                     <ArrowDropDown
-                        className={classNames(['-mt-1.5', sortBy === sort && sortDir === 'asc' ? 'text-black' : ''])}
+                        className={classNames([
+                            '-mt-1.5',
+                            sortBy === sort && sortDir === 'asc' ? 'dark:text-black text-white' : '',
+                        ])}
                     />
                 </div>
             </div>
