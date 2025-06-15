@@ -31,17 +31,17 @@ export async function RecentlyUpdatedSection() {
 
                         return (
                             <Link
-                                className="flex flex-row items-start justify-between py-1 mx-2 border-b last:border-b-0"
+                                className="flex flex-row items-start justify-between py-1 border-b last:border-b-0 hover:bg-brand-neutral-200 hover:dark:bg-brand-neutral-700"
                                 key={recentPost.defaultAttributes?.slug?.current}
                                 href={postLink + '/' + recentPost.defaultAttributes?.slug?.current}
                             >
-                                <div className="flex flex-col">
+                                <div className="flex flex-col ml-2">
                                     <Text>{recentPost.defaultAttributes?.name}</Text>
                                     <Text size="sm" className="italic" isMuted>
                                         ({recentPost._type})
                                     </Text>
                                 </div>
-                                <Text size="sm" className="italic">
+                                <Text size="sm" className="italic mr-2">
                                     {formatDate(new Date(recentPost._updatedAt), {
                                         formatOptions: { timeStyle: 'short' },
                                     })}
