@@ -1,32 +1,34 @@
 import { PathsToProps } from '@/src/types/generic';
 import { AllProductsOfTypeResult } from '@/src/sanity/types';
 
-export const WRITING_TYPES = ['story', 'poem', 'myth'] as const;
-export type WritingTypes = (typeof WRITING_TYPES)[number];
-export const WritingPaths: Record<WritingTypes, string> = {
+export enum WRITING_TYPES {
+    STORY = 'story',
+    POEM = 'poem',
+    MYTH = 'myth',
+}
+export const WritingPaths: Record<WRITING_TYPES, string> = {
     story: 'stories',
     poem: 'poetry',
     myth: 'myths',
 };
 
-export const PRODUCT_TYPES = [
-    'artwork',
-    'city',
-    'concept',
-    'creature',
-    'entity',
-    'flora',
-    'god',
-    'historicalEvent',
-    'landmark',
-    'lineage',
-    'organization',
-    'person',
-    'plane',
-    'region',
-    'writing',
-] as const;
-export type ProductTypes = (typeof PRODUCT_TYPES)[number];
+export enum PRODUCT_TYPES {
+    ART = 'artwork',
+    CITY = 'city',
+    CONCEPT = 'concept',
+    CREATURE = 'creature',
+    ENTITY = 'entity',
+    FLORA = 'flora',
+    GOD = 'god',
+    HISTORICAL_EVENT = 'historicalEvent',
+    LANDMARK = 'landmark',
+    LINEAGE = 'lineage',
+    ORGANIZATION = 'organization',
+    PERSON = 'person',
+    PLANE = 'plane',
+    REGION = 'region',
+    WRITING = 'writing',
+}
 
 export const KEYS_TO_IGNORE = ['_id', '_createdAt', '_updatedAt', '_type', 'defaultAttributes', 'information', '_rev'];
 

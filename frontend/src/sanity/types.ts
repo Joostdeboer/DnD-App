@@ -1662,6 +1662,115 @@ export type SpecificMediaResult = {
     metadata?: SanityImageMetadata;
     source?: SanityAssetSourceData;
 } | null;
+// Variable: getAllRecentProducts
+// Query: *[defined(defaultAttributes.slug.current)]{ _type, _createdAt, _updatedAt, defaultAttributes, writingType } | order(_updatedAt desc)[$start..$end]
+export type GetAllRecentProductsResult = Array<
+    | {
+          _type: 'artwork';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'city';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'concept';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'creature';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'entity';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'flora';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'god';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'historicalEvent';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'landmark';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'lineage';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'organization';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'person';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'plane';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'region';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: null;
+      }
+    | {
+          _type: 'writing';
+          _createdAt: string;
+          _updatedAt: string;
+          defaultAttributes: DefaultAttributes | null;
+          writingType: 'myth' | 'poem' | 'story' | null;
+      }
+>;
 
 // Query TypeMap
 import '@sanity/client';
@@ -1673,5 +1782,6 @@ declare module '@sanity/client' {
         '*[_type == $type && defined(defaultAttributes.slug.current)]': AllProductsOfTypeResult;
         '*[_type == $type && writingType == $writingType && defined(defaultAttributes.slug.current) ]': AllWritingProductsOfTypeResult;
         '*[_type == "sanity.imageAsset" && _id == $id][0]': SpecificMediaResult;
+        '*[defined(defaultAttributes.slug.current)]{ _type, _createdAt, _updatedAt, defaultAttributes, writingType } | order(_updatedAt desc)[$start..$end]': GetAllRecentProductsResult;
     }
 }

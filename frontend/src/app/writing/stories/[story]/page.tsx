@@ -9,7 +9,7 @@ export default async function Story({ params }: { params: Promise<{ story: strin
         query: specificWritingTypePageQuery,
         params: {
             type: 'writing',
-            name: searchParam,
+            name: decodeURI(searchParam),
             writingType: 'story',
         },
     });

@@ -9,7 +9,7 @@ export default async function Myth({ params }: { params: Promise<{ myth: string 
         query: specificWritingTypePageQuery,
         params: {
             type: 'writing',
-            name: searchParam,
+            name: decodeURI(searchParam),
             writingType: 'myth',
         },
     });

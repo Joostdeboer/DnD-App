@@ -9,7 +9,7 @@ export default async function HistoricalEvent({ params }: { params: Promise<{ hi
         query: specificTypePageQuery,
         params: {
             type: 'historicalEvent',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

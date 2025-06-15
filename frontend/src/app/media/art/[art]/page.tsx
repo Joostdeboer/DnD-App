@@ -10,7 +10,7 @@ export default async function Poem({ params }: { params: Promise<{ art: string }
         query: specificTypePageQuery,
         params: {
             type: 'artwork',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
     if (art === null || art._type !== 'artwork' || !art?.defaultAttributes?.image) return <NoProductText />;

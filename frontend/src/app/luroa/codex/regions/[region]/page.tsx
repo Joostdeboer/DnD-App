@@ -9,7 +9,7 @@ export default async function Region({ params }: { params: Promise<{ region: str
         query: specificTypePageQuery,
         params: {
             type: 'region',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

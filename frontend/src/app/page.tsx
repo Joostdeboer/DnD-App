@@ -1,7 +1,8 @@
-import { Text } from '@/src/components/atoms/generic/Text';
 import { DetailSection } from '@/src/components/organisms/homepage/DetailSection';
 import { Divider } from '@/src/components/atoms/generic/Divider';
 import { LinkSection } from '@/src/components/organisms/homepage/LinkSection';
+import { RecentlyUpdatedSection } from '@/src/components/organisms/homepage/RecentlyUpdatedSection';
+import { RandomFactSection } from '@/src/components/organisms/homepage/RandomFactSection';
 
 export default async function Home() {
     return (
@@ -11,13 +12,9 @@ export default async function Home() {
             <Divider color="primary" hasPadding={false} />
             <LinkSection />
             <Divider color="primary" hasPadding={false} />
-            <div className="grid grid-cols-3 gap-8">
-                <div className="col-span-2 flex flex-col flex-1 border border-brand-neutral-500 rounded-md p-4">
-                    <Text>Recently Updated</Text>
-                </div>
-                <div className="flex flex-col border border-brand-neutral-500 rounded-md p-4">
-                    <Text>Fact-of-the-day</Text>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <RecentlyUpdatedSection />
+                <RandomFactSection />
             </div>
         </div>
     );

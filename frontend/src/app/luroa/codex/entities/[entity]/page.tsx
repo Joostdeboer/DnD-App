@@ -9,7 +9,7 @@ export default async function Entity({ params }: { params: Promise<{ entity: str
         query: specificTypePageQuery,
         params: {
             type: 'entity',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

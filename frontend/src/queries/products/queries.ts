@@ -51,3 +51,7 @@ export const allWritingProductsOfType = defineQuery(
 );
 
 export const specificMedia = defineQuery(`*[_type == "sanity.imageAsset" && _id == $id][0]`);
+
+export const getAllRecentProducts = defineQuery(
+    `*[defined(defaultAttributes.slug.current)]{ _type, _createdAt, _updatedAt, defaultAttributes, writingType } | order(_updatedAt desc)[$start..$end]`,
+);

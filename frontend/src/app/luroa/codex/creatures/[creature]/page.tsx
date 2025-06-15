@@ -9,7 +9,7 @@ export default async function Creature({ params }: { params: Promise<{ creature:
         query: specificTypePageQuery,
         params: {
             type: 'creature',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

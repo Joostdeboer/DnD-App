@@ -3,13 +3,13 @@ import { GenericProductPage } from '@/src/components/templates/GenericProductPag
 import { specificTypePageQuery } from '@/src/queries/products/queries';
 
 export default async function City({ params }: { params: Promise<{ city: string }> }) {
-    const { city: cityParam } = await params;
+    const { city: searchParam } = await params;
 
     const { data: city } = await sanityFetch({
         query: specificTypePageQuery,
         params: {
             type: 'city',
-            name: cityParam,
+            name: decodeURI(searchParam),
         },
     });
 

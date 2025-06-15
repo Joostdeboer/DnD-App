@@ -9,7 +9,7 @@ export default async function Poem({ params }: { params: Promise<{ poem: string 
         query: specificWritingTypePageQuery,
         params: {
             type: 'writing',
-            name: searchParam,
+            name: decodeURI(searchParam),
             writingType: 'poem',
         },
     });

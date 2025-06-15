@@ -9,7 +9,7 @@ export default async function Person({ params }: { params: Promise<{ person: str
         query: specificTypePageQuery,
         params: {
             type: 'person',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

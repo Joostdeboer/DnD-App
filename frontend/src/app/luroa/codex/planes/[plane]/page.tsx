@@ -9,7 +9,7 @@ export default async function Plane({ params }: { params: Promise<{ plane: strin
         query: specificTypePageQuery,
         params: {
             type: 'plane',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

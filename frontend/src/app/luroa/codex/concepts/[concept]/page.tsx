@@ -9,7 +9,7 @@ export default async function Concept({ params }: { params: Promise<{ concept: s
         query: specificTypePageQuery,
         params: {
             type: 'concept',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

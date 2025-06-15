@@ -9,7 +9,7 @@ export default async function Race({ params }: { params: Promise<{ race: string 
         query: specificTypePageQuery,
         params: {
             type: 'lineage',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

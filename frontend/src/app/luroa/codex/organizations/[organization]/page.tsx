@@ -9,7 +9,7 @@ export default async function Organization({ params }: { params: Promise<{ organ
         query: specificTypePageQuery,
         params: {
             type: 'organization',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

@@ -9,7 +9,7 @@ export default async function Landmark({ params }: { params: Promise<{ landmark:
         query: specificTypePageQuery,
         params: {
             type: 'landmark',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 

@@ -9,7 +9,7 @@ export default async function Flora({ params }: { params: Promise<{ flora: strin
         query: specificTypePageQuery,
         params: {
             type: 'flora',
-            name: searchParam,
+            name: decodeURI(searchParam),
         },
     });
 
