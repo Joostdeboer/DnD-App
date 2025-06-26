@@ -64,3 +64,11 @@ export function findLinkRecursively({
     if (mapped.length === 0) return undefined;
     return mapped[0];
 }
+
+export function splitInColumns<T>({ input, colsToSplit }: { input: T[]; colsToSplit: number }) {
+    const output: T[][] = [];
+    for (let i = 0; colsToSplit > i; i += 1) {
+        output.push(input.filter((_, index) => index % colsToSplit === i));
+    }
+    return output;
+}

@@ -20,6 +20,12 @@ export function MediaProductPage({ product }: MediaProductPageProps) {
 
     const title = product.mediaData?.title ?? product.defaultAttributes.name;
 
+    const width = product?.mediaData?.metadata?.dimensions?.width;
+    const height = product?.mediaData?.metadata?.dimensions?.height;
+
+    // TODO: this is ugly a.f. will need some refactoring when I have more images
+    const modalWidth = width && height ? (height > width ? 300 : height === width ? 400 : 1920) : 1920;
+
     return (
         <PageLayout>
             <ProductTemplate defaultAttributes={product.defaultAttributes ?? undefined} updatedAt={product._updatedAt}>
@@ -27,8 +33,8 @@ export function MediaProductPage({ product }: MediaProductPageProps) {
                     <Image
                         image={product.defaultAttributes?.image}
                         alt={product.defaultAttributes?.name ?? product.defaultAttributes?.slug?.current ?? product._id}
-                        width={1980}
-                        height={1024}
+                        width={modalWidth}
+                        height={1080}
                         className="w-full h-full md:max-w-screen-lg md:max-h-screen-xl"
                     />
                 </Modal>
@@ -42,9 +48,9 @@ export function MediaProductPage({ product }: MediaProductPageProps) {
                                     product.defaultAttributes?.slug?.current ??
                                     product._id
                                 }
-                                width={product?.mediaData?.metadata?.dimensions?.width ?? 500}
-                                height={product?.mediaData?.metadata?.dimensions?.height ?? 500}
-                                className="max-w-xl"
+                                width={width ?? 300}
+                                height={height ?? 300}
+                                className="md:max-w-xl"
                             />
                         </button>
                         <Text className="italic" size="sm">

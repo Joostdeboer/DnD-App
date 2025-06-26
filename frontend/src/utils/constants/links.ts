@@ -22,7 +22,7 @@ export const HEADERLINKS: HeaderLinkType[] = [
             { name: 'About', href: '/luroa/about' },
             { name: 'History', href: '/luroa/history', sanityType: PRODUCT_TYPES.HISTORICAL_EVENT },
             { name: 'Gods', href: '/luroa/gods', sanityType: PRODUCT_TYPES.GOD },
-            { name: 'Races', href: '/luroa/races', sanityType: PRODUCT_TYPES.LINEAGE },
+            { name: 'Lineages', href: '/luroa/lineages', sanityType: PRODUCT_TYPES.LINEAGE },
             {
                 name: 'Codex',
                 href: '/luroa/codex',
@@ -73,7 +73,7 @@ export const HEADERLINKS: HeaderLinkType[] = [
         name: 'Media',
         href: '/media',
         menuItems: [
-            { name: 'Art', href: '/media/art', sanityType: PRODUCT_TYPES.ART },
+            { name: 'Artworks', href: '/media/artworks', sanityType: PRODUCT_TYPES.ART },
             { name: 'Comics', href: '/media/comics', disabled: true },
             { name: 'Songs', href: '/media/songs', disabled: true },
             { name: 'Videos', href: '/media/videos', disabled: true },

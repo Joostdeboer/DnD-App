@@ -56,10 +56,11 @@ Links:
 - Home Page
   - [ ] Integrate Sanity page with home page
   - [ ] "Fact of the Day" section with randomization
-  - [ ] Recently Updated section on home page
+  - [x] Recently Updated section on home page
   - [ ] Add content pages for each of the "Read More" sections (content pages, see [Gameplay] below)
 - Artwork
   - [x] Create a specific page for displaying artwork, including its listing page
+  - [ ] Update logic for showing modal sizes based on image sizes to make them not go off-page
 - Writing
   - [x] Create a specific page for displaying writing as a content, including their respective listing pages
 - History
@@ -70,8 +71,8 @@ Links:
   - [ ] Add a special page to showcase the good vs evil gods
     - The page should include the icons of the gods and their names (+ title?) only, in a nice diagram
   - [ ] Add a section below for the various demigods
-- Races
-  - [ ] Add a special page for the races, where you have a 'character select'-like field of races (icon + name), on the side or above, and a section with an image of the race + descriptive text on the other side
+- Lineages
+  - [ ] Add a special page for the lineages, where you have a 'character select'-like field of lineages (icon + name), on the side or above, and a section with an image of the lineage + descriptive text on the other side
   - [ ] Break up the above in better/clearer/more easy-to-implement sections
 - Gameplay
   - [ ] Create a content page in Sanity for each `Gameplay` section
@@ -87,7 +88,7 @@ Links:
   - [ ] Add Markers to the interactive map to quickly go to an information point
   - [ ] Add a toggle for showing region borders
   - [ ] Add a toggle to show rough time zones
-- Sanity
+- Sanity (PortableText)
   - [ ] Add a "quote" schema to sanity, and its respective component
   - [ ] Add a "level-of-details" schema to sanity, and its respective component
     - a toggle that can show various levels of detail
@@ -95,7 +96,11 @@ Links:
 
 ## Bugs
 - [ ] header links don't disappear when clicking out of the menu (below it or within the "main body")
+  - reported issue: https://github.com/tailwindlabs/headlessui/issues/3611
 - [x] sorting icons don't change color when switching directions on light mode variant
+- [x] mobile version of artwork page not properly fitting to page
+- [x] name of all page links should conform to the sanity type
+- [x] art page should display many art works within the confines of the page, wrapping around to the next row when too many are provided
 
 ---
 

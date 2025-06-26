@@ -2,10 +2,10 @@ import { sanityFetch } from '@/src/configs/sanityConfig';
 import { GenericProductPage } from '@/src/components/templates/GenericProductPage';
 import { specificTypePageQuery } from '@/src/queries/products/queries';
 
-export default async function Race({ params }: { params: Promise<{ race: string }> }) {
-    const { race: searchParam } = await params;
+export default async function Race({ params }: { params: Promise<{ lineage: string }> }) {
+    const { lineage: searchParam } = await params;
 
-    const { data: race } = await sanityFetch({
+    const { data: lineage } = await sanityFetch({
         query: specificTypePageQuery,
         params: {
             type: 'lineage',
@@ -13,5 +13,5 @@ export default async function Race({ params }: { params: Promise<{ race: string 
         },
     });
 
-    return <GenericProductPage product={race} />;
+    return <GenericProductPage product={lineage} />;
 }

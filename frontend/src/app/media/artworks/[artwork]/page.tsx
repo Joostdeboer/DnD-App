@@ -3,27 +3,27 @@ import { specificMedia, specificTypePageQuery } from '@/src/queries/products/que
 import { MediaProductPage, MediaProductPageProps } from '@/src/components/templates/MediaProductPage';
 import { NoProductText } from '@/src/components/atoms/generic/NoProductText';
 
-export default async function Poem({ params }: { params: Promise<{ art: string }> }) {
-    const { art: searchParam } = await params;
+export default async function Artwork({ params }: { params: Promise<{ artwork: string }> }) {
+    const { artwork: searchParam } = await params;
 
-    const { data: art } = await sanityFetch({
+    const { data: artwork } = await sanityFetch({
         query: specificTypePageQuery,
         params: {
             type: 'artwork',
             name: decodeURI(searchParam),
         },
     });
-    if (art === null || art._type !== 'artwork' || !art?.defaultAttributes?.image) return <NoProductText />;
+    if (artwork === null || artwork._type !== 'artwork' || !artwork?.defaultAttributes?.image) return <NoProductText />;
 
     const { data: currentMedia } = await sanityFetch({
         query: specificMedia,
         params: {
-            id: art?.defaultAttributes.image.asset?._ref,
+            id: artwork?.defaultAttributes.image.asset?._ref,
         },
     });
 
     const product: MediaProductPageProps['product'] = {
-        ...art,
+        ...artwork,
         mediaData: currentMedia,
     };
 
