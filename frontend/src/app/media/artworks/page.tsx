@@ -11,7 +11,7 @@ import { OrganizedArtworkListing } from '@/src/components/organisms/products/Org
  */
 export default async function Artworks() {
     const { data: artworks } = await sanityFetch({
-        query: getAllByTypeQuery({ sorting: '_createdAt', direction: 'asc' }),
+        query: getAllByTypeQuery({ sorting: 'createdAt', direction: 'asc' }),
         params: {
             type: 'artwork',
         },

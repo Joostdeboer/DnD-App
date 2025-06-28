@@ -15,12 +15,17 @@ import { splitInColumns } from '@/src/utils/functions/products';
  */
 export function OrganizedArtworkListing({ artworks }: { artworks: AllProductsOfTypeResult }) {
     const { isBelowMd } = useBreakpoint('md');
-    const artworkCols = isBelowMd
-        ? splitInColumns({ input: artworks, colsToSplit: 2 })
-        : splitInColumns({ input: artworks, colsToSplit: 5 });
+    const { isBelowLg } = useBreakpoint('lg');
+    let artworkCols = splitInColumns({ input: artworks, colsToSplit: 5 });
+    if (isBelowMd) {
+        artworkCols = splitInColumns({ input: artworks, colsToSplit: 2 });
+    }
+    if (isBelowLg) {
+        artworkCols = splitInColumns({ input: artworks, colsToSplit: 4 });
+    }
 
     return (
-        <div className="columns-2 md:columns-5 w-full gap-4">
+        <div className="columns-2 md:columns-4 lg:columns-5 w-full gap-4">
             {artworkCols.map((artworkCol, index) => (
                 <MapArtworksColumn artworks={artworkCol} key={index} />
             ))}

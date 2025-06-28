@@ -9,6 +9,7 @@ import { ProductTemplate } from '@/src/components/templates/ProductTemplate';
 import { Modal } from '@/src/components/atoms/generic/Modal';
 import { useState } from 'react';
 import { PageLayout } from '@/src/components/templates/PageLayout';
+import { BASE_MODAL_IMAGE_WIDTH } from '@/src/utils/constants/images';
 
 export interface MediaProductPageProps {
     product: Artwork & { mediaData?: SpecificMediaResult };
@@ -23,8 +24,7 @@ export function MediaProductPage({ product }: MediaProductPageProps) {
     const width = product?.mediaData?.metadata?.dimensions?.width;
     const height = product?.mediaData?.metadata?.dimensions?.height;
 
-    // TODO: this is ugly a.f. will need some refactoring when I have more images
-    const modalWidth = width && height ? (height > width ? 300 : height === width ? 400 : 1920) : 1920;
+    const modalWidth = width && height ? BASE_MODAL_IMAGE_WIDTH / (height / width) : BASE_MODAL_IMAGE_WIDTH;
 
     return (
         <PageLayout>
