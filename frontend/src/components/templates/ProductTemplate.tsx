@@ -6,6 +6,7 @@ import { Divider } from '@/src/components/atoms/generic/Divider';
 import { PortableTextSection } from '@/src/components/molecules/products/PortableTextSection';
 import { DefaultAttributes } from '@/src/sanity/types';
 import { formatDate } from '@/src/utils/functions/products';
+import { Tag } from '@/src/components/atoms/products/Tag';
 
 export function ProductTemplate({
     children,
@@ -32,9 +33,7 @@ export function ProductTemplate({
                     <section className="flex flex-row gap-2 items-center">
                         <Text size="sm">Tags:</Text>
                         {defaultAttributes?.tags?.map((tag) => (
-                            <div key={tag} className="rounded-full bg-brand-primary-500 w-fit px-4 text-sm">
-                                {tag}
-                            </div>
+                            <Tag tag={tag} key={tag} />
                         ))}
                     </section>
                 )}

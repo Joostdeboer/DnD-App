@@ -55,3 +55,10 @@ export const specificMedia = defineQuery(`*[_type == "sanity.imageAsset" && _id 
 export const getAllRecentProducts = defineQuery(
     `*[defined(defaultAttributes.slug.current)]{ _type, _createdAt, _updatedAt, defaultAttributes, writingType } | order(_updatedAt desc)[$start..$end]`,
 );
+
+export const getAllTagsOfType = defineQuery(
+    `*[_type == $type && defined(defaultAttributes.slug.current)]
+    {
+        "tags": defaultAttributes.tags
+    }.tags[]`,
+);

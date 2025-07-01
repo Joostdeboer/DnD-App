@@ -1,6 +1,6 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { Header } from '@/src/components/organisms/layout/Header';
 import { Footer } from '@/src/components/organisms/layout/Footer';
 import { classNames } from '@/src/utils/functions/classnames';
@@ -38,7 +38,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <SanityLive />
                 <Header />
                 <ClampedWidth>
-                    <main className="flex flex-row items-start min-h-96 px-2 md:px-4 py-4">{children}</main>
+                    <main className="flex flex-row items-start min-h-96 px-2 md:px-4 py-4">
+                        <Suspense fallback={null}>{children}</Suspense>
+                    </main>
                 </ClampedWidth>
                 <Footer />
             </body>

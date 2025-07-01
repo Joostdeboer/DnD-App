@@ -6,6 +6,7 @@ import { Text } from '@/src/components/atoms/generic/Text';
 import { AllProductsOfTypeResult } from '@/src/sanity/types';
 import { useBreakpoint } from '@/src/hooks/useBreakpoint';
 import { splitInColumns } from '@/src/utils/functions/products';
+import { useMemo } from 'react';
 
 /**
  *
@@ -16,13 +17,19 @@ import { splitInColumns } from '@/src/utils/functions/products';
 export function OrganizedArtworkListing({ artworks }: { artworks: AllProductsOfTypeResult }) {
     const { isBelowMd } = useBreakpoint('md');
     const { isBelowLg } = useBreakpoint('lg');
-    let artworkCols = splitInColumns({ input: artworks, colsToSplit: 5 });
-    if (isBelowMd) {
-        artworkCols = splitInColumns({ input: artworks, colsToSplit: 2 });
-    }
-    if (isBelowLg) {
-        artworkCols = splitInColumns({ input: artworks, colsToSplit: 4 });
-    }
+
+    const cols2 = useMemo(() => splitInColumns({ input: artworks, colsToSplit: 2 }), [artworks]);
+    const cols4 = useMemo(() => splitInColumns({ input: artworks, colsToSplit: 4 }), [artworks]);
+    const cols5 = useMemo(() => splitInColumns({ input: artworks, colsToSplit: 5 }), [artworks]);
+    const artworkCols = useMemo(() => {
+        if (isBelowMd) {
+            return cols2;
+        } else if (isBelowLg) {
+            return cols4;
+        } else {
+            return cols5;
+        }
+    }, [isBelowMd, isBelowLg, cols2, cols4, cols5]);
 
     return (
         <div className="columns-2 md:columns-4 lg:columns-5 w-full gap-4">

@@ -7,7 +7,7 @@ import { NoProductText } from '@/src/components/atoms/generic/NoProductText';
 import { PortableTextSection } from '@/src/components/molecules/products/PortableTextSection';
 import { ProductTemplate } from '@/src/components/templates/ProductTemplate';
 import { Modal } from '@/src/components/atoms/generic/Modal';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { PageLayout } from '@/src/components/templates/PageLayout';
 import { BASE_MODAL_IMAGE_WIDTH } from '@/src/utils/constants/images';
 
@@ -17,14 +17,16 @@ export interface MediaProductPageProps {
 
 export function MediaProductPage({ product }: MediaProductPageProps) {
     const [isOpen, setIsOpen] = useState(false);
-    if (!product?.defaultAttributes?.image) return <NoProductText />;
-
-    const title = product.mediaData?.title ?? product.defaultAttributes.name;
 
     const width = product?.mediaData?.metadata?.dimensions?.width;
     const height = product?.mediaData?.metadata?.dimensions?.height;
+    const modalWidth = useMemo(() => {
+        return width && height ? BASE_MODAL_IMAGE_WIDTH / (height / width) : BASE_MODAL_IMAGE_WIDTH;
+    }, [height, width]);
 
-    const modalWidth = width && height ? BASE_MODAL_IMAGE_WIDTH / (height / width) : BASE_MODAL_IMAGE_WIDTH;
+    if (!product?.defaultAttributes?.image) return <NoProductText />;
+
+    const title = product.mediaData?.title ?? product.defaultAttributes.name;
 
     return (
         <PageLayout>

@@ -1771,6 +1771,9 @@ export type GetAllRecentProductsResult = Array<
           writingType: 'myth' | 'poem' | 'story' | null;
       }
 >;
+// Variable: getAllTagsOfType
+// Query: *[_type == $type && defined(defaultAttributes.slug.current)]    {        "tags": defaultAttributes.tags    }.tags[]
+export type GetAllTagsOfTypeResult = Array<string | null>;
 
 // Query TypeMap
 import '@sanity/client';
@@ -1783,5 +1786,6 @@ declare module '@sanity/client' {
         '*[_type == $type && writingType == $writingType && defined(defaultAttributes.slug.current) ]': AllWritingProductsOfTypeResult;
         '*[_type == "sanity.imageAsset" && _id == $id][0]': SpecificMediaResult;
         '*[defined(defaultAttributes.slug.current)]{ _type, _createdAt, _updatedAt, defaultAttributes, writingType } | order(_updatedAt desc)[$start..$end]': GetAllRecentProductsResult;
+        '*[_type == $type && defined(defaultAttributes.slug.current)]\n    {\n        "tags": defaultAttributes.tags\n    }.tags[]': GetAllTagsOfTypeResult;
     }
 }
