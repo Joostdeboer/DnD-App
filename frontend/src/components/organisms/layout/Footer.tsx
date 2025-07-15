@@ -14,14 +14,14 @@ export function Footer() {
                 </div>
                 <div className="flex flex-col gap-2 pl-5 md:pl-10">
                     {HEADERLINKS.map((link) => (
-                        <Link key={link.name} href={link.href} className="hover:underline">
+                        <Link key={link.name} href={link.href} className="hover:underline" prefetch={true}>
                             {link.name}
                         </Link>
                     ))}
                 </div>
                 <div className="flex flex-col gap-2 pl-5 md:pl-10">
                     {FOOTERLINKS.map((link) => (
-                        <Link key={link.name} href={link.href} className="hover:underline">
+                        <Link key={link.name} href={link.href} className="hover:underline" prefetch={true}>
                             {link.name}
                         </Link>
                     ))}

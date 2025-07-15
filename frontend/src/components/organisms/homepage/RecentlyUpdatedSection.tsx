@@ -34,6 +34,7 @@ export async function RecentlyUpdatedSection() {
                                 className="flex flex-row items-start justify-between py-1 border-b last:border-b-0 hover:bg-brand-neutral-200 hover:dark:bg-brand-neutral-700"
                                 key={recentPost.defaultAttributes?.slug?.current}
                                 href={postLink + '/' + recentPost.defaultAttributes?.slug?.current}
+                                prefetch={true}
                             >
                                 <div className="flex flex-col ml-2">
                                     <Text>{recentPost.defaultAttributes?.name}</Text>
@@ -53,6 +54,7 @@ export async function RecentlyUpdatedSection() {
             <Link
                 href="/recently-updated"
                 className="font-bold text-brand-primary-500 hover:text-brand-primary-600 hover:underline w-fit self-end pt-2"
+                prefetch={true}
             >
                 <span className="flex flex-row items-center ">
                     <span>See more</span>

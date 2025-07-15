@@ -36,6 +36,7 @@ export function TableHeaderCell({
                 className,
             ])}
             replace
+            prefetch={true}
         >
             <div className="flex flex-row justify-between items-center">
                 {children}

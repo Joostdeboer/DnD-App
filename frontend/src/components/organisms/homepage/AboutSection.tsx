@@ -25,6 +25,7 @@ export function AboutSection() {
                 <Link
                     href="/luroa/about"
                     className={classNames([BUTTON_STYLE, BUTTON_CLASSES['primary'], TEXT_CLASSES['white']])}
+                    prefetch={true}
                 >
                     Read More
                 </Link>

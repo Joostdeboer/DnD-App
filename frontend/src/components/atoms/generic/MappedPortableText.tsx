@@ -51,7 +51,11 @@ const PortableTextComponents = (): Partial<PortableTextReactComponents> => ({
             value?: { _key: string; _type: string; type: string; slug: string };
         }) => {
             return (
-                <Link href={value?.slug ?? ''} className={classNames(['w-fit', LINK_CLASSES['primary']])}>
+                <Link
+                    href={value?.slug ?? ''}
+                    className={classNames(['w-fit', LINK_CLASSES['primary']])}
+                    prefetch={true}
+                >
                     {children}
                 </Link>
             );

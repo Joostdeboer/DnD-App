@@ -67,6 +67,7 @@ export function ProductListing({
                             'hover:bg-brand-secondary-200 hover:odd:bg-brand-secondary-200',
                             'hover:dark:odd:bg-brand-secondary-800 hover:dark:bg-brand-secondary-800',
                         ])}
+                        prefetch={true}
                     >
                         <TableBodyCell className="!text-base">
                             <div

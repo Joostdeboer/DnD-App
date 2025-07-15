@@ -34,6 +34,7 @@ export function LinkCard({
                     className={classNames([
                         'font-bold text-brand-primary-500 hover:text-brand-primary-600 hover:underline w-fit self-end',
                     ])}
+                    prefetch={true}
                 >
                     <span className="flex flex-row gap-2">
                         <span>Read More</span>

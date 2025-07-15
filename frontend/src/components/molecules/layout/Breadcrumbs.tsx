@@ -28,7 +28,7 @@ export function Breadcrumbs() {
 
     return (
         <nav className={classNames(['flex flex-row gap-2 w-fit justify-center'])}>
-            <Link href="/" className={LINK_CLASSES['primary']}>
+            <Link href="/" className={LINK_CLASSES['primary']} prefetch={true}>
                 <HomeIcon />
             </Link>
             {pathSegments.map((item, index) => {

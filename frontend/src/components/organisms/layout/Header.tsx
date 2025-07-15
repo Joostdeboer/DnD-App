@@ -14,7 +14,7 @@ export function Header() {
                 {/* mobile */}
                 <div className="contents md:hidden">
                     <div className="flex flex-row w-full relative justify-between items-center p-2">
-                        <Link href="/">
+                        <Link href="/" prefetch={true}>
                             <BrandLogoText size="md" />
                         </Link>
                         <Toggle />
@@ -26,7 +26,7 @@ export function Header() {
                 {/* desktop */}
                 <div className="hidden md:contents">
                     <div className="flex flex-row w-full relative justify-center items-center py-8">
-                        <Link href="/">
+                        <Link href="/" prefetch={true}>
                             <BrandLogoText size="logo" />
                         </Link>
                         <Toggle />

@@ -118,6 +118,7 @@ export function HeaderLink({
                                                     close();
                                                 }}
                                                 className="flex items-center first:rounded-t-lg last:rounded-b-lg hover:bg-brand-primary-500 p-2 transition-colors ease-in-out duration-200 hover:text-white"
+                                                prefetch={true}
                                             >
                                                 {item.name}
                                             </Link>

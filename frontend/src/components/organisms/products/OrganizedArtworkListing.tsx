@@ -50,6 +50,7 @@ function MapArtworksColumn({ artworks }: { artworks: AllProductsOfTypeResult }) 
                     className="first:mt-0 mt-4 break-inside-avoid flex flex-col h-fit bg-white rounded-lg"
                     key={altName}
                     href={`/media/artworks/${artwork.defaultAttributes?.slug?.current}`}
+                    prefetch={true}
                 >
                     <Image image={image} alt={altName} width={200} height={200} className="w-full rounded-t-lg" />
                     <Text className="p-2" useDarkMode={false}>

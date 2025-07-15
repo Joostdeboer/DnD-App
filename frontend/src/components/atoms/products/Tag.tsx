@@ -24,6 +24,7 @@ export function Tag({
             ])}
             href={url}
             replace
+            prefetch={true}
         >
             <span>{tag}</span>
             {count !== undefined && <span>({count})</span>}
