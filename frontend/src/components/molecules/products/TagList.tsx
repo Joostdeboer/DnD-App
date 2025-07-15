@@ -1,9 +1,11 @@
+'use client';
+
 import { useMemo } from 'react';
 import { Tag } from '@/src/components/atoms/products/Tag';
 import { Text } from '@/src/components/atoms/generic/Text';
+import { useSearchParams, usePathname } from 'next/navigation';
 
-// TODO: make the tags clickable -> onClick: set filter params and use that to filter for different artworks
-export function TagList({ tags }: { tags: (string | null)[] }) {
+export function TagList({ tags, host }: { tags: (string | null)[]; host: string }) {
     const { nrOfUniqueTags, sortedTags } = useMemo(() => {
         const tagsWithCount = tags.reduce<Record<string, number>>((acc, curr) => {
             if (curr) {
@@ -18,13 +20,24 @@ export function TagList({ tags }: { tags: (string | null)[] }) {
         return { nrOfUniqueTags, sortedTags };
     }, [tags]);
 
+    const params = useSearchParams();
+    const pathname = usePathname();
+
+    const tagParam = params.get('tag');
+    const url = new URL(host + pathname + '?' + params.toString());
+
     return (
         <div className="flex flex-col gap-2">
             <Text>Total number of tags: {nrOfUniqueTags}</Text>
             <div className="flex flex-row flex-wrap gap-2 items-center">
-                {sortedTags.map(({ tag, count }) => (
-                    <Tag tag={tag} count={count} key={tag} />
-                ))}
+                {sortedTags.map(({ tag, count }) => {
+                    if (tagParam !== tag) {
+                        url.searchParams.set('tag', tag);
+                    } else {
+                        url.searchParams.delete('tag');
+                    }
+                    return <Tag tag={tag} count={count} key={tag} url={url.toString()} isSelected={tagParam === tag} />;
+                })}
             </div>
         </div>
     );

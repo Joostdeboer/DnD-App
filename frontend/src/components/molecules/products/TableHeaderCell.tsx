@@ -35,6 +35,7 @@ export function TableHeaderCell({
                 'table-cell px-2 first:pl-9 bg-brand-primary-500 border-brand-primary-600 border-b border-r last:border-r-0',
                 className,
             ])}
+            replace
         >
             <div className="flex flex-row justify-between items-center">
                 {children}

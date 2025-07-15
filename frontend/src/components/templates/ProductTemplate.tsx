@@ -33,7 +33,7 @@ export function ProductTemplate({
                     <section className="flex flex-row gap-2 items-center">
                         <Text size="sm">Tags:</Text>
                         {defaultAttributes?.tags?.map((tag) => (
-                            <Tag tag={tag} key={tag} />
+                            <Tag tag={tag} key={tag} url={{ pathname: '/search-results', query: { search: tag } }} />
                         ))}
                     </section>
                 )}

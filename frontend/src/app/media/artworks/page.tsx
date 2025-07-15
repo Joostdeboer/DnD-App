@@ -7,14 +7,26 @@ import { TagListing } from '@/src/components/organisms/products/TagListing';
 
 /**
  * TODO:
- *  - add pagination?
- *  - add filters?
+ *  - add pagination
+ *  - add sorting
+ *  - add tag overflow in case of too many
  */
-export default async function Artworks() {
+export default async function Artworks({
+    searchParams,
+}: {
+    searchParams: Promise<Record<string, string | undefined>>;
+}) {
+    const { tag } = await searchParams;
+
     const { data: artworks } = await sanityFetch({
-        query: getAllByTypeQuery({ sorting: 'createdAt', direction: 'asc' }),
+        query: getAllByTypeQuery({
+            sorting: 'createdAt',
+            direction: 'asc',
+            filters: [tag ? '$filterTag in defaultAttributes.tags' : undefined],
+        }),
         params: {
             type: 'artwork',
+            filterTag: tag ?? '',
         },
     });
 

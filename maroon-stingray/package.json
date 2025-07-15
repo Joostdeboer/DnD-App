@@ -19,15 +19,15 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/icons": "^3.7.0",
-    "@sanity/vision": "^3.90.0",
+    "@sanity/icons": "^3.7.4",
+    "@sanity/vision": "^4.0.0",
     "@types/react-dom": "19.1.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-is": "^18.3.1",
-    "sanity": "^3.90.0",
-    "sanity-plugin-media": "^3.0.2",
-    "styled-components": "^6.1.18"
+    "sanity": "^4.0.0",
+    "sanity-plugin-media": "^3.0.4",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^2.0.4",
@@ -35,7 +35,7 @@
     "@types/styled-components": "^5.1.34",
     "eslint": "^8.57.1",
     "prettier": "^2.8.8",
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   },
   "prettier": {
     "tabWidth": 4,
