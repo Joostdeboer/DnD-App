@@ -1,7 +1,7 @@
 import { HeaderLinkProps } from '@/src/components/atoms/layout/HeaderLink';
 import { Disclosure, Transition, DisclosureButton, DisclosurePanel } from '@headlessui/react';
 import { classNames } from '@/src/utils/functions/classnames';
-import { KeyboardArrowUp } from '@mui/icons-material';
+import { KeyboardArrowDown } from '@mui/icons-material';
 import Link from 'next/link';
 
 export function MenuItem(link: HeaderLinkProps) {
@@ -29,7 +29,7 @@ export function MenuItem(link: HeaderLinkProps) {
                         ) : link.menuItems?.length ? (
                             <>
                                 <span>{link.name}</span>
-                                <KeyboardArrowUp
+                                <KeyboardArrowDown
                                     className={classNames([
                                         open ? 'rotate-180' : 'rotate-0',
                                         'h-5 w-5 transition-transform ease-in-out duration-100',
