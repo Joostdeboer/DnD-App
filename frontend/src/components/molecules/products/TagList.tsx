@@ -66,15 +66,15 @@ export function TagList({ tags, host }: { tags: (string | null)[]; host: string 
                     appendOrRemoveTag({ tag, tagParam, url });
                     return <Tag tag={tag} count={count} key={tag} url={url.toString()} isSelected={tagParam === tag} />;
                 })}
-                {nrOfUniqueTags > MAX_TAGLIST_LENGTH && (
-                    <ShowMoreTags
-                        nrOfUniqueTags={nrOfUniqueTags}
-                        tags={remainingTags.slice(MAX_TAGLIST_LENGTH)}
-                        tagParam={tagParam}
-                        url={url}
-                    />
-                )}
             </div>
+            {nrOfUniqueTags > MAX_TAGLIST_LENGTH && (
+                <ShowMoreTags
+                    nrOfUniqueTags={nrOfUniqueTags}
+                    tags={remainingTags.slice(MAX_TAGLIST_LENGTH)}
+                    tagParam={tagParam}
+                    url={url}
+                />
+            )}
         </div>
     );
 }

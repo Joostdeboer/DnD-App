@@ -33,7 +33,7 @@ export function ToggleOptions<T>({
                                         'group-first:rounded-l-full group-last:rounded-r-full',
                                         'text-black dark:text-white',
                                         checked
-                                            ? 'bg-brand-primary-500 cursor-default'
+                                            ? 'bg-brand-primary-500 cursor-default text-white'
                                             : 'bg-brand-neutral-200 dark:bg-brand-neutral-800 group-hover:text-brand-primary-500 cursor-pointer',
                                     ])}
                                 >

@@ -1,9 +1,9 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { Tag } from '@/src/components/atoms/products/Tag';
 import { KeyboardArrowDown } from '@mui/icons-material';
 import { classNames } from '@/src/utils/functions/classnames';
 import { MAX_TAGLIST_LENGTH } from '@/src/utils/constants/tags';
 import { appendOrRemoveTag } from '@/src/utils/functions/tags';
+import Link from 'next/link';
 
 export function ShowMoreTags({
     nrOfUniqueTags,
@@ -20,7 +20,7 @@ export function ShowMoreTags({
         <Menu>
             {({ open }) => (
                 <div>
-                    <MenuButton className="font-bold text-brand-primary-500 hover:text-brand-primary-600 hover:underline w-fit self-end outline-none">
+                    <MenuButton className="font-bold text-brand-primary-500 hover:text-brand-primary-600 hover:underline w-fit self-end outline-none py-1">
                         <span className={classNames(['flex flex-row gap-2'])}>
                             <span>And {nrOfUniqueTags - MAX_TAGLIST_LENGTH} more tags</span>
                             <KeyboardArrowDown
@@ -31,26 +31,34 @@ export function ShowMoreTags({
                             />
                         </span>
                     </MenuButton>
-                    {/* TODO: fix the width and other styles of the menu that drops down */}
-                    <MenuItems
-                        anchor="bottom end"
-                        className="block outline-none bg-brand-secondary-500 origin-top-right"
-                    >
-                        {tags.map(({ tag, count }) => {
-                            appendOrRemoveTag({ tag, tagParam, url });
-                            return (
-                                <MenuItem key={tag}>
-                                    {/* TODO: don't make this a "Tag", but make this an actual dropdown with overflow */}
-                                    <Tag
-                                        tag={tag}
-                                        count={count}
-                                        key={tag}
-                                        url={url.toString()}
-                                        isSelected={tagParam === tag}
-                                    />
-                                </MenuItem>
-                            );
-                        })}
+                    <MenuItems anchor="bottom">
+                        {/* apply styling to an inner div instead of MenuItems because max-h does not apply properly */}
+                        <div
+                            className={classNames([
+                                'block outline-none border-2 border-brand-neutral-300 dark:border-brand-neutral-800',
+                                'min-w-40 max-h-96 overflow-y-auto [--anchor-gap:4px]',
+                            ])}
+                        >
+                            {tags.map(({ tag, count }) => {
+                                appendOrRemoveTag({ tag, tagParam, url });
+                                return (
+                                    <MenuItem key={tag}>
+                                        <Link
+                                            className={classNames([
+                                                'text-sm flex flex-row gap-1 justify-between text-black hover:text-white dark:text-white px-2 py-1',
+                                                'bg-brand-neutral-200 dark:bg-brand-neutral-700 hover:bg-brand-primary-600 dark:hover:bg-brand-primary-600',
+                                            ])}
+                                            href={url.toString()}
+                                            replace
+                                            prefetch={true}
+                                        >
+                                            <span>{tag}</span>
+                                            <span>({count})</span>
+                                        </Link>
+                                    </MenuItem>
+                                );
+                            })}
+                        </div>
                     </MenuItems>
                 </div>
             )}
