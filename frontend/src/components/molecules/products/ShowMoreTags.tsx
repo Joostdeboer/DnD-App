@@ -2,20 +2,20 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { KeyboardArrowDown } from '@mui/icons-material';
 import { classNames } from '@/src/utils/functions/classnames';
 import { MAX_TAGLIST_LENGTH } from '@/src/utils/constants/tags';
-import { appendOrRemoveTag } from '@/src/utils/functions/tags';
 import Link from 'next/link';
+import { useSetUrl } from '@/src/hooks/useSetUrl';
 
 export function ShowMoreTags({
     nrOfUniqueTags,
     tags,
     tagParam,
-    url,
 }: {
     nrOfUniqueTags: number;
     tags: { tag: string; count: number }[];
     tagParam: string | null;
-    url: URL;
 }) {
+    const setUrl = useSetUrl();
+
     return (
         <Menu>
             {({ open }) => (
@@ -40,7 +40,6 @@ export function ShowMoreTags({
                             ])}
                         >
                             {tags.map(({ tag, count }) => {
-                                appendOrRemoveTag({ tag, tagParam, url });
                                 return (
                                     <MenuItem key={tag}>
                                         <Link
@@ -48,7 +47,7 @@ export function ShowMoreTags({
                                                 'text-sm flex flex-row gap-1 justify-between text-black hover:text-white dark:text-white px-2 py-1',
                                                 'bg-brand-neutral-200 dark:bg-brand-neutral-700 hover:bg-brand-primary-600 dark:hover:bg-brand-primary-600',
                                             ])}
-                                            href={url.toString()}
+                                            href={setUrl([{ name: 'tag', value: tagParam !== tag && tag }])}
                                             replace
                                             prefetch={true}
                                         >

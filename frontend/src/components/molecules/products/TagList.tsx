@@ -2,14 +2,15 @@
 
 import { useMemo, useState } from 'react';
 import { Tag } from '@/src/components/atoms/products/Tag';
-import { useSearchParams, usePathname } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { ShowMoreTags } from '@/src/components/molecules/products/ShowMoreTags';
 import { MAX_TAGLIST_LENGTH, tagSortingOptions } from '@/src/utils/constants/tags';
-import { appendOrRemoveTag } from '@/src/utils/functions/tags';
 import { ToggleOptions } from '@/src/components/molecules/products/ToggleOptions';
+import { useSetUrl } from '@/src/hooks/useSetUrl';
 
-export function TagList({ tags, host }: { tags: (string | null)[]; host: string }) {
+export function TagList({ tags }: { tags: (string | null)[] }) {
     const [toggleSort, setToggleSort] = useState(tagSortingOptions[0]);
+    const setUrl = useSetUrl();
 
     const { nrOfUniqueTags, sortedTags } = useMemo(() => {
         const tagsWithCount = tags.reduce<Record<string, number>>((acc, curr) => {
@@ -32,17 +33,9 @@ export function TagList({ tags, host }: { tags: (string | null)[]; host: string 
     }, [tags, toggleSort]);
 
     const params = useSearchParams();
-    const pathname = usePathname();
-
     const tagParam = params.get('tag');
-    const url = new URL(host + pathname + '?' + params.toString());
 
     const currentTag = sortedTags.find((tag) => tag.tag === tagParam);
-    const urlWithoutTag = new URL(url.toString());
-    if (currentTag) {
-        appendOrRemoveTag({ tag: currentTag?.tag, tagParam, url: urlWithoutTag });
-    }
-
     const remainingTags = currentTag ? sortedTags.filter((tag) => tag.tag !== tagParam) : sortedTags;
 
     return (
@@ -58,21 +51,25 @@ export function TagList({ tags, host }: { tags: (string | null)[]; host: string 
                     <Tag
                         tag={currentTag.tag}
                         count={currentTag.count}
-                        url={urlWithoutTag.toString()}
+                        url={setUrl([{ name: 'tag', value: undefined }])}
                         isSelected={tagParam === currentTag.tag}
                     />
                 )}
-                {remainingTags.slice(0, MAX_TAGLIST_LENGTH).map(({ tag, count }) => {
-                    appendOrRemoveTag({ tag, tagParam, url });
-                    return <Tag tag={tag} count={count} key={tag} url={url.toString()} isSelected={tagParam === tag} />;
-                })}
+                {remainingTags.slice(0, MAX_TAGLIST_LENGTH).map(({ tag, count }) => (
+                    <Tag
+                        tag={tag}
+                        count={count}
+                        key={tag}
+                        url={setUrl([{ name: 'tag', value: tagParam !== tag && tag }])}
+                        isSelected={tagParam === tag}
+                    />
+                ))}
             </div>
             {nrOfUniqueTags > MAX_TAGLIST_LENGTH && (
                 <ShowMoreTags
                     nrOfUniqueTags={nrOfUniqueTags}
                     tags={remainingTags.slice(MAX_TAGLIST_LENGTH)}
                     tagParam={tagParam}
-                    url={url}
                 />
             )}
         </div>
