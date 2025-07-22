@@ -31,7 +31,7 @@ export function ShowMoreTags({
                             />
                         </span>
                     </MenuButton>
-                    <MenuItems anchor="bottom">
+                    <MenuItems anchor="bottom" modal={false}>
                         {/* apply styling to an inner div instead of MenuItems because max-h does not apply properly */}
                         <div
                             className={classNames([

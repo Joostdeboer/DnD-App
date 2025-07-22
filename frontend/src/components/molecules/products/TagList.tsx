@@ -40,12 +40,7 @@ export function TagList({ tags }: { tags: (string | null)[] }) {
 
     return (
         <div className="flex flex-col gap-2">
-            <ToggleOptions
-                toggleValue={toggleSort}
-                setToggleValue={setToggleSort}
-                toggleOptions={tagSortingOptions}
-                lineText="Sort tags by"
-            />
+            <ToggleOptions toggleValue={toggleSort} setToggleValue={setToggleSort} toggleOptions={tagSortingOptions} />
             <div className="flex flex-row flex-wrap gap-2 items-center">
                 {!!currentTag && (
                     <Tag

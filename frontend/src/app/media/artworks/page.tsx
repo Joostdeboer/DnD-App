@@ -6,6 +6,7 @@ import { OrganizedArtworkListing } from '@/src/components/organisms/products/Org
 import { TagListing } from '@/src/components/organisms/products/TagListing';
 import { SortSelection } from '@/src/components/molecules/products/SortSelection';
 import { Divider } from '@/src/components/atoms/generic/Divider';
+import { sortingOptions } from '@/src/utils/constants/variables';
 
 /**
  * TODO:
@@ -17,11 +18,13 @@ export default async function Artworks({
     searchParams: Promise<Record<string, string | undefined>>;
 }) {
     const { tag, sort, dir } = await searchParams;
+    const sortParam = sort ?? sortingOptions[0].sort;
+    const dirParam = dir ?? sortingOptions[0].dir;
 
     const { data: artworks } = await sanityFetch({
         query: getAllByTypeQuery({
-            sorting: sort ?? 'createdAt',
-            direction: dir ?? 'asc',
+            sorting: sortParam,
+            direction: dirParam,
             filters: [tag ? '$filterTag in defaultAttributes.tags' : undefined],
         }),
         params: {
@@ -34,7 +37,9 @@ export default async function Artworks({
         <PageLayout>
             <Heading>List of Artworks</Heading>
             <TagListing type="artwork" />
-            <SortSelection sortParam={sort} dirParam={dir} />
+            <section className="max-w-sm">
+                <SortSelection sortParam={sortParam} dirParam={dirParam} />
+            </section>
             <Divider />
             <OrganizedArtworkListing artworks={artworks} />
         </PageLayout>

@@ -4,19 +4,17 @@ import { Fragment } from 'react';
 import { classNames } from '@/src/utils/functions/classnames';
 
 export function ToggleOptions<T>({
-    lineText,
     toggleValue,
     setToggleValue,
     toggleOptions,
 }: {
-    lineText: string;
     toggleValue: T;
     setToggleValue: (input: T) => void;
     toggleOptions: T[];
 }) {
     return (
         <div className="flex flex-row items-center">
-            <Text>{lineText}</Text>
+            <Text>Sort tags by:</Text>
             <RadioGroup
                 value={toggleValue}
                 onChange={setToggleValue}

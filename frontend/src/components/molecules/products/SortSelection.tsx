@@ -1,11 +1,12 @@
 'use client';
 
 import { classNames } from '@/src/utils/functions/classnames';
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
+import { Field, Label, Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSetUrl } from '@/src/hooks/useSetUrl';
 import { SortingOption, sortingOptions } from '@/src/utils/constants/variables';
+import { Text } from '@/src/components/atoms/generic/Text';
 
 export function SortSelection({
     sortParam,
@@ -33,17 +34,46 @@ export function SortSelection({
     }
 
     return (
-        <Listbox value={sort} onChange={onChange}>
-            <ListboxButton className="rounded-md bg-brand-neutral-500 px-4 border w-72">{sort.name}</ListboxButton>
-            <ListboxOptions anchor="bottom start" className="bg-brand-neutral-500 px-4 w-72">
-                {sortingOptions.map((option) => (
-                    <ListboxOption key={`${option.sort}_${option.dir}`} value={option}>
-                        {({ focus }) => (
-                            <span className={classNames(['flex gap-2', focus && 'bg-blue-100'])}>{option.name}</span>
-                        )}
-                    </ListboxOption>
-                ))}
-            </ListboxOptions>
-        </Listbox>
+        <Field>
+            <Label>
+                <Text>Sort art by:</Text>
+            </Label>
+            <div className="relative">
+                <Listbox value={sort} onChange={onChange}>
+                    <ListboxButton
+                        className={classNames([
+                            'rounded-md p-1 w-full border-2 border-brand-primary-500 outline-none',
+                            'bg-brand-neutral-200 text-black',
+                            'dark:bg-brand-neutral-800 dark:text-white',
+                        ])}
+                    >
+                        {sort.name}
+                    </ListboxButton>
+                    <ListboxOptions
+                        modal={false}
+                        className={classNames([
+                            'rounded-md absolute w-full border-2 border-brand-primary-500 top-10 cursor-pointer outline-none',
+                            'bg-brand-neutral-200 text-black',
+                            'dark:bg-brand-neutral-800 dark:text-white',
+                        ])}
+                    >
+                        {sortingOptions.map((option) => (
+                            <ListboxOption key={`${option.sort}_${option.dir}`} value={option}>
+                                {({ focus }) => (
+                                    <span
+                                        className={classNames([
+                                            'flex gap-2 px-2 py-1',
+                                            focus && 'bg-brand-primary-600 text-white',
+                                        ])}
+                                    >
+                                        {option.name}
+                                    </span>
+                                )}
+                            </ListboxOption>
+                        ))}
+                    </ListboxOptions>
+                </Listbox>
+            </div>
+        </Field>
     );
 }

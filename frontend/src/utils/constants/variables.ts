@@ -59,11 +59,10 @@ export const sortingToIndexes: SortingRecord[] = [
 
 export type SortingOption = (typeof sortingOptions)[number];
 export const sortingOptions: { name: string; sort: SortingValues | ''; dir: 'asc' | 'desc' | '' }[] = [
-    { name: 'Default', sort: '', dir: '' },
-    { name: 'Updated At (high-low)', sort: 'updatedAt', dir: 'asc' },
-    { name: 'Updated At (low-high)', sort: 'updatedAt', dir: 'desc' },
-    { name: 'Created At (high-low)', sort: 'createdAt', dir: 'asc' },
-    { name: 'Created At (low-high)', sort: 'createdAt', dir: 'desc' },
-    { name: 'Alphabetical (A-Z)', sort: 'name', dir: 'asc' },
-    { name: 'Alphabetical (Z-A)', sort: 'name', dir: 'desc' },
+    { name: 'Updated At (new-old)', sort: 'updatedAt', dir: 'desc' },
+    { name: 'Updated At (old-new)', sort: 'updatedAt', dir: 'asc' },
+    { name: 'Created At (new-old)', sort: 'createdAt', dir: 'desc' },
+    { name: 'Created At (old-new)', sort: 'createdAt', dir: 'asc' },
+    { name: 'Alphabetical (A-Z)', sort: 'name', dir: 'desc' },
+    { name: 'Alphabetical (Z-A)', sort: 'name', dir: 'asc' },
 ];
