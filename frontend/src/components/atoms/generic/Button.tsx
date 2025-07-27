@@ -25,6 +25,13 @@ export const TEXT_CLASSES: Record<TextColors, string> = {
     white: 'text-white',
 };
 
+export const BUTTON_CLASSES_DISABLED: Record<Colors, string> = {
+    primary: 'disabled:bg-brand-primary-200 disabled:cursor-not-allowed',
+    secondary: 'disabled:bg-brand-secondary-200 disabled:cursor-not-allowed',
+    success: 'disabled:bg-brand-success-200 disabled:cursor-not-allowed',
+    neutral: 'disabled:bg-brand-neutral-200 disabled:cursor-not-allowed',
+};
+
 export const BUTTON_STYLE = 'w-fit px-14 py-2 transition-colors ease-in-out duration-100 rounded-md text-center';
 
 // TODO: maybe make this a file from which to only export the styles for buttons?

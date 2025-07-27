@@ -2,11 +2,12 @@ import { SortingRecord, sortingToIndexes } from '@/src/utils/constants/variables
 import { defineQuery } from 'next-sanity';
 
 export interface AllByTypeSortingInput {
-    sorting?: string;
-    direction?: string;
+    sorting?: string | null;
+    direction?: string | null;
     sortingRecords?: SortingRecord[];
     variant?: 'all' | 'writing';
     filters?: (string | undefined)[];
+    pagination?: { start: number; end: number };
 }
 
 export type AllByTypeQueries = typeof allProductsOfType | typeof allWritingProductsOfType;
@@ -18,6 +19,7 @@ export type AllByTypeQueries = typeof allProductsOfType | typeof allWritingProdu
  * @param sortingRecords
  * @param variant
  * @param filters
+ * @param pagination
  */
 export const getAllByTypeQuery = ({
     sorting,
@@ -25,6 +27,7 @@ export const getAllByTypeQuery = ({
     sortingRecords,
     variant = 'all',
     filters,
+    pagination,
 }: AllByTypeSortingInput): AllByTypeQueries => {
     let queryParam: string | undefined = '';
     if (sorting) {
@@ -46,11 +49,22 @@ export const getAllByTypeQuery = ({
 
     // we need to return here, as otherwise it is not properly appended, and thus not sorted
     if (!!queryParam && !!direction) {
-        return defineQuery(fullQuery + ` | order(${queryParam} ${direction})`) as typeof query;
+        return defineQuery(
+            fullQuery +
+                ` | order(${queryParam} ${direction})${pagination ? ` [${pagination.start}..${pagination.end}]` : ''}`,
+        ) as typeof query;
     }
 
-    return fullQuery as typeof query;
+    return (fullQuery + (pagination ? ` [${pagination.start}..${pagination.end}]` : '')) as typeof query;
 };
+
+/**
+ * ---------------------------------------------------------------------------------------------------------------
+ *
+ * List the GROQ queries below
+ *
+ * ---------------------------------------------------------------------------------------------------------------
+ */
 
 export const specificTypePageQuery = defineQuery(`*[_type == $type && defaultAttributes.slug.current == $name][0]`);
 

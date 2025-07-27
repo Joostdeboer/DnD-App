@@ -7,11 +7,9 @@ import { TagListing } from '@/src/components/organisms/products/TagListing';
 import { SortSelection } from '@/src/components/molecules/products/SortSelection';
 import { Divider } from '@/src/components/atoms/generic/Divider';
 import { sortingOptions } from '@/src/utils/constants/variables';
+import { PAGE_SIZE } from '@/src/utils/constants/query';
+import { Suspense } from 'react';
 
-/**
- * TODO:
- *  - add pagination
- */
 export default async function Artworks({
     searchParams,
 }: {
@@ -26,6 +24,8 @@ export default async function Artworks({
             sorting: sortParam,
             direction: dirParam,
             filters: [tag ? '$filterTag in defaultAttributes.tags' : undefined],
+            // we start at page 0, and increase this value in OrganizedArtworkListing
+            pagination: { start: 0, end: PAGE_SIZE },
         }),
         params: {
             type: 'artwork',
@@ -41,7 +41,9 @@ export default async function Artworks({
                 <SortSelection sortParam={sortParam} dirParam={dirParam} />
             </section>
             <Divider />
-            <OrganizedArtworkListing artworks={artworks} />
+            <Suspense fallback={<div>Loading...</div>}>
+                <OrganizedArtworkListing products={artworks} />
+            </Suspense>
         </PageLayout>
     );
 }
