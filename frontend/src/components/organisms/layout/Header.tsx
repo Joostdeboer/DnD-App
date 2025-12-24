@@ -6,8 +6,11 @@ import { ClampedWidth } from '@/src/components/atoms/layout/ClampedWidth';
 import { Menu } from '@/src/components/molecules/layout/Menu';
 import { HEADERLINKS } from '@/src/utils/constants/links';
 
+function Toggle() {
+    return <ThemeToggle className="md:absolute md:right-4" />;
+}
+
 export function Header() {
-    const Toggle = () => <ThemeToggle className="md:absolute md:right-4" />;
     return (
         <header className="h-fit flex flex-col w-full items-center">
             <ClampedWidth>

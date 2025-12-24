@@ -18,6 +18,7 @@ export function ThemeToggle({ className }: { className?: string }) {
             (!useDarkTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
         ) {
             document.documentElement.classList.add('dark');
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setEnabled(true);
         } else {
             document.documentElement.classList.remove('dark');

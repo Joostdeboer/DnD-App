@@ -47,7 +47,6 @@ export async function POST(req: Request) {
             status: 200,
             products,
         });
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
         return new Response(e.message, { status: 500 });
     }

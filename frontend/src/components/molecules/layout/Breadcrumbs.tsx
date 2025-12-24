@@ -21,6 +21,7 @@ export function Breadcrumbs() {
         const _window = window;
         const _document = document;
         if (_document && _window) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setWindowObject(_window);
             setDocumentObject(_document);
         }

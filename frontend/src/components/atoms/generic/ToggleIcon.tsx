@@ -23,6 +23,7 @@ export function ToggleIcon({
 }) {
     const [isClipPathSupported, setIsClipPathSupported] = useState(false);
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setIsClipPathSupported(clipPathSupported());
     }, []);
 

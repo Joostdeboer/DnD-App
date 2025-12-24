@@ -6,4 +6,5 @@ export default defineCliConfig({
         projectId: SANITY_PROJECT_ID,
         dataset: 'production',
     },
+    reactStrictMode: true,
 });

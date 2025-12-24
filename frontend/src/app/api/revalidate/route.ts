@@ -13,14 +13,13 @@ export async function POST(req: NextRequest) {
         if (!isValidSignature) return new Response('Invalid signature', { status: 401 });
         if (!body?._type) return new Response('Bad request', { status: 400 });
 
-        revalidateTag(body._type);
+        revalidateTag(body._type, {});
         return NextResponse.json({
             status: 200,
             revalidated: true,
             now: Date.now(),
             body,
         });
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
         console.error(e);
         return new Response(e.message, { status: 500 });

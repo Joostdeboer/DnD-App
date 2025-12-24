@@ -40,6 +40,7 @@ export function OrganizedArtworkListing({ products }: { products: AllProductsOfT
 
     // when changing sorting/dir at server side, update the artwork list to be that list, and reset the page and loading state
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setArtworks(products);
         setPage(INITIAL_PAGE);
         setDisableLoadMore(INITIAL_DISABLE_STATE);

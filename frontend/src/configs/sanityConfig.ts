@@ -1,7 +1,7 @@
 import 'server-only';
 import { createClient, type ClientConfig } from '@sanity/client';
 import { SANITY_DATASET, SANITY_PROJECT_ID } from '@/src/utils/constants/config';
-import { defineLive } from 'next-sanity';
+import { defineLive } from 'next-sanity/live';
 
 const config: ClientConfig = {
     projectId: SANITY_PROJECT_ID,
