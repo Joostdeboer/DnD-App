@@ -4,8 +4,8 @@ import { pageStructure } from './desk/pages/pageStructure';
 
 const DOCUMENTS_IN_STRUCTURE = [
     // defined desk items
-    'gods',
     'documentSettings',
+    'fact',
     // individual schema that are already in the desk item list
     'artwork',
     'city',

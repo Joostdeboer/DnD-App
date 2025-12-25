@@ -1,8 +1,9 @@
 import { ListItemBuilder, StructureBuilder } from 'sanity/structure';
 import { BookIcon } from '@sanity/icons';
 import { documentSettings } from '../documents/documentSettings';
+import { facts } from '../documents/facts';
 
-const PAGE_LIST: ((S: StructureBuilder) => ListItemBuilder)[] = [documentSettings];
+const PAGE_LIST: ((S: StructureBuilder) => ListItemBuilder)[] = [documentSettings, facts];
 
 export const pageStructure = (S: StructureBuilder) =>
     S.listItem()

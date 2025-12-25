@@ -33,9 +33,12 @@ import information, {
     membershipInformation,
 } from './objects/information';
 
+import fact from './documents/fact';
+
 export const schemaTypes: SchemaTypeDefinition[] = [
     // pages
     documentSettings,
+    fact,
     // documents
     artwork,
     city,
